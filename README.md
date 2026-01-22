@@ -24,7 +24,7 @@ This app was inspired by the E
 - **Version Control:** Git & GitHub
 
 - ##  **The Contributors**
-    - - [![Renee](team-imgs/renee.png)](https://github.com/reneemes)
+    [![Renee](team-imgs/renee.png)](https://github.com/reneemes)
     [![Cynthia](team-imgs/cynthia.png)](https://github.com/cynthiarincon)
     [![Elhadji](team-imgs/elhadji.png)](https://github.com/MassowNdiaye)
     [![Imani](team-imgs/imani.png)](https://github.com/ImaniMoore)
