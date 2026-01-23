@@ -21,11 +21,12 @@ export async function getAllMood(req, res) {
     return res.redirect('/login');
   }
 
+  const range = req.query.range || 'week';
   try {
-    const allMoods = await getAllMoodEntries(req.session.userId);
-    res.status(200).json({ allMoods });
+    const moods = await getAllMoodEntries(req.session.userId, range);
+    res.status(200).json({ moods });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Unable to retrieve logged moods.' });
+    res.status(500).json({ error: 'Unable to retrieve mood history.' });
   }
 }

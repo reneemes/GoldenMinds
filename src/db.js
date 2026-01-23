@@ -7,11 +7,4 @@ const connection = mysql.createConnection({
   database: process.env.DB_NAME,
 });
 
-connection.promise().query(
-  'SELECT * FROM users;'
-).then(([rows, fields]) => {
-  console.log(rows);
-  console.log('connect accepted');
-});
-
 module.exports = connection;

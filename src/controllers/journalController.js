@@ -1,5 +1,8 @@
-import { saveJournalEntry } from '../services/journalService.js';
-import { getJournalEntries } from '../services/journalService.js'
+import { 
+  saveJournalEntry, 
+  getJournalEntries, 
+  deleteJournalById 
+} from '../services/journalService.js';
 
 export async function createJournal(req, res) {
   if (!req.session.userId) {
@@ -22,13 +25,26 @@ export async function getAllJournalEntries(req, res) {
     return res.redirect('/login');
   }
 
-  // const { userId } = req.body;
-
   try {
     const journalEntries = await getJournalEntries(req.session.userId);
     res.status(200).json({ journalEntries });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Unable to retrieve journal entries.' });
+  }
+}
+
+export async function deleteJournal(req, res) {
+  if (!req.session.userId) {
+    return res.redirect('/login');
+  }
+
+  const { journalId } = req.params;
+  try {
+    await deleteJournalById(req.session.userId, journalId);
+    res.status(204);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Unable to delete journal entry.' });
   }
 }
