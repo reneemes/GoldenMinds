@@ -1,0 +1,36 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unfiltered | About us</title>
+  </head>
+  <body>
+   <main class="about">
+    <section class="about_intro">
+    <h1 class="aboutTitle">About US</h1>
+      <h2>Meet the Team</h2>
+      <p><strong>Unfiltered</strong> We am to allow a place to for unfiltered emotions to be written. We aim to provide a safe space
+      where those emotions can be held.</p>
+    </section>
+    <section class="team">
+      {{#each team}}
+      <div class="teamMember">
+        <img src="{{image}}" alt="{{name}}">
+        <h3>{{name}}</h3>
+        <p> {{role}} </p>
+      </div>
+      {{/each}}
+    </section>
+      <section class="contact">
+        <h2> Contact Us</h2>
+
+          <form class="contactForm">
+              <input type="text" placeholder="Full Name">
+              <input type="email" placeholder="Email Addrerss">
+              <textarea placeholder="Message"></textarea>
+              <button type="submit">Submit</button>
+          </form>
+      </section>
+   </main>
+  </body>
+</html>
