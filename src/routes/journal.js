@@ -1,5 +1,9 @@
 import express from 'express';
-import { createJournal, getAllJournalEntries, deleteJournal } from '../controllers/journalController.js';
+import { 
+  createJournal, 
+  getAllJournalEntries, 
+  deleteJournal 
+} from '../controllers/journalController.js';
 
 const router = express.Router();
 

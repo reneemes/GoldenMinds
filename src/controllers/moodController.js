@@ -1,4 +1,7 @@
-import { saveMoodEntry } from '../services/moodService.js';
+import { 
+  saveMoodEntry,
+  getAllMoodEntries
+ } from '../services/moodService.js';
 
 export async function createMood(req, res) {
   if (!req.session.userId) {
@@ -16,7 +19,7 @@ export async function createMood(req, res) {
   }
 }
 
-export async function getAllMood(req, res) {
+export async function getAllMoods(req, res) {
   if (!req.session.userId) {
     return res.redirect('/login');
   }
