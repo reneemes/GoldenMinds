@@ -1,6 +1,6 @@
-import connection from '../db.js';
+const connection = require('../db.js');
 
-export async function saveMoodEntry(userId, mood) {
+async function createMoodEntry(userId, mood) {
   const [result] = await connection
     .promise()
     .query(`
@@ -16,9 +16,7 @@ export async function saveMoodEntry(userId, mood) {
   return result;
 }
 
-// Service file is just for handling the DB
-
-export async function getAllMoodEntries(userId, range) {
+async function getAllMoodEntries(userId, range) {
   let interval = '';
 
   switch (range) {
@@ -49,3 +47,8 @@ export async function getAllMoodEntries(userId, range) {
     )
   return result;
 }
+
+module.exports = {
+  createMoodEntry,
+  getAllMoodEntries
+};

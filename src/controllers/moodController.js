@@ -1,9 +1,9 @@
-import { 
-  saveMoodEntry,
+const { 
+  createMoodEntry,
   getAllMoodEntries
- } from '../services/moodService.js';
+} = require('../services/moodService.js');
 
-export async function createMood(req, res) {
+async function createMood(req, res) {
   if (!req.session.userId) {
     return res.redirect('/login');
   }
@@ -11,7 +11,7 @@ export async function createMood(req, res) {
   const { mood } = req.body;
 
   try {
-    const result = await saveMoodEntry(req.session.userId, mood);
+    const result = await createMoodEntry(req.session.userId, mood);
     res.status(201).json({ message: 'Mood saved!', result });
   } catch (error) {
     console.error(error);
@@ -19,7 +19,7 @@ export async function createMood(req, res) {
   }
 }
 
-export async function getAllMoods(req, res) {
+async function getAllMoods(req, res) {
   if (!req.session.userId) {
     return res.redirect('/login');
   }
@@ -33,3 +33,8 @@ export async function getAllMoods(req, res) {
     res.status(500).json({ error: 'Unable to retrieve mood history.' });
   }
 }
+
+module.exports = {
+  createMood,
+  getAllMoods
+};
