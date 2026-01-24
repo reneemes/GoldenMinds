@@ -23,11 +23,8 @@
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "hbs": "^4.2.0",
-<<<<<<< HEAD
-    "mysql2": "^3.16.1"
-=======
+    "mysql2": "^3.16.1",
     "install": "^0.13.0"
->>>>>>> 96ab1dd2b8369b77a2c17113e718014f9ecaa733
   },
   "devDependencies": {
     "autoprefixer": "^10.4.23",
