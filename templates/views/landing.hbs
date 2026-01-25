@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unfiltered - Mental Wellness for Teens</title>
-    <meta name="description" content="Mental wellness companion for teens">
-    <link href="https://unpkg.com/tailwindcss@1.9.6/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/landing.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unfiltered - Mental Wellness for Teens</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/landing.css" />
 </head>
 <body>
+
+  <main class="landing-container">
+    <header class="logo-header" role="banner">
+      <div class="logo-text">
+        <span class="logo-un">UN</span><span class="logo-filtered">FILTERED</span>
+      </div>
+    </header>
     
-    <main>
-        <section class="hero">
-            <!-- Logo -->
-            <header>
-                <img src="/images/logo.png" alt="Unfiltered logo - mental wellness for teens" class="logo">
-            </header>
-            
-            <!-- Slogan -->
-            <p class="slogan">Your mental wellness companion</p>
-            
-            <!-- Call to action buttons -->
-            <nav class="cta-nav" aria-label="Account actions">
-                <a href="/auth?form=signup" class="btn-primary">Get Started</a>
-                <a href="/auth?form=login" class="btn-secondary">Login</a>
-            </nav>
-        </section>
-    </main>
+    <div class="kids-image">
+      <img src="/img/kids.png" alt="Four happy diverse teens waving">
+    </div>
+    
+    <h2 class="main-heading">Unlock the Power of Your Mind</h2>
+    
+    <p class="slogan">Track your balance, your emotions, and train your mental clarity - all in one place.</p>
+    
+    <div class="cta-buttons" aria-label="Account actions">
+      <a href="/auth?form=login" class="btn-login">LOGIN</a>
+      <a href="/auth?form=signup" class="link-signup">Create an account</a>
+    </div>
+  </main>
 
 </body>
 </html>
