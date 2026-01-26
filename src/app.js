@@ -45,8 +45,16 @@ app.get("/resources", (req, res) => {
 });
 
 // About Us
-app.get("/About", (req, res) => {
-  res.render("about"); //res -> Render -> About Us Page (about.hbs)
+app.get("/About", (req, res) => {//res -> Render -> About Us Page (about.hbs)
+  res.render("about", {
+team: [
+  { name: 'Renee', role: 'TeamLead', image: '/img/renee.png'},
+  { name: 'Cynthia', role: 'Front-end', image: '/img/cynthia.png'},
+  { name: 'Imani', role: 'Back-end', image: '/img/imani.png'},
+  { name: 'Elhadji', role: 'Front-end', image: '/img/elhadji.png'},
+  { name: 'Amadeo', role: 'Front-end', image: '/img/Aqr.png'} 
+]
+  });
 });
 
 app.listen(port, () => {
