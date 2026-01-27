@@ -1,0 +1,345 @@
+// Variables
+$lightBlueGray:#ABC6CD;
+$darkTeal: #22505C;
+$yellowGreen: #E3F564;
+$lightMintGray: #EBF7FC;
+$text-dark: #222;
+    // BreakPoints
+$tablet: 768px;
+$desktop: 1024px;
+                        ///////////         mobile first design     ///////////////////
+body {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif; // might need to change the font 
+    background-color: $lightBlueGray;
+    color: $text-dark;
+}
+                        ///////////         about container     ///////////////////
+.about {
+    width: 100%;
+    margin: 0 auto;
+    background: $lightMintGray;
+    display: flex;
+    flex-direction: column;
+    
+    .about_intro {
+        background: $yellowGreen;
+        padding: 1.5rem;
+        text-align: center;
+        order: 1;
+        // margin-bottom: 2rem;
+    }
+    h2 {
+        margin-top: 0.5rem 0;
+        font-weight: bold;
+        color: $darkTeal;
+        font-size: 1.5rem;
+    }
+    p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin: 0.5rem 0;
+    }
+}
+.aboutTitle {
+    color: $darkTeal;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+}
+.about > div :first-child {
+    background: $yellowGreen;
+    text-align: center;
+    margin-bottom: 2rem;
+    
+    // logo rersponsive
+    font-size: clamp(2rem, 8vw, 3.75rem) !important;   
+}
+                        ///////////         team section     ///////////////////
+.team {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1rem;
+    padding: 2rem 1.5rem;
+    order: 2;
+    // text-align: center;
+}
+.teamMember {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    img {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        object-fit: cover;
+        // margin-bottom: 0.75rem;
+    }
+    h3 {
+        font-size: 1rem;
+        margin: 0;
+        font-weight: bold;
+        line-height: 1.2;
+    }
+    p {
+        font-size: 0.85rem;
+        margin: 0;
+        color: $text-dark;
+        line-height: 1.2;
+    }
+}
+                        ///////////         contact section     ///////////////////
+.contact {
+    padding: 2rem 1.5rem;
+    order: 3;
+     h2 {
+        text-align: center;
+        margin: 0 0 1.5rem 0;
+        color: $text-dark;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        // margin-bottom: 1rem;
+    }
+}
+    .contactForm {
+    background-color: rgba($lightBlueGray, 0.5);
+    padding: 1.5rem;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 100%;
+    label {
+        font-size: 0.75rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: -0.5rem;
+        color: $text-dark;
+    }
+    input,
+    textarea,
+    select {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+        border-radius: 8px;
+        border: 2px solid transparent;
+        transition: border-color 0.2 ease ;
+        font-size: inherit;
+        background: white;
+    }
+    textarea {
+        resize: vertical;
+        min-height: 80px;
+    }
+    select {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        padding-right: 2.5rem;
+    }
+    button {
+        margin-top: 1rem;
+        align-self: center;
+        background-color: $text-dark;
+        color: white;
+        border: none;
+        padding: 0.75rem 3rem;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: opacity 0.2s ease;
+        &:hover {
+            opacity: 0.85;
+        }
+    }
+}
+                        ///////////         form Validation     ///////////////////
+    .contactForm {
+        input,
+        textarea {
+            border: 2px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+        .error {
+            border-color: red;
+        }
+        .success {
+            border-color: green;
+        }
+    }
+
+                        ///////////         media query     ///////////////////
+// @media (min-width: 768px) {
+//   .team {
+//     grid-template-columns: repeat(2, 1fr);
+//     gap: 1rem;
+//   }
+
+//   .contact {
+//     max-width: 600px;
+//     margin: 0 auto;
+//   }
+// }
+
+                ///tablet 
+// @media (max-width: 768px) {
+//   .team {
+//     grid-template-columns: 1fr;
+//   }
+
+//   .sidebar {
+//     display: none;
+//   }
+
+//   .contact {
+//     width: 100%;
+//     padding: 1.5rem;
+//   }
+// }
+            //// desktop
+// @media (min-width: 1025px) {
+//   .about {
+//     max-width: 1200px;
+//     display: grid;
+//     grid-template-columns: 300px 1fr 350px;
+//     gap: 3rem;  // the gap
+//     padding: 3rem;
+//   }
+
+//   .about_intro {
+//     grid-column: 1 / 2;
+//   }
+
+//   .team {
+//     grid-column: 2 / 3;
+//     grid-template-columns: repeat(3, 1fr);
+//   }
+
+//   .contact {
+//     grid-column: 3 / 4;
+//     max-width: none;
+//   }
+// }
+///////////  TABLET (768px+) ///////////
+@media (min-width: $tablet) {
+    .team {
+        grid-template-columns: repeat(3, 1fr); // 3 columns on tablet
+        gap: 2rem 1.5rem;
+        padding: 2.5rem 2rem;
+    }
+
+    .teamMember {
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+
+    .contact {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+
+///////////  DESKTOP (1024px+) ///////////
+@media (min-width: $desktop) {
+    .about {
+        max-width: 100%;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        grid-template-rows: auto 1fr;
+        min-height: 100vh;
+        
+        // Remove the extra div styling for desktop
+        > div:first-child {
+            display: none; // Hide the logo on desktop
+        }
+    }
+
+    .about_intro {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+        order: unset;
+        padding: 2.5rem 2rem;
+        text-align: center;
+
+        h2 {
+            font-size: 1.8rem;
+        }
+
+        p {
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 1rem auto;
+        }
+    }
+
+    .aboutTitle {
+        font-size: 1.5rem;
+    }
+
+    .team {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+        order: unset;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem 2rem;
+        padding: 2rem 3rem;
+        align-content: start;
+    }
+
+    .teamMember {
+        img {
+            width: 110px;
+            height: 110px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+        }
+
+        p {
+            font-size: 0.9rem;
+        }
+    }
+
+    .contact {
+        grid-column: 2 / 3;
+        grid-row: 3 / 4;
+        order: unset;
+        max-width: 450px;
+        margin: 0 auto;
+        padding: 2rem 2rem 3rem;
+
+        h2 {
+            font-size: 1.8rem;
+        }
+    }
+
+    .contactForm {
+        padding: 2rem;
+        gap: 1.25rem;
+
+        input,
+        textarea,
+        select {
+            padding: 0.85rem;
+        }
+    }
+}
+
+///////////  LARGE DESKTOP (1440px+) ///////////
+@media (min-width: 1440px) {
+    .team {
+        grid-template-columns: repeat(5, 1fr); // 5 columns for large screens
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,58 @@
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/about.css">
+    <title>Unfiltered | About us</title>
+  </head>
+  <body>
+   <main class="about">
+    <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 60px; text-transform: uppercase; letter-spacing: -2px; display: inline-block;">
+        <span style="color: #000000;">UN</span><span style="background: linear-gradient(to right, #16A39E, #D4E157); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">FILTERED</span>
+    </div>
+    
+    <section class="about_intro">
+      <h1 class="aboutTitle">MEET THE TEAM</h1>
+      <h2>Behind Unfiltered.</h2>
+      <p><strong>Unfiltered</strong> We aim to allow a place for unfiltered emotions to be written. We aim to provide a safe space where those emotions can be held and tracked.</p>
+    </section>
+
+    <section class="team">
+      {{#each team}}
+      <div class="teamMember">
+        <img src="{{image}}" alt="{{name}}">
+        <h3>{{name}}</h3>
+        <p>{{role}}</p>
+      </div>
+      {{/each}}
+    </section>
+
+    <section class="contact">
+      <h2>CONTACT US</h2>
+      <form class="contactForm" id="contactForm">
+        <label for="name">NAME</label>
+        <input type="text" id="name" name="name" placeholder="your name">
+        
+        <label for="email">EMAIL</label>
+        <input type="email" id="email" name="email" placeholder="emailname@gmail.com">
+        
+        <label for="message">MESSAGE</label>
+        <textarea id="message" name="message" placeholder="Hi, I have a question about......."></textarea>
+        
+        <label for="reason">REASON</label>
+        <select id="reason" name="reason">
+          <option value="">Select</option>
+          <option value="general">General Inquiry</option>
+          <option value="support">Support</option>
+          <option value="feedback">Feedback</option>
+        </select>
+        
+        <button type="submit">SUBMIT</button>
+      </form>
+    </section>
+   </main>
+   <script src="/js/contact.js"></script>
+  </body>
+</html>
