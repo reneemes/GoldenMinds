@@ -4,42 +4,58 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/about.css">
+    <link rel="stylesheet" href="/css/about/about.css">
     <title>Unfiltered | About us</title>
   </head>
   <body>
    <main class="about">
-    <div style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 60px; text-transform: uppercase; letter-spacing: -2px; display: inline-block;">
-        <span style="color: #000000;">UN</span><span style="background: linear-gradient(to right, #16A39E, #D4E157); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">FILTERED</span>
+    <div class="about__sec">
+      <span class="about__title--prefix">UN</span><span class="about__title--name">FILTERED</span>
     </div>
     
-    <section class="about_intro">
-      <h1 class="aboutTitle">MEET THE TEAM</h1>
-      <h2>Behind Unfiltered.</h2>
-      <p><strong>Unfiltered</strong> We aim to allow a place for unfiltered emotions to be written. We aim to provide a safe space where those emotions can be held and tracked.</p>
+    <section class="about-intro">
+      <h1 class="about-intro__title">MEET THE TEAM</h1>
+      <h2 class="about-intro__sub-title">Behind Unfiltered.</h2>
+      <p class="about-intro__body">
+         <strong>Unfiltered</strong> is a mental health platform designed to support teens through honest expression 
+         and emotional reflection. We believe that feelings should not be hidden or minimized, and that everyone 
+         deserves a safe space to be heard.
+      </p>
+      <p class="about-intro__body">
+        Our goal is to provide a secure environment where users can write freely, 
+        track emotional patterns over time, and build stronger self-awareness. 
+        We aim to empower young people to better understand their emotions and develop healthier coping strategies.
+      </p>
+      <p class="about-intro__body">
+        <strong>Unfiltered</strong> is committed to promoting mental wellness, reducing stigma, and encouraging open conversations about emotional health.
+      </p>
     </section>
 
     <section class="team">
       {{#each team}}
-      <div class="teamMember">
-        <img src="{{image}}" alt="{{name}}">
-        <h3>{{name}}</h3>
-        <p>{{role}}</p>
+      <div class="team-member">
+        <img class="team-member__img" src="{{image}}" alt="{{name}}">
+        <h3 class="team-member__name">{{name}}</h3>
+        <p class="team-member__role">{{role}}</p>
       </div>
       {{/each}}
     </section>
 
     <section class="contact">
-      <h2>CONTACT US</h2>
-      <form class="contactForm" id="contactForm">
+      <h2 class="contact__title">CONTACT US</h2>
+      <p class="contact__message">
+        Have a question or feedback? Send us a message and we will get back to you as soon as possible.
+      </p>
+
+      <form class="contact-form" id="contactForm">
         <label for="name">NAME</label>
-        <input type="text" id="name" name="name" placeholder="your name">
+        <input type="text" id="name" name="name" placeholder="Name">
         
         <label for="email">EMAIL</label>
-        <input type="email" id="email" name="email" placeholder="emailname@gmail.com">
+        <input type="email" id="email" name="email" placeholder="email@gmail.com">
         
         <label for="message">MESSAGE</label>
-        <textarea id="message" name="message" placeholder="Hi, I have a question about......."></textarea>
+        <textarea id="message" name="message" placeholder="Type message here..."></textarea>
         
         <label for="reason">REASON</label>
         <select id="reason" name="reason">
@@ -49,7 +65,7 @@
           <option value="feedback">Feedback</option>
         </select>
         
-        <button type="submit">SUBMIT</button>
+        <button class="contact-form__btn" type="submit">SUBMIT</button>
       </form>
     </section>
    </main>

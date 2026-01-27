@@ -2,7 +2,6 @@ require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
-
 const app = express();
 
 const port = process.env.PORT || 8080;
@@ -20,13 +19,18 @@ hbs.registerPartials(partialsPath);
 app.use(express.static(publicDirectoryPath));
 
 // Landing Page
-app.get("", (req, res) => {
+app.get("/", (req, res) => {
   res.render("landing"); //res -> Render -> landing Page (landing.hbs)
 });
 
-// Auth page (login + signup)
-app.get("/auth", (req, res) => {
-  res.render("auth");
+// Login
+app.get("/login", (req, res) => {
+  res.render("login"); //res -> Render -> login Page (login.hbs)
+});
+
+// Account Creation
+app.get("/account", (req, res) => {
+  res.render("account-creation-page"); //res -> Render -> Account Creation Page (account-creation-page.hbs)
 });
 
 // Homepage
@@ -40,8 +44,16 @@ app.get("/resources", (req, res) => {
 });
 
 // About Us
-app.get("/About", (req, res) => {
-  res.render("about"); //res -> Render -> About Us Page (about.hbs)
+app.get("/about", (req, res) => {//res -> Render -> About Us Page (about.hbs)
+  res.render("about", {
+    team: [
+      { name: 'Renee Messersmith', role: 'Team Lead', image: '/img/renee.png'},
+      { name: 'Cynthia Rincon', role: 'Front-end', image: '/img/cynthia.png'},
+      { name: 'Imani Moore', role: 'Back-end', image: '/img/imani.png'},
+      { name: 'Elhadji Massow Ndiaye', role: 'Front-end', image: '/img/elhadji.png'},
+      // { name: 'Amadeo', role: 'Front-end', image: '/img/Aqr.png'} 
+    ]
+  });
 });
 
 app.listen(port, () => {
