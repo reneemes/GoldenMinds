@@ -28,7 +28,8 @@ Mental health education is often overlooked, especially for young people navigat
 
 ## 🖼️ Logo
 
----
+![Logo](public/img/Logo.png)
+
 
 ## ✨ Features
 
@@ -79,6 +80,21 @@ Unfiltered is built with a mobile-first approach and includes breakpoints for:
 - Large screens (1440px+)
 
 ---
+
+## 📸 Login Screen Preview
+
+### Login View
+
+![Login Screen](img/ReadMe1.png)
+
+### Signup View
+
+![Signup Screen](img/ReadMe2.png)
+
+<p text-align = "center">
+  <img src="img/ReadMe1.png" width="300" />
+  <img src="img/ReadMe2.png" width="300" />
+</p>
 
 ## 🚀 Getting Started
 
