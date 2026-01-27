@@ -5,7 +5,6 @@ const hbs = require("hbs");
 
 const app = express();
 
-const app = express();
 const port = process.env.PORT || 8080;
 
 // Define paths for Express config
