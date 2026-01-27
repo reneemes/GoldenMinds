@@ -20,14 +20,17 @@
   },
   "dependencies": {
     "axios": "^1.13.2",
+    "bcryptjs": "^3.0.3",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
+    "express-session": "^1.19.0",
     "hbs": "^4.2.0",
     "mysql2": "^3.16.1",
     "install": "^0.13.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.23",
+    "nodemon": "^3.1.11",
     "postcss": "^8.5.6"
   }
 }

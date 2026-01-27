@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In - Unfiltered</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+
+  <main class="auth-container">
+    <!-- Logo -->
+    <header class="logo-header" role="banner">
+      <div class="logo-text">
+        <span class="logo-un">UN</span><span class="logo-filtered">FILTERED</span>
+      </div>
+    </header>
+
+    <!-- Tab Toggle -->
+    <div class="tab-toggle">
+      <button id="loginTab" class="tab-btn active">Log In</button>
+      <button id="signupTab" class="tab-btn">Sign Up</button>
+    </div>
+
+    <!-- Auth Card -->
+    <div class="auth-card">
+      
+      <!-- Login Form -->
+      <form id="loginForm" class="auth-form" action="/api/login" method="POST">
+        <div class="input-group">
+          <label for="loginUsername">Username</label>
+          <input type="text" id="loginUsername" name="username" required>
+        </div>
+        
+        <div class="input-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" name="password" required>
+        </div>
+        
+        <button type="submit" class="submit-btn">Log In</button>
+      </form>
+
+      <!-- Signup Form (hidden by default) -->
+      <form id="signupForm" class="auth-form hidden" action="/api/signup" method="POST">
+        <div class="input-group">
+          <label for="signupUsername">Username</label>
+          <input type="text" id="signupUsername" name="username" required>
+        </div>
+        
+        <div class="input-group">
+          <label for="signupPassword">Password</label>
+          <input type="password" id="signupPassword" name="password" required>
+        </div>
+        
+        <button type="submit" class="submit-btn">Sign Up</button>
+      </form>
+
+    </div>
+
+    <!-- Back to landing -->
+    <a href="/" class="back-link">← Back to Home</a>
+
+  </main>
+
+  <script src="/js/auth.js"></script>
+</body>
+</html>

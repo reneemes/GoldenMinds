@@ -1,0 +1,203 @@
+// ---------- Variables ----------
+$teal: #16a39e;
+$lime: #d4e157;
+$yellow: #E3F564;
+$light-blue: #EBF7FC;
+$white: #FFFFFF;
+$black: #000000;
+
+// ---------- Reset ----------
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-image: url('../img/background2.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: $black;
+  min-height: 100vh;
+}
+
+// ---------- Container ----------
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+// ---------- Logo ----------
+.logo-header {
+  background: $white;
+  border: 3px solid $black;
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 2rem;
+  box-shadow: 3px 3px 0px rgba($black, 0.1);
+}
+
+.logo-text {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.logo-un {
+  color: $black;
+}
+
+.logo-filtered {
+  background: linear-gradient(to right, $teal, $lime);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// ---------- Tab Toggle ----------
+.tab-toggle {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.tab-btn {
+  padding: 0.8rem 2rem;
+  border: 3px solid $black;
+  background: $white;
+  color: $black;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: "Open Sans", sans-serif;
+  
+  &.active {
+    background: $yellow;
+    box-shadow: 0 3px 0 $black;
+  }
+  
+  &:hover:not(.active) {
+    background: $light-blue;
+  }
+}
+
+// ---------- Auth Card ----------
+.auth-card {
+  background: $light-blue;
+  border: 3px solid $black;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 6px 6px 0px $black;
+}
+
+// ---------- Forms ----------
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  
+  &.hidden {
+    display: none;
+  }
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  
+  label {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  
+  input {
+    padding: 0.9rem;
+    border: 3px solid $black;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: "Open Sans", sans-serif;
+    background: $white;
+    
+    &:focus {
+      outline: none;
+      border-color: $teal;
+    }
+  }
+}
+
+// ---------- Submit Button ----------
+.submit-btn {
+  background: $yellow;
+  border: 3px solid $black;
+  border-radius: 999px;
+  padding: 1rem 2rem;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 0 $black;
+  margin-top: 0.5rem;
+  font-family: "Open Sans", sans-serif;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 $black;
+  }
+  
+  &:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 0 $black;
+  }
+}
+
+// ---------- Back Link ----------
+.back-link {
+  margin-top: 2rem;
+  color: $black;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+  
+  &:hover {
+    color: $teal;
+  }
+}
+
+// ---------- Tablet (768px+) ----------
+@media (min-width: 768px) {
+  .logo-text {
+    font-size: 2.5rem;
+  }
+  
+  .auth-card {
+    padding: 2.5rem 2rem;
+  }
+  
+  .tab-btn {
+    padding: 1rem 2.5rem;
+  }
+}
+
+// ---------- Desktop (1200px+) ----------
+@media (min-width: 1200px) {
+  .logo-text {
+    font-size: 3rem;
+  }
+  
+  .auth-card {
+    max-width: 450px;
+  }
+}

@@ -27,17 +27,12 @@ app.use(express.static(publicDirectoryPath));
 
 // Landing Page
 app.get("/", (req, res) => {
-  res.render("landing-page"); //res -> Render -> landing Page (landing.hbs)
+  res.render("landing"); //res -> Render -> landing Page (landing.hbs)
 });
 
-// Login
-app.get("/login", (req, res) => {
-  res.render("login"); //res -> Render -> login Page (login.hbs)
-});
-
-// Account Creation
-app.get("/Account", (req, res) => {
-  res.render("account-creation-page"); //res -> Render -> Account Creation Page (account-creation-page.hbs)
+// Auth page (login + signup)
+app.get("/auth", (req, res) => {
+  res.render("auth");
 });
 
 // Homepage
