@@ -6,6 +6,7 @@ const hbs = require("hbs");
 const journalRoutes = require("./routes/journal.js");
 const moodRoutes = require("./routes/mood.js");
 
+const app = express();
 const port = process.env.PORT || 8080;
 
 // Define paths for Express config
@@ -35,9 +36,9 @@ app.get("/login", (req, res) => {
   res.render("login"); //res -> Render -> login Page (login.hbs)
 });
 
-// Account Creation
-app.get("/Account", (req, res) => {
-  res.render("account-creation-page"); //res -> Render -> Account Creation Page (account-creation-page.hbs)
+// Auth page (login + signup)
+app.get("/auth", (req, res) => {
+  res.render("auth");
 });
 
 // Homepage
