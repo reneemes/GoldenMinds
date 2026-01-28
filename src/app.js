@@ -24,21 +24,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-
-
-// function auth(req, res, next) {
-//   const token = req.cookies.token;
-//   if (!token) return res.redirect("/auth");
-
-//   try {
-//     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-//     req.user = decoded;
-//     next();
-//   } catch (err) {
-//     return res.redirect("/auth");
-//   }
-// }
-
 // Setup handlebars engine and view location
 app.set("view engine", "hbs");
 app.set("views", viewsPath);
