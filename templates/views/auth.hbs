@@ -27,7 +27,7 @@
     <div class="auth-card">
       
       <!-- Login Form -->
-      <form id="loginForm" class="auth-form" action="/api/login" method="POST">
+      <form id="loginForm" class="auth-form" action="/auth/signin" method="POST">
         <div class="input-group">
           <label for="loginUsername">Username</label>
           <input type="text" id="loginUsername" name="username" required>
@@ -42,7 +42,7 @@
       </form>
 
       <!-- Signup Form (hidden by default) -->
-      <form id="signupForm" class="auth-form hidden" action="/api/signup" method="POST">
+      <form id="signupForm" class="auth-form hidden" action="/auth/signup" method="POST">
         <div class="input-group">
           <label for="signupUsername">Username</label>
           <input type="text" id="signupUsername" name="username" required>

@@ -2,7 +2,13 @@ require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
-const app = express();
+const cookieParser = require('cookie-parser');
+
+const authRoutes = require("./routes/auth.js");
+const journalRoutes = require("./routes/journal.js");
+const moodRoutes = require("./routes/mood.js");
+
+const auth = require("./middleware/auth.js");
 
 const port = process.env.PORT || 8080;
 
@@ -10,6 +16,12 @@ const port = process.env.PORT || 8080;
 const publicDirectoryPath = path.join(__dirname, "../public");
 const viewsPath = path.join(__dirname, "../templates/views");
 const partialsPath = path.join(__dirname, "../templates/partials");
+
+const app = express();
+// Parse incoming JSON & form data
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // Setup handlebars engine and view location
 app.set("view engine", "hbs");
@@ -34,12 +46,12 @@ app.get("/account", (req, res) => {
 });
 
 // Homepage
-app.get("/homepage", (req, res) => {
+app.get("/homepage", auth, (req, res) => {
   res.render("homepage"); //res -> Render -> homepage (homepage.hbs)
 });
 
 // Resources
-app.get("/resources", (req, res) => {
+app.get("/resources", auth, (req, res) => {
   res.render("resources"); //res -> Render -> resources Page (resources.hbs)
 });
 
@@ -53,6 +65,23 @@ app.get("/about", (req, res) => {//res -> Render -> About Us Page (about.hbs)
       { name: 'Elhadji Massow Ndiaye', role: 'Front-end', image: '/img/elhadji.png'},
       // { name: 'Amadeo', role: 'Front-end', image: '/img/Aqr.png'} 
     ]
+  });
+});
+
+// Setup static directory to serve
+app.use(express.static(publicDirectoryPath));
+
+// routes for Journal, Mood, and Login
+app.use("/auth", authRoutes);
+app.use('/journal', journalRoutes);
+app.use('/mood', moodRoutes);
+
+// Error handling
+app.use((err, req, res, next) => {
+  console.error(err);
+
+  res.status(500).json({
+    message: 'Something went wrong',
   });
 });
 
