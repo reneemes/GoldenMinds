@@ -19,7 +19,7 @@ hbs.registerPartials(partialsPath);
 
 app.use(express.static(publicDirectoryPath));
 
-// Landing Page
+// Landing Page5
 app.get("", (req, res) => {
   res.render("landing"); //res -> Render -> landing Page (landing.hbs)
 });
