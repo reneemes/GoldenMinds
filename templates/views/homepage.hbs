@@ -31,19 +31,19 @@
         <section class="week-days">
           <div class="days-container">
             <!-- Sunday -->
-            <div class="day"><p>S</p><span id="day-number">10</span></div>
+            <div class="day"><p>S</p><span class="day-number">10</span></div>
             <!-- Monday -->
-            <div class="day"><p>M</p><span id="day-number">0</span></div>
+            <div class="day"><p>M</p><span class="day-number">0</span></div>
             <!-- Tuesday -->
-            <div class="day"><p>T</p><span id="day-number">0</span></div>
+            <div class="day"><p>T</p><span class="day-number">0</span></div>
             <!-- Wednesday -->
-            <div class="day"><p>W</p><span id="day-number">0</span></div>
+            <div class="day"><p>W</p><span class="day-number">0</span></div>
             <!-- Thursday -->
-            <div class="day"><p>T</p><span id="day-number">0</span></div>
+            <div class="day"><p>T</p><span class="day-number">0</span></div>
             <!-- Friday -->
-            <div class="day"><p>F</p><span id="day-number">0</span></div>
+            <div class="day"><p>F</p><span class="day-number">0</span></div>
             <!-- Saturday -->
-            <div class="day"><p>S</p><span id="day-number">0</span></div>
+            <div class="day"><p>S</p><span class="day-number">0</span></div>
           </div>
         </section>
 
@@ -119,4 +119,30 @@
      {{> nav }} 
   </body>
   <script src="/js/journal.js"></script>
+
+
+  <!-- DATE LOGIC FOR AUTOMATIC CHANGE DAILY -->
+  <script>
+    const dayNumbers = document.querySelectorAll(".day-number");
+    const dayContainers = document.querySelectorAll(".day");
+
+    const today = new Date();
+    const todayIndex = today.getDay(); // 0 = Sunday, 6 = Saturday
+
+    // Find Sunday of the current week
+    const sunday = new Date(today);
+    sunday.setDate(today.getDate() - todayIndex);
+
+      dayNumbers.forEach((span, index) => {
+        const currentDay = new Date(sunday);
+        currentDay.setDate(sunday.getDate() + index);
+
+        span.textContent = currentDay.getDate();
+
+        // Highlight today
+        if (index === todayIndex) {
+          dayContainers[index].classList.add("today");
+        }
+    });
+  </script>
 </html>

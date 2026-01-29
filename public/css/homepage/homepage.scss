@@ -298,6 +298,12 @@ textarea {
   display: none;
 }
 
+// CURRENT DAY COLOR
+.day.today {
+  background-color: #222;
+  color: #fff;
+}
+
 // ============ TABLET STYLES ============
 @media (min-width: 768px) {
   .header-section {

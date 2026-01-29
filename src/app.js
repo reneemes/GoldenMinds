@@ -9,12 +9,12 @@ const authRoutes = require("./routes/auth.js");
 const journalRoutes = require("./routes/journal.js");
 const moodRoutes = require("./routes/mood.js");
 
-//Initializing App
-const app = express();
-
 const auth = require("./middleware/auth.js");
 
 const port = process.env.PORT || 8080;
+
+//Initializing App
+const app = express();
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, "../public");
@@ -40,22 +40,14 @@ app.get("/", (req, res) => {
 
 // Login
 app.get("/login", (req, res) => {
-  res.render("login"); //res -> Render -> login Page (login.hbs)
-});
-
-// Account Creation
-app.get("/account", (req, res) => {
-  res.render("account-creation-page"); //res -> Render -> Account Creation Page (account-creation-page.hbs)
+  res.render("auth"); //res -> Render -> login Page (login.hbs)
 });
 
 // Homepage
-app.get(
-  "/homepage",
-  /*auth,*/ (req, res) => {
-    //<-- NEED ATTENTION
-    res.render("homepage"); //res -> Render -> homepage (homepage.hbs)
-  },
-);
+app.get("/homepage", auth, (req, res) => {
+  //<-- NEED ATTENTION
+  res.render("homepage"); //res -> Render -> homepage (homepage.hbs)
+});
 
 // JOURNAL ROUTE <---- NEED WORK!!
 app.use((req, res, next) => {
@@ -81,13 +73,9 @@ app.post("/journal", (req, res) => {
 });
 
 // Resources
-app.get(
-  "/resources",
-  /*auth,*/ (req, res) => {
-    // <-- NEED ATTENTION
-    res.render("resources"); //res -> Render -> resources Page (resources.hbs)
-  },
-);
+app.get("/resources", auth, (req, res) => {
+  res.render("resources"); //res -> Render -> resources Page (resources.hbs)
+});
 
 // About Us
 app.get("/about", (req, res) => {
