@@ -5,9 +5,9 @@ const hbs = require("hbs");
 const cookieParser = require("cookie-parser");
 
 // DB Routes
-// const authRoutes = require("./routes/auth.js");
-// const journalRoutes = require("./routes/journal.js");
-// const moodRoutes = require("./routes/mood.js");
+const authRoutes = require("./routes/auth.js");
+const journalRoutes = require("./routes/journal.js");
+const moodRoutes = require("./routes/mood.js");
 
 //Initializing App
 const app = express();
@@ -111,9 +111,9 @@ app.get("/about", (req, res) => {
 app.use(express.static(publicDirectoryPath));
 
 // routes for Journal, Mood, and Login
-// app.use("/auth", authRoutes);
-// app.use("/journal", journalRoutes);
-// app.use("/mood", moodRoutes);
+app.use("/auth", authRoutes);
+app.use("/journal", journalRoutes);
+app.use("/mood", moodRoutes);
 
 // Error handling
 app.use((err, req, res, next) => {
