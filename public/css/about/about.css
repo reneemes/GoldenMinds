@@ -11,7 +11,7 @@ body {
   display: inline-block;
 }
 .about__title--name {
-  background: linear-gradient(to right, #16A39E, #D4E157);
+  background: linear-gradient(to right, #16a39e, #d4e157);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -19,10 +19,10 @@ body {
 
 .about-intro {
   text-align: center;
-  background: #E3F564;
+  background: #e3f564;
 }
 .about-intro__title, .about-intro__sub-title {
-  color: #22505C;
+  color: #22505c;
 }
 .about-intro__title {
   font-size: 2rem;
@@ -54,8 +54,7 @@ body {
   height: 200px;
   width: 200px;
   border-radius: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .team .team-member__name, .team .team-member__role {
   margin: 0;
@@ -92,6 +91,7 @@ body {
   background-color: rgba(171, 198, 205, 0.5);
   padding: 1.5rem;
   gap: 1rem;
+  margin-bottom: 100px;
 }
 .contact .contact-form label {
   color: #222;
@@ -139,7 +139,6 @@ body {
   .team {
     display: grid;
     grid-template-columns: repeat(2, 400px);
-    width: -moz-max-content;
     width: max-content;
     margin: 0 auto;
   }
@@ -151,4 +150,11 @@ body {
   .about-intro__body {
     max-width: 50%;
   }
-}/*# sourceMappingURL=about.css.map */
+}
+@media (min-width: 1024px) {
+  main {
+    margin-left: 80px;
+  }
+}
+
+/*# sourceMappingURL=about.css.map */

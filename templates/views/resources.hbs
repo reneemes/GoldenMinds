@@ -2,9 +2,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/partials/nav.css">
+    <link rel="stylesheet" href="/css/resources/resources.css">
     <title>Unfiltered | Resources Page</title>
   </head>
   <body>
-    <h1>Resources Page</h1>
+    <body>
+    <main>
+      <!-- HEADER SECTION -->
+      <section class="header-section">
+
+        <!-- TITLE SECTION -->
+        <div class="title-section">
+          <h2>Find the nearest professional</h2>
+        </div>
+
+        <!-- PROFILE SECTION -->
+        <div class="profile-section">
+          <img src="img/profile-pic.png" alt="Profile Picture" />
+          <span>Account</span>
+        </div>    
+      </section>
+
+      <!-- CONTENT SECTION -->
+      <section class="content-section"> 
+         <!-- SEARCH BAR -->
+         <div class="search-container">
+          <div class="search-bar">
+            <input type="text" placeholder="Add your location, address....." />
+            <button aria-label="Search">🔍</button>
+          </div>
+        </div>
+      
+       <section class="locations-layout">
+        <!-- LOCATION MAP -->
+        <div class="location-map" id="locationMap">
+          <p>LOCATION MAP</p>
+          <img src="img/maps-demo.png" alt="">
+        </div>
+
+        <!-- LOCATION RESULTS -->
+        <section class="location-results">
+          <div class="location" id="locationResults1">LOCATION RESULTS</div>
+          <div class="location" id="locationResults2">LOCATION RESULTS</div>
+          <div class="location" id="locationResults3">LOCATION RESULTS</div>
+          <div class="location" id="locationResults4">LOCATION RESULTS</div>
+          <div class="location" id="locationResults2">LOCATION RESULTS</div>
+          <div class="location" id="locationResults3">LOCATION RESULTS</div>
+        </section>
+      </section>
+      </section>
+    </main>
   </body>
+  {{> nav }} 
 </html>

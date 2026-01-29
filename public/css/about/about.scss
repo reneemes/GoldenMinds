@@ -1,8 +1,8 @@
 // // Variables
-$lightBlueGray: #ABC6CD;
-$darkTeal: #22505C;
-$yellowGreen: #E3F564;
-$lightMintGray: #EBF7FC;
+$lightBlueGray: #abc6cd;
+$darkTeal: #22505c;
+$yellowGreen: #e3f564;
+$lightMintGray: #ebf7fc;
 $text-dark: #222;
 
 // BreakPoints
@@ -21,7 +21,7 @@ body {
 
 .about {
   &__sec {
-    font-family: 'Montserrat',sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 700;
     font-size: 60px;
     text-transform: uppercase;
@@ -31,7 +31,7 @@ body {
 
   &__title {
     &--name {
-      background: linear-gradient(to right, #16A39E, #D4E157);
+      background: linear-gradient(to right, #16a39e, #d4e157);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -47,7 +47,7 @@ body {
   &__sub-title {
     color: $darkTeal;
   }
-  
+
   &__title {
     font-size: 2rem;
     letter-spacing: 1px;
@@ -120,6 +120,7 @@ body {
     background-color: rgba($lightBlueGray, 0.5);
     padding: 1.5rem;
     gap: 1rem;
+    margin-bottom: 100px;
 
     label {
       color: $text-dark;
@@ -137,7 +138,7 @@ body {
       font-size: inherit;
       width: 100%;
       padding: 0.6rem;
-      transition: border-color 0.2 ease ;
+      transition: border-color 0.2 ease;
     }
 
     textarea {
@@ -150,22 +151,22 @@ body {
     }
 
     &__btn {
-        border: none;
-        border-radius: 10px;
-        align-self: center;
-        background-color: $text-dark;
-        color: white;
-        font-size: 0.9rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        margin-top: 1rem;
-        padding: 0.75rem 3rem;
-        transition: opacity 0.2s ease;
-        cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      align-self: center;
+      background-color: $text-dark;
+      color: white;
+      font-size: 0.9rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-top: 1rem;
+      padding: 0.75rem 3rem;
+      transition: opacity 0.2s ease;
+      cursor: pointer;
 
-        &:hover {
-          opacity: 0.85;
-        }
+      &:hover {
+        opacity: 0.85;
+      }
     }
   }
 }
@@ -184,5 +185,11 @@ body {
     &__body {
       max-width: 50%;
     }
+  }
+}
+
+@media (min-width: 1024px) {
+  main {
+    margin-left: 80px;
   }
 }

@@ -1,9 +1,9 @@
 // ---------- Variables ----------
 $teal: #16a39e;
 $lime: #d4e157;
-$yellow: #E3F564;
-$light-blue: #EBF7FC;
-$white: #FFFFFF;
+$yellow: #e3f564;
+$light-blue: #ebf7fc;
+$white: #ffffff;
 $black: #000000;
 
 // ---------- Reset ----------
@@ -15,7 +15,7 @@ $black: #000000;
 
 body {
   font-family: "Open Sans", sans-serif;
-  background-image: url('../img/background2.png');
+  background-image: url("../../img/background2.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -80,12 +80,12 @@ body {
   cursor: pointer;
   transition: all 0.2s;
   font-family: "Open Sans", sans-serif;
-  
+
   &.active {
     background: $yellow;
     box-shadow: 0 3px 0 $black;
   }
-  
+
   &:hover:not(.active) {
     background: $light-blue;
   }
@@ -107,7 +107,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  
+
   &.hidden {
     display: none;
   }
@@ -117,12 +117,12 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  
+
   label {
     font-weight: 600;
     font-size: 0.9rem;
   }
-  
+
   input {
     padding: 0.9rem;
     border: 3px solid $black;
@@ -130,7 +130,7 @@ body {
     font-size: 1rem;
     font-family: "Open Sans", sans-serif;
     background: $white;
-    
+
     &:focus {
       outline: none;
       border-color: $teal;
@@ -147,16 +147,18 @@ body {
   font-weight: 700;
   font-size: 1rem;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
   box-shadow: 0 4px 0 $black;
   margin-top: 0.5rem;
   font-family: "Open Sans", sans-serif;
-  
+
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 0 $black;
   }
-  
+
   &:active {
     transform: translateY(1px);
     box-shadow: 0 2px 0 $black;
@@ -170,7 +172,7 @@ body {
   text-decoration: none;
   font-weight: 600;
   transition: color 0.2s;
-  
+
   &:hover {
     color: $teal;
   }
@@ -181,11 +183,11 @@ body {
   .logo-text {
     font-size: 2.5rem;
   }
-  
+
   .auth-card {
     padding: 2.5rem 2rem;
   }
-  
+
   .tab-btn {
     padding: 1rem 2.5rem;
   }
@@ -196,7 +198,7 @@ body {
   .logo-text {
     font-size: 3rem;
   }
-  
+
   .auth-card {
     max-width: 450px;
   }

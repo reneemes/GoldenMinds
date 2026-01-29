@@ -1,0 +1,149 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  flex: 1;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #ebf7fc;
+  font-family: "Arial", sans-serif;
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 30px;
+}
+
+.title-section {
+  padding: 30px 15px 10px 15px;
+  width: 200px;
+}
+.title-section h2 {
+  margin: 5px 0 0 0;
+  font-size: 24px;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  height: 100px;
+  padding: 0px 15px 0 0;
+}
+.profile-section img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.profile-section span {
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  width: 320px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 14px;
+}
+
+.search-bar button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.location-map,
+.location {
+  background-color: rgba(255, 255, 255, 0.85);
+  margin: 15px 15px 10px 15px;
+  padding: 20px 10px;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.location-map {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-height: 500px;
+}
+.location-map p {
+  margin-bottom: 15px;
+  margin-top: 0px;
+  font-size: 18px;
+}
+.location-map img {
+  width: 100%;
+  border-radius: 20px;
+  max-height: 460px;
+}
+
+@media (min-width: 768px) {
+  .header-section {
+    padding-left: 40px;
+  }
+  .title-section h2 {
+    font-size: 32px;
+    width: 300px;
+  }
+  .locations-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 24px;
+    align-items: start;
+    margin-top: 30px;
+  }
+  .location-map img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .location-results {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+@media (min-width: 1024px) {
+  main {
+    margin-left: 80px;
+  }
+  .header-section {
+    padding-left: 40px;
+  }
+  .title-section h2 {
+    font-size: 32px;
+    width: 300px;
+  }
+}/*# sourceMappingURL=resources.css.map */

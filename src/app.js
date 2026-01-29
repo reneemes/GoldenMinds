@@ -2,8 +2,9 @@ require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
-const cookieParser = require('cookie-parser');
+const cookieParser = require("cookie-parser");
 
+// DB Routes
 const authRoutes = require("./routes/auth.js");
 const journalRoutes = require("./routes/journal.js");
 const moodRoutes = require("./routes/mood.js");
@@ -12,12 +13,14 @@ const auth = require("./middleware/auth.js");
 
 const port = process.env.PORT || 8080;
 
+//Initializing App
+const app = express();
+
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, "../public");
 const viewsPath = path.join(__dirname, "../templates/views");
 const partialsPath = path.join(__dirname, "../templates/partials");
 
-const app = express();
 // Parse incoming JSON & form data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -37,17 +40,36 @@ app.get("/", (req, res) => {
 
 // Login
 app.get("/login", (req, res) => {
-  res.render("login"); //res -> Render -> login Page (login.hbs)
-});
-
-// Account Creation
-app.get("/account", (req, res) => {
-  res.render("account-creation-page"); //res -> Render -> Account Creation Page (account-creation-page.hbs)
+  res.render("auth"); //res -> Render -> login Page (login.hbs)
 });
 
 // Homepage
 app.get("/homepage", auth, (req, res) => {
+  //<-- NEED ATTENTION
   res.render("homepage"); //res -> Render -> homepage (homepage.hbs)
+});
+
+// JOURNAL ROUTE <---- NEED WORK!!
+app.use((req, res, next) => {
+  req.user = { id: 1 }; // fake logged-in user
+  next();
+});
+
+app.post("/journal", (req, res) => {
+  if (!req.user) {
+    return res.status(401).json({ message: "Not logged in" });
+  }
+
+  const { title, content } = req.body;
+
+  if (!content) {
+    return res.status(400).json({ message: "Content required" });
+  }
+
+  res.status(201).json({
+    message: "Journal created!",
+    journalId: Date.now(),
+  });
 });
 
 // Resources
@@ -56,15 +78,20 @@ app.get("/resources", auth, (req, res) => {
 });
 
 // About Us
-app.get("/about", (req, res) => {//res -> Render -> About Us Page (about.hbs)
+app.get("/about", (req, res) => {
+  //res -> Render -> About Us Page (about.hbs)
   res.render("about", {
     team: [
-      { name: 'Renee Messersmith', role: 'Team Lead', image: '/img/renee.png'},
-      { name: 'Cynthia Rincon', role: 'Front-end', image: '/img/cynthia.png'},
-      { name: 'Imani Moore', role: 'Back-end', image: '/img/imani.png'},
-      { name: 'Elhadji Massow Ndiaye', role: 'Front-end', image: '/img/elhadji.png'},
-      // { name: 'Amadeo', role: 'Front-end', image: '/img/Aqr.png'} 
-    ]
+      { name: "Renee Messersmith", role: "Team Lead", image: "/img/renee.png" },
+      { name: "Cynthia Rincon", role: "Front-end", image: "/img/cynthia.png" },
+      { name: "Imani Moore", role: "Back-end", image: "/img/imani.png" },
+      {
+        name: "Elhadji Massow Ndiaye",
+        role: "Front-end",
+        image: "/img/elhadji.png",
+      },
+      // { name: 'Amadeo', role: 'Front-end', image: '/img/Aqr.png'}
+    ],
   });
 });
 
@@ -73,18 +100,19 @@ app.use(express.static(publicDirectoryPath));
 
 // routes for Journal, Mood, and Login
 app.use("/auth", authRoutes);
-app.use('/journal', journalRoutes);
-app.use('/mood', moodRoutes);
+app.use("/journal", journalRoutes);
+app.use("/mood", moodRoutes);
 
 // Error handling
 app.use((err, req, res, next) => {
   console.error(err);
 
   res.status(500).json({
-    message: 'Something went wrong',
+    message: "Something went wrong",
   });
 });
 
+//Server
 app.listen(port, () => {
   console.log(`Server is up on port ${port}`);
 });
