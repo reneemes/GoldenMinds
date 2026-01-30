@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 const authRoutes = require("./routes/auth.js");
 const journalRoutes = require("./routes/journal.js");
 const moodRoutes = require("./routes/mood.js");
+const contactRoutes = require("./routes/contact.js");
 
 const auth = require("./middleware/auth.js");
 
@@ -85,12 +86,7 @@ app.get("/about", (req, res) => {
       { name: "Renee Messersmith", role: "Team Lead", image: "/img/renee.png" },
       { name: "Cynthia Rincon", role: "Front-end", image: "/img/cynthia.png" },
       { name: "Imani Moore", role: "Back-end", image: "/img/imani.png" },
-      {
-        name: "Elhadji Massow Ndiaye",
-        role: "Front-end",
-        image: "/img/elhadji.png",
-      },
-      // { name: 'Amadeo', role: 'Front-end', image: '/img/Aqr.png'}
+      { name: "Elhadji Massow Ndiaye", role: "Front-end", image: "/img/elhadji.png" }
     ],
   });
 });
@@ -102,6 +98,7 @@ app.use(express.static(publicDirectoryPath));
 app.use("/auth", authRoutes);
 app.use("/journal", journalRoutes);
 app.use("/mood", moodRoutes);
+app.use("/contact", contactRoutes);
 
 // Error handling
 app.use((err, req, res, next) => {

@@ -28,8 +28,6 @@ exports.signup = async (req, res) => {
 
 // SIGN IN
 exports.signin = async (req, res) => {
-  console.log("SIGNIN ROUTE HIT");
-  console.log("Body:", req.body);
   const { username, password } = req.body;
 
   try {

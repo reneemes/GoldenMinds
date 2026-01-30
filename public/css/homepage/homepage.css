@@ -255,6 +255,11 @@ textarea {
   display: none;
 }
 
+.day.today {
+  background-color: #222;
+  color: #fff;
+}
+
 @media (min-width: 768px) {
   .header-section {
     padding-bottom: 30px;
