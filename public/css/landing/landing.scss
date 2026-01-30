@@ -197,6 +197,93 @@ body {
   color: rgba($black, 0.55);
 }
 
+// SNEAK PEEK SECTION
+.sneak-peek {
+  padding: 4rem 1.2rem;
+  background: linear-gradient(to bottom, rgba($white, 0.85), $light-blue);
+
+  .peek-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+
+    span {
+      flex: 1;
+      height: 2px;
+      background: $black;
+      opacity: 0.1;
+    }
+
+    p {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba($black, 0.6);
+      white-space: nowrap;
+    }
+  }
+
+  .peek-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+
+    h3 {
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.9rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .peek-subtext {
+      font-size: 1rem;
+      max-width: 650px;
+      margin: 0 auto 3rem;
+      color: rgba($black, 0.75);
+      line-height: 1.6;
+    }
+
+    .peek-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.6rem;
+      margin-bottom: 3rem;
+
+      .peek-card {
+        background: $white;
+        border: 2px solid $black;
+        border-radius: 14px;
+        padding: 1.2rem;
+        box-shadow: 3px 3px 0 rgba($black, 0.15);
+        transition: transform 0.2s ease;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        img {
+          width: 100%;
+          border-radius: 10px;
+          margin-bottom: 0.8rem;
+        }
+
+        h4 {
+          font-size: 1rem;
+          margin-bottom: 0.3rem;
+        }
+
+        p {
+          font-size: 0.85rem;
+          color: rgba($black, 0.7);
+        }
+      }
+    }
+  }
+}
+
+
+
 
 // ---------- Small Tablet (600px+) ----------
 @media (min-width: 600px) {

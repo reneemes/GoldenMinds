@@ -6,7 +6,7 @@
 
 body {
   font-family: "Open Sans", sans-serif;
-  background-image: url("/img/background1.png");
+  background-image: url("../../img/background1.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -170,6 +170,78 @@ body {
 .footer-copyright {
   font-size: 0.7rem;
   color: rgba(0, 0, 0, 0.55);
+}
+
+.sneak-peek {
+  padding: 4rem 1.2rem;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.85), #ebf7fc);
+}
+.sneak-peek .peek-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+.sneak-peek .peek-divider span {
+  flex: 1;
+  height: 2px;
+  background: #000000;
+  opacity: 0.1;
+}
+.sneak-peek .peek-divider p {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+}
+.sneak-peek .peek-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sneak-peek .peek-content h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.9rem;
+  margin-bottom: 0.6rem;
+}
+.sneak-peek .peek-content .peek-subtext {
+  font-size: 1rem;
+  max-width: 650px;
+  margin: 0 auto 3rem;
+  color: rgba(0, 0, 0, 0.75);
+  line-height: 1.6;
+}
+.sneak-peek .peek-content .peek-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.6rem;
+  margin-bottom: 3rem;
+}
+.sneak-peek .peek-content .peek-grid .peek-card {
+  background: #ffffff;
+  border: 2px solid #000000;
+  border-radius: 14px;
+  padding: 1.2rem;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+.sneak-peek .peek-content .peek-grid .peek-card:hover {
+  transform: translateY(-5px);
+}
+.sneak-peek .peek-content .peek-grid .peek-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 0.8rem;
+}
+.sneak-peek .peek-content .peek-grid .peek-card h4 {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+.sneak-peek .peek-content .peek-grid .peek-card p {
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 @media (min-width: 600px) {
