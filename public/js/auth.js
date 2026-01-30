@@ -8,6 +8,9 @@ const signupTab = document.getElementById('signupTab');
 const loginForm = document.getElementById('loginForm');
 const signupForm = document.getElementById('signupForm');
 
+const loginFeedback = document.querySelector('.loginForm-feedback');
+const signupFeedback = document.querySelector('.signupForm-feedback');
+
 // Show correct form based on URL
 if (formType === 'signup') {
   showSignup();
@@ -58,11 +61,14 @@ loginForm.addEventListener('submit', async (e) => {
       window.location.href = '/homepage';
     } else {
       // Login failed - show backend error message
-      alert(data.message || 'Invalid username or password');
+      console.error(data.message);
+      loginFeedback.textContent = 'Invalid username or password';
+      loginFeedback.style.color = 'firebrick';
     }
   } catch (error) {
     console.error('Login error:', error);
-    alert('Something went wrong. Please try again.');
+    loginFeedback.textContent = 'Something went wrong. Please try again.';
+    loginFeedback.style.color = 'firebrick';
   }
 });
 
@@ -87,7 +93,7 @@ signupForm.addEventListener('submit', async (e) => {
     
     if (response.ok) {
       // Signup successful - show success and switch to login
-      alert('Account created! Please log in.');
+      signupFeedback.textContent = 'Account created! Please log in.';
       
       // Clear signup form
       document.getElementById('signupFirstName').value = '';
@@ -98,10 +104,12 @@ signupForm.addEventListener('submit', async (e) => {
       showLogin();
     } else {
       // Signup failed - show backend error message
-      alert(data.message || 'Could not create account');
+      signupFeedback.textContent = 'A error occurred creating your account. Please try again.';
+      signupFeedback.style.color = 'firebrick';
     }
   } catch (error) {
     console.error('Signup error:', error);
-    alert('Something went wrong. Please try again.');
+    signupFeedback.textContent = 'Something went wrong. Please try again.';
+    signupFeedback.style.color = 'firebrick';
   }
 });
