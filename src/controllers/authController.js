@@ -41,8 +41,6 @@ exports.signin = async (req, res) => {
     }
     
     const user = rows[0];
-    console.log("Stored hash:", user.password);
-
     const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (!passwordMatch) {

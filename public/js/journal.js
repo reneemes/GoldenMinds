@@ -1,47 +1,26 @@
-const saveBtn = document.getElementById("saveJournalBtn");
-const journalTextarea = document.getElementById("journal");
-const extraSection = document.getElementById("extraSection");
+// GOOGLE CHART
+google.charts.load("current", { packages: ["corechart"] });
+google.charts.setOnLoadCallback(drawChart);
 
-saveBtn.addEventListener("click", async () => {
-  const content = journalTextarea.value.trim();
+function drawChart() {
+  const data = google.visualization.arrayToDataTable([
+    ["Mood", "Mood Count", { role: "style" }],
+    ["Happy", 55, "#fff1b8"],
+    ["Sad", 49, "#e8f1ff"],
+    ["Angry", 44, "#ffe2e2"],
+    ["Anxious", 24, "#fff0d9"],
+    ["Excited", 15, "#e6f9ef"],
+    ["Tired", 15, "#f0e9ff"],
+    ["Calm", 5, "#e9f8ff"],
+    ["Stressed", 50, "#fde8f0"],
+  ]);
 
-  if (!content) {
-    alert("Journal cannot be empty!");
-    return;
-  }
-
-  try {
-    const response = await fetch("/journal", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify({
-        title: "My Day",
-        content: content,
-      }),
-    });
-
-    const data = await response.json();
-
-    if (response.ok) {
-      alert(data.message);
-      extraSection.style.display = "block";
-      extraSection.innerHTML = `
-        <h3>Saved Entry</h3>
-        <p>${content}</p>
-      `;
-    } else {
-      alert(data.message || data.error);
-    }
-  } catch (error) {
-    console.error(error);
-    alert("Something went wrong while saving.");
-  }
-});
-
-extraSection.innerHTML = `
-  <h3>Saved Entry</h3>
-  <p>${content.replace(/</g, "&lt;")}</p>
-`;
+  const options = {
+    title: "Mood Trends Over the Past Year",
+    legend: "none",
+  };
+  const chart = new google.visualization.ColumnChart(
+    document.getElementById("myChart"),
+  );
+  chart.draw(data, options);
+}

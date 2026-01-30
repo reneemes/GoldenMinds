@@ -13,33 +13,28 @@ body {
   flex-direction: column;
   min-height: 100vh;
   background-color: #ebf7fc;
-  font-family: "Arial", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .header-section {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 30px;
 }
 
 .title-section {
-  padding: 30px 15px 10px 15px;
+  padding: 70px 0px 10px 15px;
+  margin-bottom: 20px;
 }
 .title-section h1 {
   margin: 0;
-  font-size: 20px;
+  font-size: 24px;
+  font-weight: 200;
   padding-left: 10px;
-  width: -moz-fit-content;
   width: fit-content;
+  white-space: nowrap;
 }
-.title-section h2 {
-  margin: 5px 0 0 0;
-  font-size: 28px;
-  background-color: #e3f564;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 10px;
-  border-radius: 30px;
+.title-section .user-name {
+  font-weight: 700;
 }
 
 .profile-section {
@@ -50,14 +45,15 @@ body {
   padding: 0px 15px 0 0;
 }
 .profile-section img {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   cursor: pointer;
 }
 .profile-section span {
   font-size: 14px;
-  margin-left: 5px;
+  font-weight: 600;
+  margin-left: 20px;
 }
 
 .week-days {
@@ -69,24 +65,29 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 10px 15px;
-  max-width: 480px;
   gap: 5px;
 }
 .days-container .day {
   text-align: center;
   background-color: #abc6cd;
-  width: 50px;
+  width: 45px;
   border-radius: 30px;
 }
 .days-container .day span {
   display: block;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 700;
   margin: 0px 0 10px 0;
 }
 .days-container .day p {
   margin: 10px 0 5px 0;
   font-size: 12px;
+  font-weight: 600;
+}
+
+.day.today {
+  background-color: #e3f564;
+  color: #000000;
 }
 
 .content-section {
@@ -97,23 +98,26 @@ body {
 
 .mood-section,
 .journal-section,
-.extra-section,
+.journal-history,
 .graph-section {
   background-color: rgba(255, 255, 255, 0.85);
   margin: 15px 15px 10px 15px;
   padding: 20px 10px;
   border-radius: 30px;
+  border: 3px solid #000000;
+  box-shadow: 6px 6px 0px #000000;
 }
 
 .mood-section {
   text-align: center;
-  padding-top: 10px;
+  padding-top: 0px;
 }
 .mood-section .mood-title {
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 700;
   margin-bottom: 15px;
 }
-.mood-section .mood-buttons {
+.mood-section .mood-options {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
@@ -126,7 +130,7 @@ body {
   gap: 6px;
   padding: 14px 10px;
   border: none;
-  border-radius: 18px;
+  border-radius: 30px;
   background-color: #f4f6f8;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -135,16 +139,27 @@ body {
   background-color: #abc6cd;
   transform: translateY(-2px);
 }
-.mood-section .mood-btn:active {
-  transform: scale(0.97);
+.mood-section .mood-btn.active {
+  filter: brightness(0.8);
+  transform: scale(1.05);
 }
 .mood-section .mood-btn .emoji {
-  font-size: 28px;
-  line-height: 1;
+  height: 40px;
+  width: 40px;
+  font-size: 30px;
 }
-.mood-section .mood-btn .label {
-  font-size: 13px;
-  font-weight: 500;
+@media (min-width: 1024px) {
+  .mood-section .mood-btn .emoji {
+    width: 60px;
+    height: 60px;
+    font-size: 40px;
+  }
+}
+.mood-section .mood-btn p {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
 }
 
 .mood-btn.happy {
@@ -179,10 +194,6 @@ body {
   background: linear-gradient(135deg, #fde8f0, #f9dce8);
 }
 
-.extra-section {
-  padding: 40px;
-}
-
 .journal-section {
   display: flex;
   flex-direction: column;
@@ -190,17 +201,19 @@ body {
   padding: 20px;
 }
 .journal-section label {
-  font-size: 1.2rem;
+  font-size: 16px;
+  font-weight: 700;
   text-align: center;
 }
 .journal-section button {
   width: 100px;
   align-self: center;
   padding: 10px 20px;
-  border: none;
+  border: 3px solid #000000;
   border-radius: 20px;
   font-size: 1rem;
-  border: 1px solid #000000;
+  font-weight: 700;
+  box-shadow: 0 4px 0 #000000;
   margin-top: 10px;
   cursor: pointer;
   background-color: #e3f564;
@@ -210,12 +223,38 @@ body {
   background-color: #abc6cd;
 }
 
-textarea {
+.journal-section #journalTitle {
+  width: 100%;
+  padding: 20px;
+  font-size: 1.1rem;
+  font-family: inherit;
+  font-weight: 200;
+  line-height: 1.6;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  background-color: #fefefe;
+  color: #999;
+  outline: none;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+.journal-section #journalTitle::placeholder {
+  color: #999;
+  font-style: italic;
+  font-weight: 200;
+}
+.journal-section #journalTitle:focus {
+  border-color: #abc6cd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+}
+
+.journal-section textarea {
   width: 100%;
   min-height: 250px;
   padding: 20px;
   font-size: 1.1rem;
   font-family: inherit;
+  font-weight: 200;
   line-height: 1.6;
   resize: vertical;
   border-radius: 20px;
@@ -225,10 +264,14 @@ textarea {
   outline: none;
   transition: border 0.3s, box-shadow 0.3s;
 }
-
-.journal-section textarea::-moz-placeholder {
+.journal-section textarea::placeholder {
   color: #999;
   font-style: italic;
+}
+.journal-section textarea:focus {
+  border-color: #abc6cd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
 }
 
 .journal-section textarea::placeholder {
@@ -242,6 +285,10 @@ textarea {
   background-color: #fff;
 }
 
+.journal-history {
+  padding: 40px;
+}
+
 .reserved-rights {
   text-align: center;
   margin: 20px 0 100px 0px;
@@ -249,10 +296,7 @@ textarea {
 .reserved-rights p {
   color: #000000;
   font-size: 14px;
-}
-
-.extra-section {
-  display: none;
+  font-weight: 600;
 }
 
 .day.today {
@@ -269,7 +313,6 @@ textarea {
   }
   .title-section h1 {
     font-size: 24px;
-    padding-top: 30px;
   }
   .title-section h2 {
     font-size: 36px;
@@ -278,8 +321,8 @@ textarea {
     display: grid;
     grid-template-columns: 1.4fr 1fr 0.9fr;
     grid-template-rows: auto auto auto;
-    grid-template-areas: "week   week  ." "journal journal graph" "journal journal graph" "journal journal mood";
-    gap: 16px;
+    grid-template-areas: "week . ." "journal journal graph" "journal journal mood" "history history history";
+    gap: 0px;
   }
   .journal-section {
     grid-area: journal;
@@ -292,42 +335,35 @@ textarea {
   }
   .mood-section {
     grid-area: mood;
+    margin-left: 0;
+  }
+  .journal-history {
+    grid-area: history;
   }
 }
 @media (min-width: 1024px) {
-  .extra-section {
-    display: block;
-    grid-area: extra;
+  body {
+    margin-left: 80px;
   }
-  .content-section {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr 0.9fr;
-    grid-template-rows: auto auto auto auto;
-    grid-template-areas: "week   .  ." "journal extra graph" "journal extra graph" "journal extra mood";
-    gap: 16px;
+  .title-section {
+    padding: 60px 15px 0 40px;
+  }
+  .title-section h1 {
+    font-size: 28px;
   }
   .profile-section {
     padding: 30px 40px 0 0;
   }
   .profile-section img {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
   }
   .content-section {
-    padding-top: 0px;
-  }
-  body {
-    margin-left: 80px;
-  }
-  .title-section {
-    padding: 40px 15px 0 40px;
-  }
-  .title-section h1 {
-    font-size: 26px;
-    padding-top: 30px;
-  }
-  .title-section h2 {
-    font-size: 40px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 0.9fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas: "week   .  ." "journal history graph" "journal history mood";
+    gap: 16px;
   }
   .days-container {
     padding: 40px 0px 0px 0px;
@@ -338,10 +374,24 @@ textarea {
     display: flex;
     justify-content: center;
   }
+  textarea {
+    height: 570px;
+  }
+  .mood-section .mood-options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  button.mood-btn.active {
+    filter: brightness(0.8);
+    transform: scale(1.05);
+  }
+  .journal-section {
+    margin-left: 40px;
+  }
   .graph-section,
-  .mood-section,
-  .extra-section {
+  .mood-section {
     max-width: 480px;
+    margin-right: 40px;
   }
   .reserved-rights {
     margin: 180px 0px 0px 0px;
@@ -350,4 +400,6 @@ textarea {
     color: #000000;
     font-size: 16px;
   }
-}/*# sourceMappingURL=homepage.css.map */
+}
+
+/*# sourceMappingURL=homepage.css.map */
