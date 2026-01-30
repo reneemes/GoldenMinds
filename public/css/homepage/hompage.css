@@ -12,14 +12,15 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #ebf7fc;
-  font-family: "Arial", sans-serif;
+  background-color: orange;
+  font-family: "Open Sans", sans-serif;
 }
 
 .header-section {
   display: flex;
   justify-content: space-between;
   padding-bottom: 30px;
+  font-family: "Open Sans", sans-serif;
 }
 
 .title-section {
