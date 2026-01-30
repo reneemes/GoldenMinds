@@ -86,12 +86,7 @@ app.get("/about", (req, res) => {
       { name: "Renee Messersmith", role: "Team Lead", image: "/img/renee.png" },
       { name: "Cynthia Rincon", role: "Front-end", image: "/img/cynthia.png" },
       { name: "Imani Moore", role: "Back-end", image: "/img/imani.png" },
-      {
-        name: "Elhadji Massow Ndiaye",
-        role: "Front-end",
-        image: "/img/elhadji.png",
-      },
-      // { name: 'Amadeo', role: 'Front-end', image: '/img/Aqr.png'}
+      { name: "Elhadji Massow Ndiaye", role: "Front-end", image: "/img/elhadji.png" }
     ],
   });
 });

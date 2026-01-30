@@ -1,6 +1,5 @@
 const form = document.querySelector(".contact-form");
-// const submitBtn = document.querySelector(".contact-form__btn");
-const sentMessage = form.querySelector(".contact-form__sent-message");
+const sentMessage = form.querySelector(".contact-form__feedback");
 const characterOutput = document.querySelector("#character-output");
 
 const nameInput = form.name;
@@ -38,8 +37,8 @@ form.addEventListener("submit", async (e) => {
       sentMessage.textContent = "Thank you for reaching out! We will get back with you shortly.";
       characterOutput.textContent = "0 / 500";
       form.reset();
-    } catch {
-      console.error("Submission error:", )
+    } catch (error) {
+      console.error("Submission error:", error);
       sentMessage.textContent = "Something went wrong. Please try again later.";
     }
 })
@@ -50,33 +49,19 @@ messageInput.addEventListener("input", (e) => {
 })
 
 function validateForm() {
-  const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/;
+  const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   if (
-    nameInput.value === "" ||
-    emailInput.value === "" ||
+    nameInput.value == "" ||
+    emailInput.value == "" ||
     !regex.test(emailInput.value) ||
-    messageInput.value === "" ||
-    reasonSelect.value === ""
+    messageInput.value == "" ||
+    reasonSelect.value == ""
   ) {
     sentMessage.textContent = "Please fill out all required forms.";
     sentMessage.style.color = "firebrick";
     return false;
   } else {
-    // sentMessage.textContent = "Thank you for reaching out! We will get back with you shortly.";
     return true;
   }
 }
-
-// function clearForm() {
-//   firstName.value = '';
-//   lastName.value = '';
-//   email.value = '';
-//   commentBox.value = '';
-//   errorBox.textContent = '';
-// }
-
-// function showError(msg) {
-//   sentMessage.textContent = msg;
-//   sentMessage.style.color = "firebrick";
-// }
