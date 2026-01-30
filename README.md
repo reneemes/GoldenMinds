@@ -30,7 +30,6 @@ Mental health education is often overlooked, especially for young people navigat
 
 ![Logo](public/img/Logo.png)
 
-
 ## ✨ Features
 
 - Mobile-first, responsive design

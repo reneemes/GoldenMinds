@@ -32,12 +32,14 @@ app.set("view engine", "hbs");
 app.set("views", viewsPath);
 hbs.registerPartials(partialsPath);
 
+// Setup static directory to serve
 app.use(express.static(publicDirectoryPath));
 
 // Landing Page
 app.get("/", (req, res) => {
-  res.render("landing"); //res -> Render -> landing Page (landing.hbs)
+  res.render("landing"); // Renders landing.hbs
 });
+
 
 // Login
 app.get("/login", (req, res) => {
@@ -80,19 +82,17 @@ app.get("/resources", auth, (req, res) => {
 
 // About Us
 app.get("/about", (req, res) => {
-  //res -> Render -> About Us Page (about.hbs)
   res.render("about", {
     team: [
       { name: "Renee Messersmith", role: "Team Lead", image: "/img/renee.png" },
       { name: "Cynthia Rincon", role: "Front-end", image: "/img/cynthia.png" },
       { name: "Imani Moore", role: "Back-end", image: "/img/imani.png" },
-      { name: "Elhadji Massow Ndiaye", role: "Front-end", image: "/img/elhadji.png" }
+      { name: "Elhadji Massow Ndiaye", role: "Front-end", image: "/img/elhadji.png" },
     ],
   });
 });
 
-// Setup static directory to serve
-app.use(express.static(publicDirectoryPath));
+
 
 // routes for Journal, Mood, and Login
 app.use("/auth", authRoutes);
