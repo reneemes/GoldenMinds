@@ -40,7 +40,6 @@ app.get("/", (req, res) => {
   res.render("landing"); // Renders landing.hbs
 });
 
-
 // Login
 app.get("/login", (req, res) => {
   res.render("auth"); //res -> Render -> login Page (login.hbs)
@@ -48,7 +47,6 @@ app.get("/login", (req, res) => {
 
 // Homepage
 app.get("/homepage", auth, (req, res) => {
-  //<-- NEED ATTENTION
   res.render("homepage"); //res -> Render -> homepage (homepage.hbs)
 });
 
