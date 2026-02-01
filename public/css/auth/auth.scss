@@ -138,6 +138,43 @@ body {
   }
 }
 
+// ---------- Avatar Selector ----------
+.avatar-selector {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+
+  .avatar-option {
+    cursor: pointer;
+    border: 3px solid $black;
+    border-radius: 12px;
+    padding: 0.5rem;
+    background: $white;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 3px 3px 0 $black;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+  }
+
+  input[type="radio"]:checked + .avatar-option {
+    border-color: $teal;
+    background: rgba($teal, 0.1);
+    box-shadow: 0 0 0 3px rgba($teal, 0.3);
+  }
+}
+
 // ---------- Submit Button ----------
 .submit-btn {
   background: $yellow;
