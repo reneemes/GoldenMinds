@@ -29,4 +29,81 @@ document.addEventListener("DOMContentLoaded", () => {
       dayContainers[index].classList.add("today");
     }
   });
+
+  // FETCH MOODS ON PAGE LOAD
+  fetchMoods();
+
 });
+
+// GOOGLE CHART
+google.charts.load("current", { packages: ["corechart"] });
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart(moods, range) {
+  range = range.at(0).toUpperCase() + range.slice(1);
+  const data = google.visualization.arrayToDataTable(formatChartData(moods));
+  // const data = google.visualization.arrayToDataTable([
+  //   ["Mood", "Mood Count", { role: "style" }],
+  //   ["Happy", 55, "#fff1b8"],
+  //   ["Sad", 49, "#e8f1ff"],
+  //   ["Angry", 44, "#ffe2e2"],
+  //   ["Anxious", 24, "#fff0d9"],
+  //   ["Excited", 15, "#e6f9ef"],
+  //   ["Tired", 15, "#f0e9ff"],
+  //   ["Calm", 5, "#e9f8ff"],
+  //   ["Stressed", 50, "#fde8f0"],
+  // ]);
+
+  const options = {
+    title: `Mood Trends Over the Past ${range}`,
+    legend: "none",
+  };
+  const chart = new google.visualization.ColumnChart(
+    document.getElementById("myChart"),
+  );
+  chart.draw(data, options);
+}
+
+// FETCH MOODS ON PAGE LOAD
+async function fetchMoods(range) {
+  if (range == undefined) range = "week"
+  try {
+    const response = await fetch(`/mood?range=${range}`, {
+      credentials: "include",
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      // return data.moods;
+      drawChart(data.moods, range);
+    }
+  } catch (error) {
+    console.error('Mood fetch error:', error);
+  }
+}
+
+function formatChartData(moods) {
+  const counts = moods.reduce((acc, { mood }) => {
+    acc[mood] = (acc[mood] || 0) + 1;
+    return acc;
+  }, {});
+
+  const moodColors = {
+    happy: "#fff1b8",
+    sad: "#e8f1ff",
+    angry: "#ffe2e2",
+    anxious: "#fff0d9",
+    excited: "#e6f9ef",
+    tired: "#f0e9ff",
+    calm: "#e9f8ff",
+    stressed: "#fde8f0",
+  };
+
+  return [
+    ["Mood", "Mood Count", { role: "style" }],
+    ...Object.entries(counts).map(([mood, count]) => [
+      mood, count, moodColors[mood]
+    ])
+  ];
+}
