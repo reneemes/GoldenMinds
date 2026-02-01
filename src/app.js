@@ -58,22 +58,23 @@ app.use((req, res, next) => {
   next();
 });
 
-app.post("/journal", (req, res) => {
-  if (!req.user) {
-    return res.status(401).json({ message: "Not logged in" });
-  }
+// THIS ROUTE ALREADY EXISTS DOWN BELOW
+// app.post("/journal", (req, res) => {
+//   if (!req.user) {
+//     return res.status(401).json({ message: "Not logged in" });
+//   }
 
-  const { title, content } = req.body;
+//   const { title, content } = req.body;
 
-  if (!content) {
-    return res.status(400).json({ message: "Content required" });
-  }
+//   if (!content) {
+//     return res.status(400).json({ message: "Content required" });
+//   }
 
-  res.status(201).json({
-    message: "Journal created!",
-    journalId: Date.now(),
-  });
-});
+//   res.status(201).json({
+//     message: "Journal created!",
+//     journalId: Date.now(),
+//   });
+// });
 
 // Resources
 app.get("/resources", auth, (req, res) => {
