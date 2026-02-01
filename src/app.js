@@ -50,30 +50,6 @@ app.get("/homepage", auth, (req, res) => {
   res.render("homepage"); //res -> Render -> homepage (homepage.hbs)
 });
 
-// THIS ROUTE ALREADY EXISTS DOWN BELOW
-// JOURNAL ROUTE <---- NEED WORK!!
-// app.use((req, res, next) => {
-//   req.user = { id: 1 }; // fake logged-in user
-//   next();
-// });
-
-// app.post("/journal", (req, res) => {
-//   if (!req.user) {
-//     return res.status(401).json({ message: "Not logged in" });
-//   }
-
-//   const { title, content } = req.body;
-
-//   if (!content) {
-//     return res.status(400).json({ message: "Content required" });
-//   }
-
-//   res.status(201).json({
-//     message: "Journal created!",
-//     journalId: Date.now(),
-//   });
-// });
-
 // Resources
 app.get("/resources", auth, (req, res) => {
   res.render("resources"); //res -> Render -> resources Page (resources.hbs)
@@ -86,7 +62,11 @@ app.get("/about", (req, res) => {
       { name: "Renee Messersmith", role: "Team Lead", image: "/img/renee.png" },
       { name: "Cynthia Rincon", role: "Front-end", image: "/img/cynthia.png" },
       { name: "Imani Moore", role: "Back-end", image: "/img/imani.png" },
-      { name: "Elhadji Massow Ndiaye", role: "Front-end", image: "/img/elhadji.png" },
+      {
+        name: "Elhadji Massow Ndiaye",
+        role: "Front-end",
+        image: "/img/elhadji.png",
+      },
     ],
   });
 });
