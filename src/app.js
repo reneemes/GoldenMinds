@@ -40,7 +40,6 @@ app.get("/", (req, res) => {
   res.render("landing"); // Renders landing.hbs
 });
 
-
 // Login
 app.get("/login", (req, res) => {
   res.render("auth"); //res -> Render -> login Page (login.hbs)
@@ -48,17 +47,16 @@ app.get("/login", (req, res) => {
 
 // Homepage
 app.get("/homepage", auth, (req, res) => {
-  //<-- NEED ATTENTION
   res.render("homepage"); //res -> Render -> homepage (homepage.hbs)
 });
 
-// JOURNAL ROUTE <---- NEED WORK!!
-app.use((req, res, next) => {
-  req.user = { id: 1 }; // fake logged-in user
-  next();
-});
-
 // THIS ROUTE ALREADY EXISTS DOWN BELOW
+// JOURNAL ROUTE <---- NEED WORK!!
+// app.use((req, res, next) => {
+//   req.user = { id: 1 }; // fake logged-in user
+//   next();
+// });
+
 // app.post("/journal", (req, res) => {
 //   if (!req.user) {
 //     return res.status(401).json({ message: "Not logged in" });
@@ -92,8 +90,6 @@ app.get("/about", (req, res) => {
     ],
   });
 });
-
-
 
 // routes for Journal, Mood, and Login
 app.use("/auth", authRoutes);
