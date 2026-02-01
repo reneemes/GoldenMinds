@@ -40,14 +40,13 @@ app.get("/", (req, res) => {
   res.render("landing"); // Renders landing.hbs
 });
 
-// ==== Login ====
+// Login
 app.get("/login", (req, res) => {
   res.render("auth"); //res -> Render -> login Page (login.hbs)
 });
 
-// ==== Homepage ====
+// Homepage
 app.get("/homepage", auth, (req, res) => {
-  //<-- NEED ATTENTION
   res.render("homepage"); //res -> Render -> homepage (homepage.hbs)
 });
 
