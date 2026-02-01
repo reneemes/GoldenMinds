@@ -35,29 +35,34 @@ hbs.registerPartials(partialsPath);
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath));
 
-// Landing Page
+// ==== Landing Page ====
 app.get("/", (req, res) => {
   res.render("landing"); // Renders landing.hbs
 });
 
 
-// Login
+// ==== Login ====
 app.get("/login", (req, res) => {
   res.render("auth"); //res -> Render -> login Page (login.hbs)
 });
 
-// Homepage
+// ==== Homepage ====
 app.get("/homepage", auth, (req, res) => {
   //<-- NEED ATTENTION
   res.render("homepage"); //res -> Render -> homepage (homepage.hbs)
 });
 
-// JOURNAL ROUTE <---- NEED WORK!!
+// ==== JOURNAL ====
+// Fake logged-in user
 app.use((req, res, next) => {
-  req.user = { id: 1 }; // fake logged-in user
+  req.user = { id: 1 }; // simulate logged-in user
   next();
 });
 
+// In-memory journal storage
+let journals = []; // will hold all journal entries
+
+// Creation Journal Entry
 app.post("/journal", (req, res) => {
   if (!req.user) {
     return res.status(401).json({ message: "Not logged in" });
@@ -65,13 +70,55 @@ app.post("/journal", (req, res) => {
 
   const { title, content } = req.body;
 
-  if (!content) {
-    return res.status(400).json({ message: "Content required" });
+  if (!title || !content) {
+    return res.status(400).json({ message: "Title and content required" });
   }
+
+  const newEntry = {
+    id: Date.now(), // simple unique ID
+    title,
+    content,
+    user_id: req.user.id,
+    created_at: new Date().toISOString(),
+  };
+
+  journals.push(newEntry);
 
   res.status(201).json({
     message: "Journal created!",
-    journalId: Date.now(),
+    journalId: newEntry.id,
+  });
+});
+
+// Getting all journal entrys
+app.get("/journal", (req, res) => {
+  if (!req.user) {
+    return res.status(401).json({ message: "Not logged in" });
+  }
+
+  // return only this user's journals
+  const userJournals = journals.filter((j) => j.user_id === req.user.id);
+
+  res.status(200).json({ journalEntries: userJournals });
+});
+
+// Deleting Journal
+app.delete("/journal/:journalId", (req, res) => {
+  if (!req.user) {
+    return res.status(401).json({ message: "Not logged in" });
+  }
+
+  const journalId = parseInt(req.params.journalId);
+
+  journals = journals.filter(
+    (j) => j.id !== journalId || j.user_id !== req.user.id,
+  );
+
+  const userJournals = journals.filter((j) => j.user_id === req.user.id);
+
+  res.status(200).json({
+    message: "Journal entry deleted",
+    journalEntries: userJournals,
   });
 });
 
