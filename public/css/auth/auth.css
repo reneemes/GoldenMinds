@@ -140,6 +140,12 @@ body {
   box-shadow: 0 2px 0 #000000;
 }
 
+.loginForm-feedback,
+.signupForm-feedback {
+  text-align: center;
+  padding: 0 15px;
+}
+
 .back-link {
   margin-top: 2rem;
   color: #000000;

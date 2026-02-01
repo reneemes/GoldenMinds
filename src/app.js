@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 const authRoutes = require("./routes/auth.js");
 const journalRoutes = require("./routes/journal.js");
 const moodRoutes = require("./routes/mood.js");
+const contactRoutes = require("./routes/contact.js");
 
 const auth = require("./middleware/auth.js");
 
@@ -31,12 +32,14 @@ app.set("view engine", "hbs");
 app.set("views", viewsPath);
 hbs.registerPartials(partialsPath);
 
+// Setup static directory to serve
 app.use(express.static(publicDirectoryPath));
 
 // ==== Landing Page ====
 app.get("/", (req, res) => {
-  res.render("landing"); //res -> Render -> landing Page (landing.hbs)
+  res.render("landing"); // Renders landing.hbs
 });
+
 
 // ==== Login ====
 app.get("/login", (req, res) => {
@@ -126,29 +129,23 @@ app.get("/resources", auth, (req, res) => {
 
 // About Us
 app.get("/about", (req, res) => {
-  //res -> Render -> About Us Page (about.hbs)
   res.render("about", {
     team: [
       { name: "Renee Messersmith", role: "Team Lead", image: "/img/renee.png" },
       { name: "Cynthia Rincon", role: "Front-end", image: "/img/cynthia.png" },
       { name: "Imani Moore", role: "Back-end", image: "/img/imani.png" },
-      {
-        name: "Elhadji Massow Ndiaye",
-        role: "Front-end",
-        image: "/img/elhadji.png",
-      },
-      // { name: 'Amadeo', role: 'Front-end', image: '/img/Aqr.png'}
+      { name: "Elhadji Massow Ndiaye", role: "Front-end", image: "/img/elhadji.png" },
     ],
   });
 });
 
-// Setup static directory to serve
-app.use(express.static(publicDirectoryPath));
+
 
 // routes for Journal, Mood, and Login
 app.use("/auth", authRoutes);
 app.use("/journal", journalRoutes);
 app.use("/mood", moodRoutes);
+app.use("/contact", contactRoutes);
 
 // Error handling
 app.use((err, req, res, next) => {

@@ -15,9 +15,7 @@
       <!-- Logo -->
       <header class="logo-header" role="banner">
         <div class="logo-text">
-          <span class="logo-un">UN</span><span
-            class="logo-filtered"
-          >FILTERED</span>
+          <span class="logo-un">UN</span><span class="logo-filtered">FILTERED</span>
         </div>
       </header>
 
@@ -31,12 +29,7 @@
       <div class="auth-card">
 
         <!-- Login Form -->
-        <form
-          id="loginForm"
-          class="auth-form"
-          action="/auth/signin"
-          method="POST"
-        >
+        <form id="loginForm" class="auth-form">
           <div class="input-group">
             <label for="loginUsername">Username</label>
             <input type="text" id="loginUsername" name="username" required />
@@ -44,24 +37,20 @@
 
           <div class="input-group">
             <label for="loginPassword">Password</label>
-            <input
-              type="password"
-              id="loginPassword"
-              name="password"
-              required
-            />
+            <input type="password" id="loginPassword" name="password" required />
           </div>
 
           <button type="submit" class="submit-btn">Log In</button>
+          <span class="loginForm-feedback"></span>
         </form>
 
         <!-- Signup Form (hidden by default) -->
-        <form
-          id="signupForm"
-          class="auth-form hidden"
-          action="/auth/signup"
-          method="POST"
-        >
+        <form id="signupForm" class="auth-form hidden">
+          <div class="input-group">
+            <label for="signupFirstName">First Name</label>
+            <input type="text" id="signupFirstName" name="firstName" required />
+          </div>
+
           <div class="input-group">
             <label for="signupUsername">Username</label>
             <input type="text" id="signupUsername" name="username" required />
@@ -69,19 +58,15 @@
 
           <div class="input-group">
             <label for="signupPassword">Password</label>
-            <input
-              type="password"
-              id="signupPassword"
-              name="password"
-              required
-            />
+            <input type="password" id="signupPassword" name="password" required />
           </div>
 
           <button type="submit" class="submit-btn">Sign Up</button>
+          <span class="signupForm-feedback"></span>
         </form>
 
         <!-- Continue without account link -->
-        <a href="/homepage">Continue without account</a>
+        {{!-- <a href="/homepage">Continue without account</a> --}}
 
       </div>
 
