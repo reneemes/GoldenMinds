@@ -31,28 +31,24 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // FETCH MOODS ON PAGE LOAD
-  fetchMoods();
+  fetchMoods("week");
 
+  const rangeBtns = document.querySelectorAll("button[data-range]");
+  rangeBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const range = btn.dataset.range;
+      fetchMoods(range);
+    })
+  })
 });
 
 // GOOGLE CHART
 google.charts.load("current", { packages: ["corechart"] });
 google.charts.setOnLoadCallback(drawChart);
 
-function drawChart(moods, range) {
-  range = range.at(0).toUpperCase() + range.slice(1);
+function drawChart(moods, range = "week") {
+  range = range[0].toUpperCase() + range.slice(1);
   const data = google.visualization.arrayToDataTable(formatChartData(moods));
-  // const data = google.visualization.arrayToDataTable([
-  //   ["Mood", "Mood Count", { role: "style" }],
-  //   ["Happy", 55, "#fff1b8"],
-  //   ["Sad", 49, "#e8f1ff"],
-  //   ["Angry", 44, "#ffe2e2"],
-  //   ["Anxious", 24, "#fff0d9"],
-  //   ["Excited", 15, "#e6f9ef"],
-  //   ["Tired", 15, "#f0e9ff"],
-  //   ["Calm", 5, "#e9f8ff"],
-  //   ["Stressed", 50, "#fde8f0"],
-  // ]);
 
   const options = {
     title: `Mood Trends Over the Past ${range}`,
@@ -83,11 +79,13 @@ async function fetchMoods(range) {
   }
 }
 
-function formatChartData(moods) {
-  const counts = moods.reduce((acc, { mood }) => {
-    acc[mood] = (acc[mood] || 0) + 1;
-    return acc;
-  }, {});
+function formatChartData(moods = []) {
+  const counts = moods
+    .filter(item => item && item.mood)
+    .reduce((acc, { mood }) => {
+      acc[mood] = (acc[mood] || 0) + 1;
+      return acc;
+    }, {});
 
   const moodColors = {
     happy: "#fff1b8",
@@ -103,7 +101,8 @@ function formatChartData(moods) {
   return [
     ["Mood", "Mood Count", { role: "style" }],
     ...Object.entries(counts).map(([mood, count]) => [
-      mood, count, moodColors[mood]
+      mood[0].toUpperCase() + mood.slice(1),
+      count, moodColors[mood]
     ])
   ];
 }
