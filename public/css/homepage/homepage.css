@@ -194,87 +194,6 @@ body {
   background: linear-gradient(135deg, #fde8f0, #f9dce8);
 }
 
-.journal-history {
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-height: 400px;
-  overflow-y: auto;
-  border-radius: 20px;
-}
-.journal-history label {
-  font-size: 16px;
-  font-weight: 700;
-  text-align: center;
-}
-
-/* Individual Journal Entry */
-.journal-entry {
-  background-color: #fff;
-  border-radius: 20px;
-  padding: 20px;
-  border: 3px solid #000000;
-  box-shadow: 0 4px 0 #000000;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* Entry header */
-.journal-entry-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.journal-entry-header h4 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin: 0;
-}
-.journal-entry-header .journal-date {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #000000;
-  opacity: 0.6;
-}
-
-/* Entry content */
-.journal-entry p {
-  font-size: 1rem;
-  font-weight: 200;
-  line-height: 1.6;
-  margin: 0;
-  color: #999;
-}
-
-/* Entry actions */
-.journal-actions {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 10px;
-}
-
-/* Delete button */
-.delete-btn {
-  padding: 6px 14px;
-  border-radius: 20px;
-  border: 3px solid #000000;
-  background: linear-gradient(135deg, #ffe2e2, #ffd6d6);
-  color: #000000;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 3px 0 #000000;
-  transition: background-color 0.2s, transform 0.1s;
-}
-.delete-btn:hover {
-  background-color: #abc6cd;
-}
-.delete-btn:active {
-  transform: translateY(2px);
-  box-shadow: 0 1px 0 #000000;
-}
-
 .journal-section {
   display: flex;
   flex-direction: column;
@@ -304,7 +223,6 @@ body {
   background-color: #abc6cd;
 }
 
-/* Title input */
 .journal-section #journalTitle {
   width: 100%;
   padding: 20px;
@@ -330,7 +248,6 @@ body {
   background-color: #fff;
 }
 
-/* Textarea */
 .journal-section textarea {
   width: 100%;
   min-height: 250px;
@@ -355,6 +272,21 @@ body {
   border-color: #abc6cd;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   background-color: #fff;
+}
+
+.journal-section textarea::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.journal-section textarea:focus {
+  border-color: #abc6cd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+}
+
+.journal-history {
+  padding: 40px;
 }
 
 .reserved-rights {
@@ -407,7 +339,6 @@ body {
   }
   .journal-history {
     grid-area: history;
-    max-height: 500px;
   }
 }
 @media (min-width: 1024px) {
@@ -461,10 +392,6 @@ body {
   .mood-section {
     max-width: 480px;
     margin-right: 40px;
-  }
-  .journal-history {
-    grid-area: history;
-    max-height: 800px;
   }
   .reserved-rights {
     margin: 180px 0px 0px 0px;

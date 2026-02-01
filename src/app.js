@@ -35,7 +35,7 @@ hbs.registerPartials(partialsPath);
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath));
 
-// ==== Landing Page ====
+// Landing Page
 app.get("/", (req, res) => {
   res.render("landing"); // Renders landing.hbs
 });
