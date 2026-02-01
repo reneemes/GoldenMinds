@@ -50,7 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // GOOGLE CHART
 google.charts.load("current", { packages: ["corechart"] });
-// google.charts.setOnLoadCallback(drawChart);
 
 function drawChart(moods, range = "week") {
   range = range[0].toUpperCase() + range.slice(1);
@@ -77,7 +76,6 @@ async function fetchMoods(range) {
     const data = await response.json();
 
     if (response.ok) {
-      // return data.moods;
       drawChart(data.moods, range);
     }
   } catch (error) {

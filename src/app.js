@@ -47,7 +47,12 @@ app.get("/login", (req, res) => {
 
 // Homepage
 app.get("/homepage", auth, (req, res) => {
-  res.render("homepage"); //res -> Render -> homepage (homepage.hbs)
+  res.render("homepage", {
+    user: {
+      firstName: req.user.first_name,
+      profileImg: req.user.profile_img,
+    }
+  }); //res -> Render -> homepage (homepage.hbs)
 });
 
 // THIS ROUTE ALREADY EXISTS DOWN BELOW

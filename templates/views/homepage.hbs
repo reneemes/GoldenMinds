@@ -18,13 +18,14 @@
 
           <!-- TITLE SECTION -->
         <div class="title-section">
-          <h1>Hi, <span class="user-name">Elhadji</span></h1>
+          <h1>Hi, <span class="user-name">{{user.firstName}}</span></h1>
           <h1>How are you doing today?</h1>
         </div>
 
         <!-- PROFILE SECTION -->
         <div class="profile-section">
-          <img src="img/profile-pic.png" alt="Profile Picture" />
+          <img src="{{user.profileImg}}" alt="Profile Picture" />
+          {{!-- <img src="img/renee.png" alt="Profile Picture" /> --}}
           <span>Profile</span>
         </div>    
       </section>
