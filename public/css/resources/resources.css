@@ -123,13 +123,11 @@ body {
 
 .location-results {
   width: 100%;
-  max-height: 600px;
+  max-height: 500px;
   padding: 0;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  overflow-y: auto;
-  overscroll-behavior: contain;
 }
 .location-results .location {
   background-color: rgba(255, 255, 255, 0.95);
@@ -172,12 +170,27 @@ body {
   .locations-layout {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
-    height: 800px;
+    height: 720px;
     gap: 24px;
+    margin-bottom: 20px;
+  }
+  .locations-layout .location {
+    margin-right: 20px;
   }
   .locations-layout .location-results {
-    max-height: 500px;
+    max-height: 100%;
+    overflow-y: auto;
     padding: 0;
+    /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+  }
+  .locations-layout .location-results::-webkit-scrollbar {
+    display: none;
+  }
+  .locations-layout .location-results {
+    /* Hide scrollbar for Firefox */
+    scrollbar-width: none;
+    /* Hide scrollbar for IE, Edge */
+    -ms-overflow-style: none;
   }
   .search-container {
     margin-bottom: 30px;
@@ -208,4 +221,9 @@ body {
   .search-bar {
     width: 600px;
   }
-}/*# sourceMappingURL=resources.css.map */
+  .locations-layout {
+    height: 700px;
+  }
+}
+
+/*# sourceMappingURL=resources.css.map */
