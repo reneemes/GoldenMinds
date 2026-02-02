@@ -42,9 +42,6 @@ const fetchFacilityLocations = async (searchLocation, radius = 50) => {
     }
 
     const geocodeData = await geocodeResult.json();
-    console.log("GEOCODE----!!!!!!!!!!!!");
-    console.log(geocodeData);
-    console.log("GEOCODE----!!!!!!!!!!!!");
 
     const lat = geocodeData[0]?.lat;
     const lon = geocodeData[0]?.lon;
@@ -82,9 +79,6 @@ const fetchFacilityLocations = async (searchLocation, radius = 50) => {
     }
 
     const data = await response.json();
-    console.log("OVERPASSSAPI!!!!!!!!!!!!!!---------------------");
-    console.log(data);
-    console.log("OVERPASSSAPI!!!!!!!!!!!!!!---------------------");
 
     // Save to localStorage
     localStorage.setItem(cacheKey, JSON.stringify(data));
@@ -126,9 +120,6 @@ searchButton.addEventListener("click", async () => {
     locationInput.value,
     radiusInput.value,
   );
-  console.log(`FETCH RESULTS ---!!!@$!@$!@$!@$!@$!@$!@$!@$`);
-  console.log(results);
-  console.log(`FETCH RESULTS ---!!!@$!@$!@$!@$!@$!@$!@$!@$`);
   resultsContainer.innerHTML = "";
 
   const formattedResults = await formatOverpassResults(results);
