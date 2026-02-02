@@ -1,136 +1,131 @@
-// Get URL parameters
-const urlParams = new URLSearchParams(window.location.search);
-const formType = urlParams.get('form');
+let currentRange = "week";
 
-// Get elements
-const loginTab = document.getElementById('loginTab');
-const signupTab = document.getElementById('signupTab');
-const loginForm = document.getElementById('loginForm');
-const signupForm = document.getElementById('signupForm');
+// DOM READY
+document.addEventListener("DOMContentLoaded", () => {
+  // ======= Active Emoji Button =======
+  const buttons = document.querySelectorAll(".mood-btn");
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      buttons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
 
-const loginFeedback = document.querySelector('.loginForm-feedback');
-const signupFeedback = document.querySelector('.signupForm-feedback');
+      const mood = btn.dataset.mood;
+      saveMood(mood)
+    });
+  });
 
-// Show correct form based on URL
-if (formType === 'signup') {
-  showSignup();
-} else {
-  showLogin();
+  // ======= DATE LOGIC FOR AUTOMATIC CHANGE DAILY ======
+  const dayNumbers = document.querySelectorAll(".day-number");
+  const dayContainers = document.querySelectorAll(".day");
+
+  const today = new Date();
+  const todayIndex = today.getDay(); // 0 = Sunday, 6 = Saturday
+
+  const sunday = new Date(today);
+  sunday.setDate(today.getDate() - todayIndex);
+
+  dayNumbers.forEach((span, index) => {
+    const currentDay = new Date(sunday);
+    currentDay.setDate(sunday.getDate() + index);
+
+    span.textContent = currentDay.getDate();
+
+    // Highlight today
+    if (index === todayIndex && dayContainers[index]) {
+      dayContainers[index].classList.add("today");
+    }
+  });
+
+  // FETCH MOODS ON PAGE LOAD
+  fetchMoods(currentRange);
+
+  const rangeBtns = document.querySelectorAll("button[data-range]");
+  rangeBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      currentRange = btn.dataset.range;
+      fetchMoods(currentRange);
+    })
+  })
+});
+
+// GOOGLE CHART
+google.charts.load("current", { packages: ["corechart"] });
+
+function drawChart(moods, range = "week") {
+  range = range[0].toUpperCase() + range.slice(1);
+  const data = google.visualization.arrayToDataTable(formatChartData(moods));
+
+  const options = {
+    title: `Mood Trends Over the Past ${range}`,
+    legend: "none",
+  };
+  const chart = new google.visualization.ColumnChart(
+    document.getElementById("myChart"),
+  );
+  chart.draw(data, options);
 }
 
-// Function to show login
-function showLogin() {
-  loginForm.classList.remove('hidden');
-  signupForm.classList.add('hidden');
-  loginTab.classList.add('active');
-  signupTab.classList.remove('active');
-}
-
-// Function to show signup
-function showSignup() {
-  signupForm.classList.remove('hidden');
-  loginForm.classList.add('hidden');
-  signupTab.classList.add('active');
-  loginTab.classList.remove('active');
-}
-
-// Tab click handlers
-loginTab.addEventListener('click', showLogin);
-signupTab.addEventListener('click', showSignup);
-
-// ---------- Handle Login Form Submit ----------
-loginForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  
-  const username = document.getElementById('loginUsername').value;
-  const password = document.getElementById('loginPassword').value;
-  
+// FETCH MOODS ON PAGE LOAD
+async function fetchMoods(range) {
+  if (range == undefined) range = "week"
   try {
-    const response = await fetch('/auth/signin', {
-      method: 'POST',
-      credentials: 'include',
+    const response = await fetch(`/mood?range=${range}`, {
+      credentials: "include",
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      drawChart(data.moods, range);
+    }
+  } catch (error) {
+    console.error('Mood fetch error:', error);
+  }
+}
+
+function formatChartData(moods = []) {
+  const counts = moods
+    .filter(item => item && item.mood)
+    .reduce((acc, { mood }) => {
+      acc[mood] = (acc[mood] || 0) + 1;
+      return acc;
+    }, {});
+
+  const moodColors = {
+    happy: "#fff1b8",
+    sad: "#e8f1ff",
+    angry: "#ffe2e2",
+    anxious: "#fff0d9",
+    excited: "#e6f9ef",
+    tired: "#f0e9ff",
+    calm: "#e9f8ff",
+    stressed: "#fde8f0",
+  };
+
+  return [
+    ["Mood", "Mood Count", { role: "style" }],
+    ...Object.entries(counts).map(([mood, count]) => [
+      mood[0].toUpperCase() + mood.slice(1),
+      count, moodColors[mood]
+    ])
+  ];
+}
+
+async function saveMood(mood) {
+  try {
+    const response = await fetch("/mood", {
+      method: "POST",
+      credentials: "include",
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({ mood }),
     });
-    
-    const data = await response.json();
-    
-    if (response.ok) {
-      // Login successful - backend sets cookie, redirect to homepage
-      window.location.href = '/homepage';
-    } else {
-      // Login failed - show backend error message
-      console.error(data.message);
-      loginFeedback.textContent = 'Invalid username or password';
-      loginFeedback.style.color = 'firebrick';
-    }
-  } catch (error) {
-    console.error('Login error:', error);
-    loginFeedback.textContent = 'Something went wrong. Please try again.';
-    loginFeedback.style.color = 'firebrick';
-  }
-});
 
-// ---------- Handle Signup Form Submit ----------
-signupForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  
-  const firstName = document.getElementById('signupFirstName').value;
-  const username = document.getElementById('signupUsername').value;
-  const password = document.getElementById('signupPassword').value;
-  
-  // Get selected avatar
-  const profileImg = document.querySelector('input[name="profileImage"]:checked')?.value;
-  
-  // Check if avatar is selected
-  if (!profileImg) {
-    signupFeedback.textContent = 'Please select an avatar!';
-    signupFeedback.style.color = 'firebrick';
-    return;
-  }
-  
-  try {
-    const response = await fetch('/auth/signup', {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ firstName, username, password, profileImg })
-    });
-    
-    const data = await response.json();
-    
     if (response.ok) {
-      // Signup successful - show success and switch to login
-      signupFeedback.textContent = 'Account created! Please log in.';
-      signupFeedback.style.color = 'green';
-      
-      // Clear signup form
-      document.getElementById('signupFirstName').value = '';
-      document.getElementById('signupUsername').value = '';
-      document.getElementById('signupPassword').value = '';
-      
-      // Uncheck all avatars
-      document.querySelectorAll('input[name="profileImage"]').forEach(radio => {
-        radio.checked = false;
-      });
-      
-      // Switch to login tab after 1.5 seconds
-      setTimeout(() => {
-        showLogin();
-        signupFeedback.textContent = '';
-      }, 1500);
-    } else {
-      // Signup failed - show backend error message
-      signupFeedback.textContent = data.message || 'An error occurred creating your account. Please try again.';
-      signupFeedback.style.color = 'firebrick';
+      fetchMoods(currentRange);
     }
   } catch (error) {
-    console.error('Signup error:', error);
-    signupFeedback.textContent = 'Something went wrong. Please try again.';
-    signupFeedback.style.color = 'firebrick';
+    console.error('Mood save error:', error);
   }
-});
+}
