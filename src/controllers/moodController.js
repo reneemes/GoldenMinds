@@ -4,8 +4,8 @@ const {
 } = require('../services/moodService.js');
 
 async function createMood(req, res) {
-  if (!req.user.id) {
-    return res.redirect('/login');
+  if (!req.user?.id) {
+    return res.status(401).json({ error: 'Not authenticated' });
   }
 
   const { mood } = req.body;
@@ -20,8 +20,8 @@ async function createMood(req, res) {
 }
 
 async function getAllMoods(req, res) {
-  if (!req.user.id) {
-    return res.redirect('/login');
+  if (!req.user?.id) {
+    return res.status(401).json({ error: 'Not authenticated' });
   }
 
   const range = req.query.range || 'week';

@@ -104,4 +104,3 @@ journalHistory.addEventListener("click", async (e) => {
 
 /* CALL TO fetchJournal */
 fetchJournals();
-

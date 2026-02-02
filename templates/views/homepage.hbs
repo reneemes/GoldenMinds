@@ -18,13 +18,13 @@
 
           <!-- TITLE SECTION -->
         <div class="title-section">
-          <h1>Hi, <span class="user-name">Elhadji</span></h1>
+          <h1>Hi, <span class="user-name">{{user.firstName}}</span></h1>
           <h1>How are you doing today?</h1>
         </div>
 
         <!-- PROFILE SECTION -->
         <div class="profile-section">
-          <img src="img/profile-pic.png" alt="Profile Picture" />
+          <img src="{{user.profileImg}}" alt="Profile Picture" />
           <span>Profile</span>
         </div>    
       </section>
@@ -54,6 +54,11 @@
         <!-- GRAPH SECTION -->
         <div class="graph-section">
           <div id="myChart" style="max-width:700px; height:400px"></div>
+          <div>
+            <button data-range="week">Week</button>
+            <button data-range="month">Month</button>
+            <button data-range="year">Year</button>
+          </div>
         </div>
 
         <!-- MOOD SECTION -->
@@ -62,42 +67,42 @@
 
           <div class="mood-options">
 
-            <button class="mood-btn happy active">
+            <button data-mood="happy" class="mood-btn happy">
               <span class="emoji">😊</span>
               <p>Happy</p>
             </button>
 
-            <button class="mood-btn sad">
+            <button data-mood="sad" class="mood-btn sad">
               <span class="emoji">😔</span>
               <p>Sad</p>
             </button>
 
-            <button class="mood-btn angry">
+            <button data-mood="angry" class="mood-btn angry">
               <span class="emoji">😠</span>
               <p>Angry</p>
             </button>
 
-            <button class="mood-btn anxious">
+            <button data-mood="anxious" class="mood-btn anxious">
               <span class="emoji">😰</span>
               <p>Anxious</p>
             </button>
 
-            <button class="mood-btn excited">
+            <button data-mood="excited" class="mood-btn excited">
              <span class="emoji">🤩</span>
               <p>Excited</p>
             </button>
 
-            <button class="mood-btn tired">
+            <button data-mood="tired" class="mood-btn tired">
                <span class="emoji">😴</span>
               <p>Tired</p>
             </button>
 
-            <button class="mood-btn calm">
+            <button data-mood="calm" class="mood-btn calm">
               <span class="emoji">😌</span>
               <p>Calm</p>
             </button>
 
-            <button class="mood-btn stressed">
+            <button data-mood="stressed" class="mood-btn stressed">
                <span class="emoji">😫</span>
               <p>Stressed</p>
             </button>
@@ -132,9 +137,7 @@
       </div>
     </main>
      {{> nav }} 
+    <script src="https://www.gstatic.com/charts/loader.js"></script> <!-- Google Chart -->
+    <script src="js/homepage.js"></script>
   </body>
-  <script src="https://www.gstatic.com/charts/loader.js"></script> <!-- Google Chart -->
-  <script src="js/homepage.js"></script>
-  <script src="js/journal.js"></script>
-  
 </html>

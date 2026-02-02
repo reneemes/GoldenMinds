@@ -48,6 +48,7 @@ loginForm.addEventListener('submit', async (e) => {
   try {
     const response = await fetch('/auth/signin', {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -83,6 +84,7 @@ signupForm.addEventListener('submit', async (e) => {
   try {
     const response = await fetch('/auth/signup', {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },

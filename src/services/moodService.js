@@ -4,10 +4,10 @@ async function createMoodEntry(userId, mood) {
   const [result] = await connection
     .promise()
     .query(`
-      INSERT INTO mood (mood, user_id, moon_date)
-      VALUES (?, ?, CURDATE()) AS new
+      INSERT INTO mood (mood, user_id, mood_date)
+      VALUES (?, ?, CURDATE())
       ON DUPLICATE KEY UPDATE
-        mood = new.mood,
+        mood = VALUES(mood),
         created_at = CURRENT_TIMESTAMP;
       `, [
         mood,

@@ -5,8 +5,8 @@ const {
 } = require("../services/journalService.js");
 
 async function createJournal(req, res) {
-  if (!req.user.id) {
-    return res.redirect("/login");
+  if (!req.user?.id) {
+    return res.status(401).json({ error: 'Not authenticated' });
   }
 
   const { title, content } = req.body;
@@ -21,8 +21,8 @@ async function createJournal(req, res) {
 }
 
 async function getAllJournalEntries(req, res) {
-  if (!req.user.id) {
-    return res.redirect("/login");
+  if (!req.user?.id) {
+    return res.status(401).json({ error: 'Not authenticated' });
   }
 
   try {
@@ -35,8 +35,8 @@ async function getAllJournalEntries(req, res) {
 }
 
 async function deleteJournal(req, res) {
-  if (!req.user.id) {
-    return res.redirect("/login");
+  if (!req.user?.id) {
+    return res.status(401).json({ error: 'Not authenticated' });
   }
 
   const { journalId } = req.params;
