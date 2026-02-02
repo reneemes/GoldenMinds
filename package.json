@@ -30,6 +30,8 @@
     "install": "^0.13.0",
     "jsonwebtoken": "^9.0.3",
     "mysql2": "^3.16.1",
+    "node-fetch": "^3.3.2",
+    "request": "^2.88.2",
     "sass": "^1.97.3",
     "tailwindcss": "^4.1.18"
   },

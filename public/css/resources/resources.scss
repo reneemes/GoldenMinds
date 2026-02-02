@@ -147,11 +147,13 @@ body {
 
 .location-results {
   width: 100%;
-  max-height: 500px;
+  max-height: 600px;
   padding: 0;
   display: flex; // ensure flex
   flex-direction: column; // stack cards vertically
   gap: 16px; // space between each card
+  overflow-y: auto; // ✅ this is the key
+  overscroll-behavior: contain; // optional: prevents page scroll bleed
 
   .location {
     background-color: rgba(255, 255, 255, 0.95);

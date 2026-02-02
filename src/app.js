@@ -9,6 +9,7 @@ const authRoutes = require("./routes/auth.js");
 const journalRoutes = require("./routes/journal.js");
 const moodRoutes = require("./routes/mood.js");
 const contactRoutes = require("./routes/contact.js");
+const geocodeRoutes = require("./routes/geolocation.js");
 
 const auth = require("./middleware/auth.js");
 
@@ -81,7 +82,7 @@ app.use("/auth", authRoutes);
 app.use("/journal", journalRoutes);
 app.use("/mood", moodRoutes);
 app.use("/contact", contactRoutes);
-
+app.use("/api/geocode", geocodeRoutes);
 // Error handling
 app.use((err, req, res, next) => {
   console.error(err);
