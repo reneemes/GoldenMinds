@@ -135,6 +135,36 @@ body {
   box-shadow: 6px 6px 0px $black;
 }
 
+//Graph Buttons
+.graph-section {
+  button {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 3px solid $black;
+    background: linear-gradient(135deg, #e2f6f6, #d6f0f0);
+    color: $black;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 3px 0 $black;
+    transition:
+      background-color 0.2s,
+      transform 0.1s;
+
+    &:hover {
+      background-color: $teal;
+    }
+
+    &:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 $black;
+    }
+
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+}
+
 // Mood Section Styles
 .mood-section {
   text-align: center;
