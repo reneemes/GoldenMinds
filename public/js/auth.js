@@ -81,6 +81,16 @@ signupForm.addEventListener('submit', async (e) => {
   const username = document.getElementById('signupUsername').value;
   const password = document.getElementById('signupPassword').value;
   
+  // Get selected avatar
+  const profileImage = document.querySelector('input[name="profileImage"]:checked')?.value;
+  
+  // Check if avatar is selected
+  if (!profileImage) {
+    signupFeedback.textContent = 'Please select an avatar!';
+    signupFeedback.style.color = 'firebrick';
+    return;
+  }
+  
   try {
     const response = await fetch('/auth/signup', {
       method: 'POST',
@@ -88,7 +98,7 @@ signupForm.addEventListener('submit', async (e) => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ firstName, username, password })
+      body: JSON.stringify({ firstName, username, password, profileImage })
     });
     
     const data = await response.json();
@@ -96,17 +106,26 @@ signupForm.addEventListener('submit', async (e) => {
     if (response.ok) {
       // Signup successful - show success and switch to login
       signupFeedback.textContent = 'Account created! Please log in.';
+      signupFeedback.style.color = 'green';
       
       // Clear signup form
       document.getElementById('signupFirstName').value = '';
       document.getElementById('signupUsername').value = '';
       document.getElementById('signupPassword').value = '';
       
-      // Switch to login tab
-      showLogin();
+      // Uncheck all avatars
+      document.querySelectorAll('input[name="profileImage"]').forEach(radio => {
+        radio.checked = false;
+      });
+      
+      // Switch to login tab after 1.5 seconds
+      setTimeout(() => {
+        showLogin();
+        signupFeedback.textContent = '';
+      }, 1500);
     } else {
       // Signup failed - show backend error message
-      signupFeedback.textContent = 'A error occurred creating your account. Please try again.';
+      signupFeedback.textContent = data.message || 'An error occurred creating your account. Please try again.';
       signupFeedback.style.color = 'firebrick';
     }
   } catch (error) {

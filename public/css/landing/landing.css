@@ -119,14 +119,150 @@ body {
   font-size: 0.9rem;
   text-decoration: underline;
   color: #000000;
+  text-align: center;
   transition: color 0.2s;
 }
 .link-signup:hover {
   color: #16a39e;
+  text-decoration: underline;
+}
+
+.scroll-down {
+  display: none;
+  position: fixed;
+  right: 1.5rem;
+  bottom: 2rem;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  z-index: 100;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0.8;
+}
+.scroll-down:hover {
+  transform: translateY(-5px);
+  opacity: 1;
+}
+.scroll-down img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.about-btn-secondary {
+  display: inline-block;
+  background: #ffffff;
+  border: 3px solid #000000;
+  border-radius: 999px;
+  padding: 0.8rem 2rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  color: #000000;
+  margin: 1rem auto 2.5rem;
+  transition: all 0.2s;
+  box-shadow: 4px 4px 0 #000000;
+}
+.about-btn-secondary:hover {
+  background: #e3f564;
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 0 #000000;
+}
+
+.sneak-peek {
+  padding: 3rem 1.2rem;
+  background: linear-gradient(to bottom, rgba(227, 245, 100, 0.5), #ebf7fc);
+  margin: 2rem 0;
+}
+.sneak-peek .peek-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.sneak-peek .peek-divider span {
+  flex: 1;
+  height: 2px;
+  background: #000000;
+  opacity: 0.1;
+}
+.sneak-peek .peek-divider p {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+}
+.sneak-peek .peek-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+.sneak-peek .peek-content h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+.sneak-peek .peek-content .peek-subtext {
+  font-size: 1rem;
+  max-width: 500px;
+  margin: 0 auto 2.5rem;
+  color: rgba(0, 0, 0, 0.75);
+  line-height: 1.6;
+}
+.sneak-peek .peek-content .peek-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.sneak-peek .peek-content .peek-grid .peek-card {
+  background: #ffffff;
+  border: 3px solid #000000;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 4px 4px 0 #000000;
+  transition: all 0.2s ease;
+}
+.sneak-peek .peek-content .peek-grid .peek-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 6px 6px 0 #000000;
+}
+.sneak-peek .peek-content .peek-grid .peek-card img {
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid #000000;
+  margin-bottom: 1rem;
+}
+.sneak-peek .peek-content .peek-grid .peek-card h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.sneak-peek .peek-content .peek-grid .peek-card p {
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.7);
+  line-height: 1.5;
+}
+
+.peek-cta {
+  font-size: 0.9rem;
+  text-decoration: underline;
+  color: #000000;
+  text-align: center;
+  transition: color 0.2s;
+  display: inline-block;
+  margin-top: 1rem;
+}
+.peek-cta:hover {
+  color: #16a39e;
+  text-decoration: underline;
 }
 
 .site-footer {
-  padding: 0 1rem 2rem;
+  padding: 2rem 1rem 2rem;
   background: transparent;
 }
 
@@ -183,6 +319,24 @@ body {
   .slogan {
     max-width: 400px;
   }
+  .scroll-down {
+    display: block;
+  }
+  .sneak-peek {
+    padding: 4rem 1.5rem;
+  }
+  .sneak-peek .peek-content h3 {
+    font-size: 2.2rem;
+  }
+  .sneak-peek .peek-content .peek-subtext {
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin-bottom: 3rem;
+  }
+  .sneak-peek .peek-content .peek-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
 }
 @media (min-width: 700px) {
   .logo-text {
@@ -234,6 +388,37 @@ body {
   .link-signup {
     font-size: 0.95rem;
   }
+  .scroll-down {
+    width: 60px;
+    height: 60px;
+    right: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .sneak-peek {
+    padding: 5rem 2rem;
+  }
+  .sneak-peek .peek-content h3 {
+    font-size: 2.5rem;
+  }
+  .sneak-peek .peek-content .peek-subtext {
+    font-size: 1.1rem;
+    max-width: 700px;
+  }
+  .sneak-peek .peek-content .peek-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.8rem;
+    margin-bottom: 3rem;
+  }
+  .sneak-peek .peek-content .peek-grid .peek-card {
+    padding: 1.2rem;
+  }
+  .sneak-peek .peek-content .peek-grid .peek-card h4 {
+    font-size: 1rem;
+  }
+  .sneak-peek .peek-content .peek-grid .peek-card p {
+    font-size: 0.85rem;
+  }
 }
 @media (min-width: 1200px) {
   .logo-text {
@@ -251,5 +436,9 @@ body {
   .slogan {
     font-size: 1.15rem;
     max-width: 550px;
+  }
+  .scroll-down {
+    width: 70px;
+    height: 70px;
   }
 }/*# sourceMappingURL=landing.css.map */
