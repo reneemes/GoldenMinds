@@ -34,3 +34,65 @@ function showSignup() {
 // Tab click handlers
 loginTab.addEventListener('click', showLogin);
 signupTab.addEventListener('click', showSignup);
+
+// const signupForm = document.getElementById("signupForm");
+
+//   signupForm.addEventListener("submit", async (e) => {
+//     e.preventDefault(); // Prevent the form from reloading the page
+
+//     const username = document.getElementById("signupUsername").value;
+//     const password = document.getElementById("signupPassword").value;
+
+//     try {
+//       const response = await fetch("/auth/signup", {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({ firstName: 'Renee', username, password }),
+//       });
+
+//       const data = await response.json();
+
+//       if (response.ok) {
+//         // Signup successful
+//         alert("Signup successful!");
+//         // You can redirect user or hide the form
+//         // window.location.href = "/dashboard";
+//       } else {
+//         // Signup failed
+//         alert(data.message || "Signup failed.");
+//       }
+//     } catch (err) {
+//       console.error("Signup error:", err);
+//       alert("Something went wrong. Please try again.");
+//     }
+//   });
+// // const signinForm = document.getElementById("signinForm");
+
+// loginForm.addEventListener("submit", async (e) => {
+//   e.preventDefault();
+
+//   const username = document.getElementById("loginUsername").value;
+//   const password = document.getElementById("loginPassword").value;
+
+//   try {
+//     const response = await fetch("/auth/signin", {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify({ username, password })
+//     });
+
+//     const data = await response.json();
+
+//     if (response.ok) {
+//       alert("Signin successful!");
+//       window.location.href = "/homepage"; // redirect after successful login
+//     } else {
+//       alert(data.message || "Signin failed.");
+//     }
+//   } catch (err) {
+//     console.error("Signin error:", err);
+//     alert("Something went wrong. Please try again.");
+//   }
+// });

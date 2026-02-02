@@ -1,0 +1,213 @@
+// // Variables
+$lightBlueGray: #abc6cd;
+$darkTeal: #22505c;
+$yellowGreen: #e3f564;
+$lightMintGray: #ebf7fc;
+$text-dark: #222;
+
+// BreakPoints
+$tablet: 768px;
+$desktop: 1024px;
+
+@mixin center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+}
+
+.about {
+  &__sec {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 60px;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    display: inline-block;
+  }
+
+  &__title {
+    &--name {
+      background: linear-gradient(to right, #16a39e, #d4e157);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+}
+
+.about-intro {
+  text-align: center;
+  background: $yellowGreen;
+
+  &__title,
+  &__sub-title {
+    color: $darkTeal;
+  }
+
+  &__title {
+    font-size: 2rem;
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 20px 20px 10px;
+  }
+
+  &__sub-title {
+    font-size: 1.5rem;
+    margin: 0 0 20px;
+  }
+
+  &__body {
+    font-size: 1.1rem;
+    padding: 10px 30px;
+  }
+}
+
+.team {
+  @include center;
+
+  .team-member {
+    @include center;
+    padding: 20px;
+
+    &__img {
+      height: 200px;
+      width: 200px;
+      border-radius: 100%;
+      object-fit: cover;
+    }
+
+    &__name,
+    &__role {
+      margin: 0;
+      text-align: center;
+    }
+
+    &__name {
+      font-size: 2rem;
+    }
+
+    &__role {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.contact {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+
+  &__title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 30px 0 0;
+  }
+
+  &__message {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 0;
+    padding: 10px;
+  }
+  
+  .contact-form {
+    @include center;
+    align-items: stretch;
+    border-radius: 20px;
+    background-color: rgba($lightBlueGray, 0.5);
+    padding: 1.5rem;
+    gap: 1rem;
+    margin-bottom: 100px;
+
+    &__sent-message {
+      display: none;
+    }
+
+    label {
+      color: $text-dark;
+      font-size: 1rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      
+      &:after {
+        content: " *";
+        color: firebrick;
+      }
+    }
+
+    input,
+    textarea,
+    select {
+      border: 2px solid transparent;
+      border-radius: 8px;
+      background: white;
+      font-size: inherit;
+      width: 100%;
+      padding: 0.6rem;
+      transition: border-color 0.2 ease;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .select-wrap {
+      position: relative;
+    }
+
+    &__btn {
+      border: none;
+      border-radius: 10px;
+      align-self: center;
+      background-color: $text-dark;
+      color: white;
+      font-size: 0.9rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-top: 1rem;
+      padding: 0.75rem 3rem;
+      transition: opacity 0.2s ease;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.85;
+      }
+    }
+  }
+}
+
+.error {
+  border: 2px solid red;
+}
+// .hidden {
+//   display: none!important;
+// }
+
+@media screen and (min-width: $tablet) {
+  .team {
+    display: grid;
+    grid-template-columns: repeat(2, 400px);
+    width: max-content;
+    margin: 0 auto;
+  }
+
+  .about-intro {
+    @include center;
+
+    &__body {
+      max-width: 50%;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  main {
+    margin-left: 80px;
+  }
+}

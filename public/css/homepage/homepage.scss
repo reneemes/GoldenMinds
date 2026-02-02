@@ -1,0 +1,438 @@
+// ---------- Variables ----------
+$teal: #abc6cd; // <-- Fix color to match other pages variable
+$lime: #d4e157;
+$yellow: #e3f564;
+$light-blue: #ebf7fc;
+$white: #ffffff;
+$black: #000000;
+$bg-color: #ebf7fc;
+$text-area-bg: #fefefe;
+$text-area: #999;
+
+// ---------- Reset ----------
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  flex: 1;
+}
+
+// ---------- Body Styles ----------
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: $bg-color;
+  // background-image: url("../../img/background1.png");
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // background-position: center;
+  font-family: "Arial", sans-serif;
+}
+
+// ============ MOBILE STYLES ============
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 30px;
+}
+
+// Title Section Styles
+.title-section {
+  padding: 30px 15px 10px 15px;
+
+  h1 {
+    margin: 0;
+    font-size: 20px;
+    padding-left: 10px;
+    width: fit-content;
+  }
+
+  h2 {
+    margin: 5px 0 0 0;
+    font-size: 28px;
+    background-color: $yellow;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 30px;
+  }
+}
+
+// Profile Section Styles
+.profile-section {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  height: 100px;
+  padding: 0px 15px 0 0;
+
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  span {
+    font-size: 14px;
+    margin-left: 5px;
+  }
+}
+
+// Weekday Section Styles
+.week-days {
+  display: flex;
+  justify-content: center;
+}
+
+.days-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+  max-width: 480px;
+  gap: 5px;
+
+  .day {
+    text-align: center;
+    background-color: $teal;
+    width: 50px;
+    border-radius: 30px;
+
+    span {
+      display: block;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0px 0 10px 0;
+    }
+
+    p {
+      margin: 10px 0 5px 0;
+      font-size: 12px;
+    }
+  }
+}
+
+// Content Section Styles
+.content-section {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.mood-section,
+.journal-section,
+.extra-section,
+.graph-section {
+  background-color: rgba(255, 255, 255, 0.85);
+  margin: 15px 15px 10px 15px;
+  padding: 20px 10px;
+  border-radius: 30px;
+}
+
+// Mood Section Styles
+.mood-section {
+  text-align: center;
+  padding-top: 10px;
+
+  .mood-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .mood-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  .mood-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    padding: 14px 10px;
+    border: none;
+    border-radius: 18px;
+    background-color: #f4f6f8;
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: $teal;
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: scale(0.97);
+    }
+
+    .emoji {
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .label {
+      font-size: 13px;
+      font-weight: 500;
+    }
+  }
+}
+
+// Mood Button Backgrounds
+.mood-btn.happy {
+  background: linear-gradient(135deg, #fff1b8, #ffe3a3);
+}
+
+.mood-btn.sad {
+  background: linear-gradient(135deg, #e8f1ff, #dde6f7);
+}
+
+.mood-btn.angry {
+  background: linear-gradient(135deg, #ffe2e2, #ffd6d6);
+}
+
+.mood-btn.anxious {
+  background: linear-gradient(135deg, #fff0d9, #ffe8c8);
+}
+
+.mood-btn.excited {
+  background: linear-gradient(135deg, #e6f9ef, #dcf5ea);
+}
+
+.mood-btn.tired {
+  background: linear-gradient(135deg, #f0e9ff, #e6ddff);
+}
+
+.mood-btn.calm {
+  background: linear-gradient(135deg, #e9f8ff, #ddf2f7);
+}
+
+.mood-btn.stressed {
+  background: linear-gradient(135deg, #fde8f0, #f9dce8);
+}
+
+.extra-section {
+  padding: 40px;
+}
+
+// Journal Section Styles
+.journal-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 20px;
+
+  label {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  button {
+    width: 100px;
+    align-self: center;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    border: 1px solid $black;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: $yellow;
+    color: $black;
+
+    &:hover {
+      background-color: $teal;
+    }
+  }
+}
+
+// Journal Section Textarea
+textarea {
+  width: 100%;
+  min-height: 250px;
+  padding: 20px;
+  font-size: 1.1rem;
+  font-family: inherit;
+  line-height: 1.6;
+  resize: vertical;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  background-color: $text-area-bg;
+  color: $text-area;
+  outline: none; // removes default focus outline
+  transition:
+    border 0.3s,
+    box-shadow 0.3s;
+}
+
+// Placeholder styling
+.journal-section textarea::placeholder {
+  color: $text-area;
+  font-style: italic;
+}
+
+//  Focus styling
+.journal-section textarea:focus {
+  border-color: $teal;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+}
+
+// Reserved Rights Text
+.reserved-rights {
+  text-align: center;
+  margin: 20px 0 100px 0px;
+  p {
+    color: $black;
+    font-size: 14px;
+  }
+}
+
+.extra-section {
+  display: none;
+}
+
+// CURRENT DAY COLOR
+.day.today {
+  background-color: #222;
+  color: #fff;
+}
+
+// ============ TABLET STYLES ============
+@media (min-width: 768px) {
+  .header-section {
+    padding-bottom: 30px;
+  }
+  // Title Section Styles
+  .title-section {
+    padding: 30px 15px 0 40px;
+
+    h1 {
+      font-size: 24px;
+      padding-top: 30px;
+    }
+
+    h2 {
+      font-size: 36px;
+    }
+  }
+
+  // Page Layout Styling
+  .content-section {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 0.9fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "week   week  ."
+      "journal journal graph"
+      "journal journal graph"
+      "journal journal mood";
+    gap: 16px;
+  }
+
+  // Areas Styling
+  .journal-section {
+    grid-area: journal;
+  }
+
+  .week-days {
+    grid-area: week;
+  }
+
+  .graph-section {
+    grid-area: graph;
+  }
+
+  .mood-section {
+    grid-area: mood;
+  }
+}
+
+// ============ DESKTOP STYLES ============
+@media (min-width: 1024px) {
+  .extra-section {
+    display: block;
+    grid-area: extra;
+  }
+
+  // Page Layout Styling
+  .content-section {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 0.9fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      "week   .  ."
+      "journal extra graph"
+      "journal extra graph"
+      "journal extra mood";
+    gap: 16px;
+  }
+
+  // Profile Section Styles
+  .profile-section {
+    padding: 30px 40px 0 0;
+
+    img {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  .content-section {
+    padding-top: 0px;
+  }
+
+  body {
+    margin-left: 80px;
+  }
+
+  // Title Section Styles
+  .title-section {
+    padding: 40px 15px 0 40px;
+
+    h1 {
+      font-size: 26px;
+      padding-top: 30px;
+    }
+
+    h2 {
+      font-size: 40px;
+    }
+  }
+
+  // Weekday Section Styles
+  .days-container {
+    padding: 40px 0px 0px 0px;
+    gap: 10px;
+    // max-width: 410px;
+    margin-left: 15px;
+  }
+
+  .week-days {
+    display: flex;
+    justify-content: center;
+
+    // align-content: center;
+  }
+
+  .graph-section,
+  .mood-section,
+  .extra-section {
+    max-width: 480px;
+  }
+
+  // Reserved Right Text
+  .reserved-rights {
+    margin: 180px 0px 0px 0px;
+    p {
+      color: $black;
+      font-size: 16px;
+    }
+  }
+}

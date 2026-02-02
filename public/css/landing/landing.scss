@@ -1,10 +1,10 @@
 // ---------- Variables ----------
-$teal: #16a39e; 
-$lime: #d4e157; 
-$yellow: #E3F564;
-$light-blue: #EBF7FC;
-$blue: #A4C3C4;
-$white: #FFFFFF;
+$teal: #16a39e;
+$lime: #d4e157;
+$yellow: #e3f564;
+$light-blue: #ebf7fc;
+$blue: #a4c3c4;
+$white: #ffffff;
 $black: #000000;
 
 // ---------- Reset ----------
@@ -16,7 +16,7 @@ $black: #000000;
 
 body {
   font-family: "Open Sans", sans-serif;
-  background-image: url('../img/background1.png');
+  background-image: url("../../img/background1.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -73,8 +73,13 @@ body {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(-50%); }
-  50% { transform: translateY(calc(-50% - 10px)); }
+  0%,
+  100% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(calc(-50% - 10px));
+  }
 }
 
 .kids-image img {
@@ -115,14 +120,16 @@ body {
   font-size: 1rem;
   text-decoration: none;
   color: $black;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
   box-shadow: 0 4px 0 $black;
-  
+
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 0 $black;
   }
-  
+
   &:active {
     transform: translateY(1px);
     box-shadow: 0 2px 0 $black;
@@ -134,7 +141,7 @@ body {
   text-decoration: underline;
   color: $black;
   transition: color 0.2s;
-  
+
   &:hover {
     color: $teal;
   }
@@ -146,11 +153,11 @@ body {
     font-size: 2rem;
     letter-spacing: -1.5px;
   }
-  
+
   .main-heading {
     font-size: 1.8rem;
   }
-  
+
   .slogan {
     max-width: 400px;
   }
@@ -161,18 +168,18 @@ body {
   .logo-text {
     font-size: 2.3rem;
   }
-  
+
   .logo-header {
     padding: 0.6rem 1.2rem;
   }
-  
+
   .kids-image {
     display: block;
     top: 50%;
     transform: translateY(-50%);
     right: 0;
   }
-  
+
   .kids-image img {
     width: 100px;
   }
@@ -183,40 +190,40 @@ body {
   .landing-container {
     padding: 2rem 1.5rem;
   }
-  
+
   .logo-text {
     font-size: 2.5rem;
     letter-spacing: -2px;
   }
-  
+
   .logo-header {
     padding: 0.7rem 1.4rem;
     margin-bottom: 2rem;
   }
-  
+
   .kids-image img {
     width: 120px;
   }
-  
+
   .main-heading {
     font-size: 2.2rem;
   }
-  
+
   .slogan {
     font-size: 1.05rem;
     margin-bottom: 2rem;
     max-width: 480px;
   }
-  
+
   .cta-buttons {
     max-width: 300px;
   }
-  
+
   .btn-login {
     padding: 1.2rem 2.5rem;
     font-size: 1.1rem;
   }
-  
+
   .link-signup {
     font-size: 0.95rem;
   }
@@ -227,19 +234,19 @@ body {
   .logo-text {
     font-size: 3rem;
   }
-  
+
   .logo-header {
     padding: 0.8rem 1.6rem;
   }
-  
+
   .kids-image img {
     width: 150px;
   }
-  
+
   .main-heading {
     font-size: 2.8rem;
   }
-  
+
   .slogan {
     font-size: 1.15rem;
     max-width: 550px;

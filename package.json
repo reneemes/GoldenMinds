@@ -19,11 +19,21 @@
     "dev": "nodemon src/app.js -e js,hbs"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.18",
     "axios": "^1.13.2",
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
+    "express-session": "^1.19.0",
     "hbs": "^4.2.0",
-    "install": "^0.13.0"
+    "install": "^0.13.0",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.16.1",
+    "node-fetch": "^3.3.2",
+    "request": "^2.88.2",
+    "sass": "^1.97.3",
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.23",

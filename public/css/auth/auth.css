@@ -6,7 +6,7 @@
 
 body {
   font-family: "Open Sans", sans-serif;
-  background-image: url("../img/background2.png");
+  background-image: url("../../img/background2.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -24,7 +24,7 @@ body {
 }
 
 .logo-header {
-  background: #FFFFFF;
+  background: #ffffff;
   border: 3px solid #000000;
   border-radius: 12px;
   padding: 0.5rem 1rem;
@@ -60,7 +60,7 @@ body {
 .tab-btn {
   padding: 0.8rem 2rem;
   border: 3px solid #000000;
-  background: #FFFFFF;
+  background: #ffffff;
   color: #000000;
   font-weight: 700;
   font-size: 1rem;
@@ -70,15 +70,15 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 .tab-btn.active {
-  background: #E3F564;
+  background: #e3f564;
   box-shadow: 0 3px 0 #000000;
 }
 .tab-btn:hover:not(.active) {
-  background: #EBF7FC;
+  background: #ebf7fc;
 }
 
 .auth-card {
-  background: #EBF7FC;
+  background: #ebf7fc;
   border: 3px solid #000000;
   border-radius: 16px;
   padding: 2rem 1.5rem;
@@ -111,7 +111,7 @@ body {
   border-radius: 10px;
   font-size: 1rem;
   font-family: "Open Sans", sans-serif;
-  background: #FFFFFF;
+  background: #ffffff;
 }
 .input-group input:focus {
   outline: none;
@@ -119,7 +119,7 @@ body {
 }
 
 .submit-btn {
-  background: #E3F564;
+  background: #e3f564;
   border: 3px solid #000000;
   border-radius: 999px;
   padding: 1rem 2rem;

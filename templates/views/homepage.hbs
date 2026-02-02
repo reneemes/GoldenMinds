@@ -2,11 +2,147 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/homepage/homepage.css" />
+    <link rel="stylesheet" href="/css/partials/nav.css">
     <title>Unfiltered | Homepage</title>
   </head>
+
   <body>
+    <main>
+      <!-- HEADER SECTION -->
+      <section class="header-section">
 
-    <h1>Homepage</h1>
+          <!-- TITLE SECTION -->
+        <div class="title-section">
+          <h1>CHOOSE YOUR</h1>
+          <h2>WELL-BEING</h2>
+        </div>
 
+        <!-- PROFILE SECTION -->
+        <div class="profile-section">
+          <img src="img/profile-pic.png" alt="Profile Picture" />
+          <span>Account</span>
+        </div>    
+      </section>
+      
+      <!-- CONTENT SECTION -->
+      <section class="content-section">
+        <!-- WEEK DAYS -->
+        <section class="week-days">
+          <div class="days-container">
+            <!-- Sunday -->
+            <div class="day"><p>S</p><span class="day-number">10</span></div>
+            <!-- Monday -->
+            <div class="day"><p>M</p><span class="day-number">0</span></div>
+            <!-- Tuesday -->
+            <div class="day"><p>T</p><span class="day-number">0</span></div>
+            <!-- Wednesday -->
+            <div class="day"><p>W</p><span class="day-number">0</span></div>
+            <!-- Thursday -->
+            <div class="day"><p>T</p><span class="day-number">0</span></div>
+            <!-- Friday -->
+            <div class="day"><p>F</p><span class="day-number">0</span></div>
+            <!-- Saturday -->
+            <div class="day"><p>S</p><span class="day-number">0</span></div>
+          </div>
+        </section>
+
+        <!-- GRAPH SECTION -->
+        <div class="graph-section">GRAPH SECTION</div>
+
+        <!-- MOOD SECTION -->
+        <div class="mood-section">
+          <p class="mood-title">What’s your mood today?</p>
+
+          <div class="mood-buttons">
+            <button class="mood-btn happy">
+              <span class="emoji">😊</span>
+              <span class="label">Happy</span>
+            </button>
+
+            <button class="mood-btn sad">
+              <span class="emoji">😔</span>
+              <span class="label">Sad</span>
+            </button>
+
+            <button class="mood-btn angry">
+              <span class="emoji">😠</span>
+              <span class="label">Angry</span>
+            </button>
+
+            <button class="mood-btn anxious">
+              <span class="emoji">😰</span>
+              <span class="label">Anxious</span>
+            </button>
+
+            <button class="mood-btn excited">
+              <span class="emoji">🤩</span>
+              <span class="label">Excited</span>
+            </button>
+
+            <button class="mood-btn tired">
+              <span class="emoji">😴</span>
+              <span class="label">Tired</span>
+            </button>
+
+            <button class="mood-btn calm">
+              <span class="emoji">😌</span>
+              <span class="label">Calm</span>
+            </button>
+
+            <button class="mood-btn stressed">
+              <span class="emoji">😫</span>
+              <span class="label">Stressed</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- JOURNAL CONTENT -->
+        <div class="journal-section">
+          <label for="journal">Your journal</label>
+          <textarea
+            id="journal"
+            placeholder="Write your daily thoughts here..."
+          ></textarea>
+          <button id="saveJournalBtn">Save</button>
+        </div>
+
+        <!-- EXTRA SECTION -->
+        <div class="extra-section" id="extraSection">
+          EXTRA SECTION
+        </div>
+      </section>
+      <div class="reserved-rights">
+        <p>© 2026 Unfiltered. All Rights Reserved.</p>
+      </div>
+    </main>
+     {{> nav }} 
   </body>
+  <script src="/js/journal.js"></script>
+
+
+  <!-- DATE LOGIC FOR AUTOMATIC CHANGE DAILY -->
+  <script>
+    const dayNumbers = document.querySelectorAll(".day-number");
+    const dayContainers = document.querySelectorAll(".day");
+
+    const today = new Date();
+    const todayIndex = today.getDay(); // 0 = Sunday, 6 = Saturday
+
+    // Find Sunday of the current week
+    const sunday = new Date(today);
+    sunday.setDate(today.getDate() - todayIndex);
+
+      dayNumbers.forEach((span, index) => {
+        const currentDay = new Date(sunday);
+        currentDay.setDate(sunday.getDate() + index);
+
+        span.textContent = currentDay.getDate();
+
+        // Highlight today
+        if (index === todayIndex) {
+          dayContainers[index].classList.add("today");
+        }
+    });
+  </script>
 </html>
