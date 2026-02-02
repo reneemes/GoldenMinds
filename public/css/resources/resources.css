@@ -26,6 +26,8 @@ body {
   display: flex;
   justify-content: space-between;
   padding-left: 15px;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 .title-section h2 {
@@ -34,11 +36,22 @@ body {
   margin: 0;
   padding-left: 10px;
 }
+.title-section strong {
+  font-weight: 700;
+}
+.title-section .mobile-break {
+  display: none;
+}
+@media (max-width: 768px) {
+  .title-section .mobile-break {
+    display: inline;
+  }
+}
 
 .profile-section {
   display: flex;
   align-items: center;
-  margin-left: auto;
+  margin-right: 15px;
 }
 .profile-section img {
   width: 60px;
@@ -51,6 +64,14 @@ body {
   font-weight: 600;
   margin-left: 20px;
   font-family: "Open Sans", sans-serif;
+}
+.profile-section .profile-text {
+  display: none;
+}
+@media (min-width: 768px) {
+  .profile-section .profile-text {
+    display: inline-block;
+  }
 }
 
 .search-container {
@@ -89,6 +110,7 @@ body {
   flex-direction: column;
   gap: 20px;
   padding: 0 15px;
+  height: 1400px;
 }
 
 .location-map {
@@ -148,11 +170,15 @@ body {
   .locations-layout {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
+    height: 800px;
     gap: 24px;
   }
   .locations-layout .location-results {
     max-height: 500px;
     padding: 0;
+  }
+  .search-container {
+    margin-bottom: 30px;
   }
   .search-bar {
     width: 500px;
@@ -163,7 +189,8 @@ body {
     margin-left: 80px;
   }
   .profile-section {
-    padding: 30px 40px 0 0;
+    padding: 0px 40px 0 0;
+    margin: 0;
   }
   .profile-section img {
     width: 80px;
@@ -179,4 +206,6 @@ body {
   .search-bar {
     width: 600px;
   }
-}/*# sourceMappingURL=resources.css.map */
+}
+
+/*# sourceMappingURL=resources.css.map */
