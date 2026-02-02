@@ -33,11 +33,12 @@ app.set("view engine", "hbs");
 app.set("views", viewsPath);
 hbs.registerPartials(partialsPath);
 
+// Setup static directory to serve
 app.use(express.static(publicDirectoryPath));
 
 // Landing Page
 app.get("/", (req, res) => {
-  res.render("landing"); //res -> Render -> landing Page (landing.hbs)
+  res.render("landing"); // Renders landing.hbs
 });
 
 // Login
@@ -47,31 +48,12 @@ app.get("/login", (req, res) => {
 
 // Homepage
 app.get("/homepage", auth, (req, res) => {
-  //<-- NEED ATTENTION
-  res.render("homepage"); //res -> Render -> homepage (homepage.hbs)
-});
-
-// JOURNAL ROUTE <---- NEED WORK!!
-app.use((req, res, next) => {
-  req.user = { id: 1 }; // fake logged-in user
-  next();
-});
-
-app.post("/journal", (req, res) => {
-  if (!req.user) {
-    return res.status(401).json({ message: "Not logged in" });
-  }
-
-  const { title, content } = req.body;
-
-  if (!content) {
-    return res.status(400).json({ message: "Content required" });
-  }
-
-  res.status(201).json({
-    message: "Journal created!",
-    journalId: Date.now(),
-  });
+  res.render("homepage", {
+    user: {
+      firstName: req.user.first_name,
+      profileImg: req.user.profile_img,
+    }
+  }); //res -> Render -> homepage (homepage.hbs)
 });
 
 // Resources
@@ -81,7 +63,6 @@ app.get("/resources", auth, (req, res) => {
 
 // About Us
 app.get("/about", (req, res) => {
-  //res -> Render -> About Us Page (about.hbs)
   res.render("about", {
     team: [
       { name: "Renee Messersmith", role: "Team Lead", image: "/img/renee.png" },
@@ -95,9 +76,6 @@ app.get("/about", (req, res) => {
     ],
   });
 });
-
-// Setup static directory to serve
-app.use(express.static(publicDirectoryPath));
 
 // routes for Journal, Mood, and Login
 app.use("/auth", authRoutes);

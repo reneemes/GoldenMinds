@@ -1,47 +1,106 @@
-const saveBtn = document.getElementById("saveJournalBtn");
-const journalTextarea = document.getElementById("journal");
-const extraSection = document.getElementById("extraSection");
+const journalForm = document.getElementById("journalForm");
+const journalHistory = document.getElementById("journalHistory");
+const titleInput = document.getElementById("journalTitle");
+const contentInput = document.getElementById("journal");
 
-saveBtn.addEventListener("click", async () => {
-  const content = journalTextarea.value.trim();
+/* ==== JOURNAL DATE ==== */
+function formatDate(dateString) {
+  return new Date(dateString).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+}
 
-  if (!content) {
-    alert("Journal cannot be empty!");
+/* ==== FETCH ALL JOURALS ==== */
+async function fetchJournals() {
+  try {
+    const res = await fetch("/journal", {
+      credentials: "include",
+    });
+
+    if (!res.ok) throw new Error("Unauthorized");
+
+    const data = await res.json();
+    renderJournalHistory(data.journalEntries);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+/* ==== SHOW HISTORY ===== */
+function renderJournalHistory(entries) {
+  journalHistory.innerHTML = `<label>Journal History</label>`;
+
+  if (!entries.length) {
+    journalHistory.innerHTML += `<p>No journal entries yet.</p>`;
     return;
   }
 
+  entries.forEach((entry) => {
+    const el = document.createElement("div");
+    el.className = "journal-entry";
+
+    el.innerHTML = `
+      <div class="journal-entry-header">
+        <h4>${entry.title}</h4>
+        <span class="journal-date">${formatDate(entry.created_at)}</span>
+      </div>
+      <p>${entry.content || entry.body}</p>
+      <div class="journal-actions">
+        <button class="delete-btn" data-id="${entry.id}">Delete</button>
+      </div>
+    `;
+
+    journalHistory.appendChild(el);
+  });
+}
+
+/* ==== CREATION ENTRY ==== */
+journalForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const title = titleInput.value.trim();
+  const content = contentInput.value.trim();
+  if (!title || !content) return;
+
   try {
-    const response = await fetch("/journal", {
+    const res = await fetch("/journal", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       credentials: "include",
-      body: JSON.stringify({
-        title: "My Day",
-        content: content,
-      }),
+      body: JSON.stringify({ title, content }),
     });
 
-    const data = await response.json();
+    if (!res.ok) throw new Error("Failed to save");
 
-    if (response.ok) {
-      alert(data.message);
-      extraSection.style.display = "block";
-      extraSection.innerHTML = `
-        <h3>Saved Entry</h3>
-        <p>${content}</p>
-      `;
-    } else {
-      alert(data.message || data.error);
-    }
-  } catch (error) {
-    console.error(error);
-    alert("Something went wrong while saving.");
+    titleInput.value = "";
+    contentInput.value = "";
+    fetchJournals();
+  } catch (err) {
+    console.error(err);
   }
 });
 
-extraSection.innerHTML = `
-  <h3>Saved Entry</h3>
-  <p>${content.replace(/</g, "&lt;")}</p>
-`;
+/* ==== DELETE ENTRY ==== */
+journalHistory.addEventListener("click", async (e) => {
+  if (!e.target.classList.contains("delete-btn")) return;
+
+  const id = e.target.dataset.id;
+
+  try {
+    const res = await fetch(`/journal/${id}`, {
+      method: "DELETE",
+      credentials: "include",
+    });
+
+    if (!res.ok) throw new Error("Delete failed");
+
+    fetchJournals();
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+/* CALL TO fetchJournal */
+fetchJournals();

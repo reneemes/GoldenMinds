@@ -4,7 +4,7 @@ const connection = require("../db.js");
 
 // SIGN UP
 exports.signup = async (req, res) => {
-  const { firstName, username, password } = req.body;
+  const { firstName, username, password, profileImg } = req.body;
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -12,8 +12,8 @@ exports.signup = async (req, res) => {
     const [result] = await connection
       .promise()
       .query(
-        "INSERT INTO users (first_name, username, password) VALUES (?, ?, ?)",
-        [firstName, username, hashedPassword],
+        "INSERT INTO users (first_name, username, password, profile_img) VALUES (?, ?, ?, ?)",
+        [firstName, username, hashedPassword, profileImg],
       );
 
     res.status(201).json({
@@ -44,8 +44,6 @@ exports.signin = async (req, res) => {
     }
 
     const user = rows[0];
-    console.log("Stored hash:", user.password);
-
     const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (!passwordMatch) {
@@ -55,7 +53,11 @@ exports.signin = async (req, res) => {
     }
 
     const token = jwt.sign(
-      { id: user.id, first_name: user.first_name, username: user.username },
+      {
+        id: user.id,
+        first_name: user.first_name,
+        profile_img: user.profile_img,
+      },
       process.env.JWT_SECRET,
       { expiresIn: "1h" },
     );
