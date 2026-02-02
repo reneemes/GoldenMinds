@@ -3,6 +3,8 @@ const journalHistory = document.getElementById("journalHistory");
 const titleInput = document.getElementById("journalTitle");
 const contentInput = document.getElementById("journal");
 
+
+
 /* ==== JOURNAL DATE ==== */
 function formatDate(dateString) {
   return new Date(dateString).toLocaleDateString("en-US", {
@@ -12,7 +14,7 @@ function formatDate(dateString) {
   });
 }
 
-/* ==== FETCH ALL JOURALS ==== */
+/* ==== FETCH ALL JOURNALS ==== */
 async function fetchJournals() {
   try {
     const res = await fetch("/journal", {
@@ -27,6 +29,16 @@ async function fetchJournals() {
     console.error(err);
   }
 }
+
+/* ==== TARGETING JOURNAL ENTRY TITLE ===== */
+journalHistory.addEventListener("click", (e) => {
+  const title = e.target.closest(".journalEntryTitle");
+  if (!title) return;
+
+  const entryId = title.dataset.id;
+  openJournal(entryId);
+});
+
 
 /* ==== SHOW HISTORY ===== */
 function renderJournalHistory(entries) {
@@ -43,7 +55,7 @@ function renderJournalHistory(entries) {
 
     el.innerHTML = `
       <div class="journal-entry-header">
-        <h4>${entry.title}</h4>
+        <button class="journalEntryTitle" data-id="${entry.id}">${entry.title}</button>
         <span class="journal-date">${formatDate(entry.created_at)}</span>
       </div>
       <p>${entry.content || entry.body}</p>
@@ -54,6 +66,23 @@ function renderJournalHistory(entries) {
 
     journalHistory.appendChild(el);
   });
+}
+
+/* ==== SHOW ENTRY ==== */
+async function openJournal(entryId) {
+  try {
+    const res = await fetch(`/journal/${entryId}`, {
+      credentials: "include",
+    });
+
+    if (!res.ok) throw new Error("Unauthorized");
+
+    const data = await res.json();
+    // renderJournalHistory(data.journalEntries);
+    console.log(data)
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 /* ==== CREATION ENTRY ==== */
