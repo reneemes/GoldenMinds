@@ -40,6 +40,8 @@ body {
   display: flex;
   justify-content: space-between;
   padding-left: 15px;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 // Title Section
@@ -50,13 +52,28 @@ body {
     margin: 0;
     padding-left: 10px;
   }
+
+  strong {
+    font-weight: 700;
+  }
+
+  //Text break for mobile
+  .mobile-break {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-break {
+      display: inline;
+    }
+  }
 }
 
 // Profile Section
 .profile-section {
   display: flex;
   align-items: center;
-  margin-left: auto;
+  margin-right: 15px;
   img {
     width: 60px;
     height: 60px;
@@ -68,6 +85,14 @@ body {
     font-weight: 600;
     margin-left: 20px;
     font-family: "Open Sans", sans-serif;
+  }
+
+  .profile-text {
+    display: none;
+
+    @media (min-width: 768px) {
+      display: inline-block;
+    }
   }
 }
 
@@ -109,6 +134,7 @@ body {
   flex-direction: column;
   gap: 20px;
   padding: 0 15px;
+  height: 1400px;
 }
 
 .location-map {
@@ -178,12 +204,17 @@ body {
   .locations-layout {
     display: grid;
     grid-template-columns: 1.5fr 1fr; // map wider than list
+    height: 800px;
     gap: 24px;
 
     .location-results {
       max-height: 500px;
       padding: 0;
     }
+  }
+
+  .search-container {
+    margin-bottom: 30px;
   }
 
   .search-bar {
@@ -198,7 +229,8 @@ body {
   }
 
   .profile-section {
-    padding: 30px 40px 0 0;
+    padding: 0px 40px 0 0;
+    margin: 0;
 
     img {
       width: 80px;

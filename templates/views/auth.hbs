@@ -7,6 +7,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png">
     <link rel="stylesheet" href="/css/auth/auth.css" />
   </head>
   <body>
@@ -61,12 +62,35 @@
             <input type="password" id="signupPassword" name="password" required />
           </div>
 
+          <!-- Profile Image Selector -->
+          <div class="input-group">
+            <label>Choose Your Avatar</label>
+            <div class="avatar-selector">
+              <input type="radio" name="profileImage" id="avatar1" value="avatar1.png" required hidden />
+              <label for="avatar1" class="avatar-option">
+                <img src="/img/avatar1.png" alt="Avatar 1" />
+              </label>
+
+              <input type="radio" name="profileImage" id="avatar2" value="avatar2.png" hidden />
+              <label for="avatar2" class="avatar-option">
+                <img src="/img/avatar2.png" alt="Avatar 2" />
+              </label>
+
+              <input type="radio" name="profileImage" id="avatar3" value="avatar3.png" hidden />
+              <label for="avatar3" class="avatar-option">
+                <img src="/img/avatar3.png" alt="Avatar 3" />
+              </label>
+
+              <input type="radio" name="profileImage" id="avatar4" value="avatar4.png" hidden />
+              <label for="avatar4" class="avatar-option">
+                <img src="/img/avatar4.png" alt="Avatar 4" />
+              </label>
+            </div>
+          </div>
+
           <button type="submit" class="submit-btn">Sign Up</button>
           <span class="signupForm-feedback"></span>
         </form>
-
-        <!-- Continue without account link -->
-        {{!-- <a href="/homepage">Continue without account</a> --}}
 
       </div>
 
