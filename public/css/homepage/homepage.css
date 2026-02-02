@@ -445,6 +445,38 @@ body {
     max-height: 500px;
   }
 }
+.modal.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.modal__content {
+  position: relative;
+  max-width: 600px;
+  margin: 10vh auto;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 8px;
+}
+.modal__close-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 @media (min-width: 1024px) {
   body {
     margin-left: 80px;

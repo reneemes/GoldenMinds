@@ -2,8 +2,11 @@ const journalForm = document.getElementById("journalForm");
 const journalHistory = document.getElementById("journalHistory");
 const titleInput = document.getElementById("journalTitle");
 const contentInput = document.getElementById("journal");
-
-
+/* ==== MODAL ELEMENTS ==== */
+const modal = document.getElementById("journalModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalDate = document.getElementById("modalDate");
+const modalBody = document.getElementById("modalBody");
 
 /* ==== JOURNAL DATE ==== */
 function formatDate(dateString) {
@@ -78,12 +81,46 @@ async function openJournal(entryId) {
     if (!res.ok) throw new Error("Unauthorized");
 
     const data = await res.json();
+    // modal.classList.remove("hidden");
     // renderJournalHistory(data.journalEntries);
-    console.log(data)
+    openModal(data.journalEntry[0]);
+    console.log(data.journalEntry[0])
   } catch (err) {
     console.error(err);
   }
 }
+
+function openModal(journalData) {
+  console.log("JournalData: ", journalData)
+  modalTitle.textContent = journalData.title;
+  modalDate.textContent = formatDate(journalData.created_at);
+  modalBody.textContent = journalData.body;
+
+  modal.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+  modal.classList.add("hidden");
+  document.body.style.overflow = "";
+}
+
+// close on backdrop or button
+modal.addEventListener("click", (e) => {
+  if (
+    e.target.classList.contains("modal__backdrop") ||
+    e.target.classList.contains("modal__close-btn")
+  ) {
+    closeModal();
+  }
+});
+
+// close on ESC
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+    closeModal();
+  }
+});
 
 /* ==== CREATION ENTRY ==== */
 journalForm.addEventListener("submit", async (e) => {
