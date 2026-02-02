@@ -74,6 +74,14 @@ body {
     font-weight: 600;
     margin-left: 20px;
   }
+
+  .profile-text {
+    display: none;
+
+    @media (min-width: 768px) {
+      display: inline-block;
+    }
+  }
 }
 
 // Weekday Section Styles

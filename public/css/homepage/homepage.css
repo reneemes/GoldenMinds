@@ -55,6 +55,14 @@ body {
   font-weight: 600;
   margin-left: 20px;
 }
+.profile-section .profile-text {
+  display: none;
+}
+@media (min-width: 768px) {
+  .profile-section .profile-text {
+    display: inline-block;
+  }
+}
 
 .week-days {
   display: flex;
