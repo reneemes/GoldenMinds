@@ -78,7 +78,17 @@
       </form>
     </section>
    </main>
-    {{> nav }} 
+
+<!--- nav bar --->
+{{#if isLoggedIn}}
+  {{> nav }}
+{{else}}
+  <!-- Simple back button for non-logged-in users -->
+  <div class="back-to-home">
+    <a href="/" class="back-btn">← Return to Home</a>
+  </div>
+{{/if}}
+
     <script src="/js/about.js"></script>
   </body>
 </html>
