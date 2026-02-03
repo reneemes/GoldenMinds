@@ -139,6 +139,12 @@ body {
 }
 
 // ---------- Avatar Selector ----------
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
 .avatar-selector {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

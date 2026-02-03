@@ -58,7 +58,11 @@ app.get("/homepage", auth, (req, res) => {
 
 // Resources
 app.get("/resources", auth, (req, res) => {
-  res.render("resources"); //res -> Render -> resources Page (resources.hbs)
+  res.render("resources", {
+    user: {
+      profileImg: req.user.profile_img,
+    }
+  }); //res -> Render -> resources Page (resources.hbs)
 });
 
 // About Us

@@ -279,6 +279,12 @@ body {
   overflow-y: auto;
   border-radius: 20px;
 
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   label {
     font-size: 16px;
     font-weight: 700;
@@ -296,6 +302,17 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  p {
+    font-size: 1rem;
+    font-weight: 200;
+    line-height: 1.6;
+    margin: 0;
+    color: $black;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 /* Entry header */
@@ -304,10 +321,17 @@ body {
   justify-content: space-between;
   align-items: center;
 
-  h4 {
+  button {
+    border: none;
+    background-color: #fff;
     font-size: 1.1rem;
     font-weight: 700;
     margin: 0;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   .journal-date {
@@ -316,15 +340,6 @@ body {
     color: $black;
     opacity: 0.6;
   }
-}
-
-/* Entry content */
-.journal-entry p {
-  font-size: 1rem;
-  font-weight: 200;
-  line-height: 1.6;
-  margin: 0;
-  color: $text-area;
 }
 
 /* Entry actions */
@@ -402,7 +417,7 @@ body {
   border-radius: 20px;
   border: 1px solid #ccc;
   background-color: $text-area-bg;
-  color: $text-area;
+  color: $black;
   outline: none;
   transition:
     border 0.3s,
@@ -415,7 +430,7 @@ body {
   }
 
   &:focus {
-    border-color: $teal;
+    border-color: $black;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
     background-color: #fff;
   }
@@ -434,7 +449,7 @@ body {
   border-radius: 20px;
   border: 1px solid #ccc;
   background-color: $text-area-bg;
-  color: $text-area;
+  color: $black;
   outline: none;
   transition:
     border 0.3s,
@@ -446,7 +461,7 @@ body {
   }
 
   &:focus {
-    border-color: $teal;
+    border-color: $black;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
     background-color: #fff;
   }
@@ -519,6 +534,45 @@ body {
     max-height: 500px;
   }
 }
+
+// ============ MODAL ============
+.modal.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  &__content {
+    border-radius: 30px;
+    border: 3px solid $black;
+    box-shadow: 6px 6px 0px $black;
+    position: relative;
+    max-width: 600px;
+    margin: 10vh auto;
+    padding: 1.5rem;
+    background: white;
+  }
+  
+  &__close-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+}
+
 
 // ============ DESKTOP STYLES ============
 @media (min-width: 1024px) {

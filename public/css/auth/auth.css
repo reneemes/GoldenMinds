@@ -118,6 +118,12 @@ body {
   border-color: #16a39e;
 }
 
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
 .avatar-selector {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

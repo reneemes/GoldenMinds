@@ -1,6 +1,7 @@
 const {
   createJournalEntry,
   getJournalEntries,
+  getOneJournalEntry,
   deleteJournalById,
 } = require("../services/journalService.js");
 
@@ -34,6 +35,22 @@ async function getAllJournalEntries(req, res) {
   }
 }
 
+async function getJournalEntry(req, res) {
+  if (!req.user?.id) {
+    return res.status(401).json({ error: 'Not authenticated' });
+  }
+
+  const { journalId } = req.params;
+
+  try {
+    const journalEntry = await getOneJournalEntry(req.user.id, journalId);
+    res.status(200).json({ journalEntry });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Unable to retrieve journal entry." });
+  }
+}
+
 async function deleteJournal(req, res) {
   if (!req.user?.id) {
     return res.status(401).json({ error: 'Not authenticated' });
@@ -63,5 +80,6 @@ async function deleteJournal(req, res) {
 module.exports = {
   createJournal,
   getAllJournalEntries,
+  getJournalEntry,
   deleteJournal,
 };

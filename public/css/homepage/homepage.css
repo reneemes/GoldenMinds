@@ -233,6 +233,11 @@ body {
   max-height: 400px;
   overflow-y: auto;
   border-radius: 20px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.journal-history::-webkit-scrollbar {
+  display: none;
 }
 .journal-history label {
   font-size: 16px;
@@ -251,6 +256,16 @@ body {
   flex-direction: column;
   gap: 12px;
 }
+.journal-entry p {
+  font-size: 1rem;
+  font-weight: 200;
+  line-height: 1.6;
+  margin: 0;
+  color: #000000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 /* Entry header */
 .journal-entry-header {
@@ -258,25 +273,22 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-.journal-entry-header h4 {
+.journal-entry-header button {
+  border: none;
+  background-color: #fff;
   font-size: 1.1rem;
   font-weight: 700;
   margin: 0;
+  cursor: pointer;
+}
+.journal-entry-header button:hover {
+  text-decoration: underline;
 }
 .journal-entry-header .journal-date {
   font-size: 0.8rem;
   font-weight: 600;
   color: #000000;
   opacity: 0.6;
-}
-
-/* Entry content */
-.journal-entry p {
-  font-size: 1rem;
-  font-weight: 200;
-  line-height: 1.6;
-  margin: 0;
-  color: #999;
 }
 
 /* Entry actions */
@@ -346,7 +358,7 @@ body {
   border-radius: 20px;
   border: 1px solid #ccc;
   background-color: #fefefe;
-  color: #999;
+  color: #000000;
   outline: none;
   transition: border 0.3s, box-shadow 0.3s;
 }
@@ -361,7 +373,7 @@ body {
   font-weight: 200;
 }
 .journal-section #journalTitle:focus {
-  border-color: #abc6cd;
+  border-color: #000000;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   background-color: #fff;
 }
@@ -379,7 +391,7 @@ body {
   border-radius: 20px;
   border: 1px solid #ccc;
   background-color: #fefefe;
-  color: #999;
+  color: #000000;
   outline: none;
   transition: border 0.3s, box-shadow 0.3s;
 }
@@ -392,7 +404,7 @@ body {
   font-style: italic;
 }
 .journal-section textarea:focus {
-  border-color: #abc6cd;
+  border-color: #000000;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   background-color: #fff;
 }
@@ -445,6 +457,40 @@ body {
     max-height: 500px;
   }
 }
+.modal.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.modal__content {
+  border-radius: 30px;
+  border: 3px solid #000000;
+  box-shadow: 6px 6px 0px #000000;
+  position: relative;
+  max-width: 600px;
+  margin: 10vh auto;
+  padding: 1.5rem;
+  background: white;
+}
+.modal__close-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 @media (min-width: 1024px) {
   body {
     margin-left: 80px;

@@ -129,8 +129,23 @@
 
         <!-- JOURNAL HISTORY SECTION -->
         <div class="journal-history" id="journalHistory">
+          {{!-- <h2 for="">Journal History</h2> --}}
           <label for="">Journal History</label>
         </div>
+
+        <!-- JOURNAL MODAL SECTION -->
+        <div id="journalModal" class="modal hidden">
+          <div class="modal__backdrop"></div>
+
+          <div class="modal__content" role="dialog" aria-modal="true">
+            <button class="modal__close-btn" aria-label="Close">&times;</button>
+
+            <h2 id="modalTitle">Journal Title</h2>
+            <p id="modalDate"></p>
+            <div id="modalBody"></div>
+          </div>
+        </div>
+
       </section>
       <div class="reserved-rights">
         <p>© 2026 Unfiltered. All Rights Reserved.</p>
