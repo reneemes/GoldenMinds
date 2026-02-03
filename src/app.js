@@ -13,7 +13,7 @@ const geocodeRoutes = require("./routes/geolocation.js");
 
 const auth = require("./middleware/auth.js");
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 
 //Initializing App
 const app = express();
