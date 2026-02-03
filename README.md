@@ -129,11 +129,11 @@ http://localhost:8080
 
 ## 👥 Contributors
 
-[![Renee](team-imgs/renee.png)](https://github.com/reneemes)
+[![Renee]()](https://github.com/reneemes)
 [![Cynthia](team-imgs/cynthia.png)](https://github.com/cynthiarincon)
 [![Elhadji](team-imgs/elhadji.png)](https://github.com/MassowNdiaye)
 [![Imani](team-imgs/imani.png)](https://github.com/ImaniMoore)
-[![Amadeo](team-imgs/Aqr.png)](https://github.com/amadeoquinrami)
+
 
 ---
 

@@ -98,7 +98,7 @@ signupForm.addEventListener('submit', async (e) => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ firstName, username, password, profileImage })
+      body: JSON.stringify({ firstName, username, password, profileImg: profileImage })
     });
     
     const data = await response.json();
