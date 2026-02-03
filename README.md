@@ -28,7 +28,7 @@ Mental health education is often overlooked, especially for young people navigat
 
 ## 🖼️ Logo
 
-![Logo](public/css/img/Logo.png)
+![Logo](public/img/Logo.png)
 
 ## ✨ Features
 
