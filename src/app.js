@@ -63,7 +63,11 @@ app.get("/resources", auth, (req, res) => {
 
 // About Us
 app.get("/about", (req, res) => {
+  // Check if user is logged in by checking for token
+  const isLoggedIn = !!req.cookies.token;
+  
   res.render("about", {
+    isLoggedIn: isLoggedIn,
     team: [
       { name: "Renee Messersmith", role: "Team Lead", image: "/img/renee.png" },
       { name: "Cynthia Rincon", role: "Front-end", image: "/img/cynthia.png" },
