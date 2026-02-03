@@ -1,26 +1,39 @@
 const locationInput = document.getElementById("locationInput");
 const radiusInput = document.getElementById("radiusInput");
 const searchButton = document.getElementById("searchButton");
+const resultsContainer = document.getElementById("locationResults");
+
+// Adding Default location
+const defaultLocation = {
+  name: "Charlotte, NC",
+  lat: 35.2271,
+  lng: -80.8431,
+  radius: 50,
+};
 
 // Initialize map
-const map = L.map("locationMap").setView([40.73061, -73.935242], 12); // NYC coords
+const map = L.map("locationMap").setView(
+  [defaultLocation.lat, defaultLocation.lng],
+  12,
+);
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
 }).addTo(map);
 
-// Inject clinics into list and map
-const resultsContainer = document.getElementById("locationResults");
+// Convert miles to meters
+function milesToMeters(miles) {
+  return miles * 1609.344;
+}
 
+// Fetch facility locations
 const fetchFacilityLocations = async (searchLocation, radius = 50) => {
-  function milesToMeters(miles) {
-    return miles * 1609.344;
-  }
-
   try {
     if (!searchLocation) {
       console.error("No Search Location provided...");
+      return [];
     }
+
     // Create a unique cache key
     const cacheKey = `facilities_${searchLocation.toLowerCase()}_${radius}`;
 
@@ -36,25 +49,14 @@ const fetchFacilityLocations = async (searchLocation, radius = 50) => {
     const geocodeResult = await fetch(
       `/api/geocode?location=${encodeURIComponent(searchLocation)}`,
     );
-
-    if (!geocodeResult.ok) {
-      throw new Error("Geolocation API error");
-    }
+    if (!geocodeResult.ok) throw new Error("Geolocation API error");
 
     const geocodeData = await geocodeResult.json();
-
     const lat = geocodeData[0]?.lat;
     const lon = geocodeData[0]?.lon;
+    if (!lat || !lon) throw new Error("Latitude and longitude are required");
 
-    if (!lat || !lon) {
-      throw new Error("Latitude and longitude are required");
-    }
-
-    if (!radius) {
-      radius = milesToMeters(50); // default to 50 if none provided
-    } else {
-      radius = milesToMeters(radius);
-    }
+    radius = milesToMeters(radius || 50);
 
     // Overpass Query
     const overpassQuery = `
@@ -73,10 +75,7 @@ const fetchFacilityLocations = async (searchLocation, radius = 50) => {
       body: "data=" + encodeURIComponent(overpassQuery),
     });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(errorText);
-    }
+    if (!response.ok) throw new Error(await response.text());
 
     const data = await response.json();
 
@@ -85,63 +84,74 @@ const fetchFacilityLocations = async (searchLocation, radius = 50) => {
 
     return data;
   } catch (err) {
-    console.log(err);
-    console.error("Error has occurred:", err.message);
+    console.error("Error occurred:", err.message);
+    return [];
   }
 };
 
+// Format Overpass API results
 function formatOverpassResults(overpassJson) {
-  return overpassJson?.elements.map((element) => {
-    const response = element.tags || {};
+  return (
+    overpassJson?.elements
+      .map((element) => {
+        const tags = element.tags || {};
 
-    const street =
-      response["addr:housenumber"] && response["addr:street"]
-        ? `${response["addr:housenumber"]} ${response["addr:street"]}, ${response["addr:city"] || ""} ${response["addr:state"] || ""} ${response["addr:postcode"] || ""}`.trim()
-        : "Not available";
+        const street =
+          tags["addr:housenumber"] && tags["addr:street"]
+            ? `${tags["addr:housenumber"]} ${tags["addr:street"]}, ${tags["addr:city"] || ""} ${tags["addr:state"] || ""} ${tags["addr:postcode"] || ""}`.trim()
+            : null;
 
-    return {
-      name: response.name,
-      street,
-      hours: response.opening_hours || "Not available",
-      phone: response.phone || response["contact:phone"] || "Not available",
-      website:
-        response.website || response["contact:website"] || "Not available",
-      lat: element.lat,
-      lng: element.lon,
-    };
-  });
+        const hours = tags.opening_hours || null;
+
+        return {
+          name: tags.name || "No Name",
+          street,
+          hours,
+          phone: tags.phone || tags["contact:phone"] || null,
+          website: tags.website || tags["contact:website"] || null,
+          lat: element.lat,
+          lng: element.lon,
+        };
+      })
+      // Filter out any location missing street or hours
+      .filter((clinic) => clinic.street && clinic.hours) || []
+  );
 }
 
-// we will need to output the data from fetchFacilityLocations and update html
-// use eventListener below and update html within
-searchButton.addEventListener("click", async () => {
-  resultsContainer.innerHTML = `<p>Fetching Results....</p>`;
-  const results = await fetchFacilityLocations(
-    locationInput.value,
-    radiusInput.value,
-  );
+// Display facilities on map and list
+async function loadAndDisplayFacilities(searchLocation, radius) {
+  resultsContainer.innerHTML = `<p>Fetching Results...</p>`;
+  const results = await fetchFacilityLocations(searchLocation, radius);
   resultsContainer.innerHTML = "";
 
-  const formattedResults = await formatOverpassResults(results);
+  const formattedResults = formatOverpassResults(results);
+
+  // Clear previous markers
+  if (window.currentMarkers)
+    window.currentMarkers.forEach((m) => map.removeLayer(m));
+  window.currentMarkers = [];
 
   formattedResults.forEach((clinic) => {
-    // Map marker
     const marker = L.marker([clinic.lat, clinic.lng])
       .addTo(map)
-      .bindPopup(`<b>${clinic.name}</b><br>${clinic.street}`);
+      .bindPopup(
+        `<b>${clinic.name}</b>${clinic.street ? "<br>" + clinic.street : ""}`,
+      );
 
-    // List card
+    window.currentMarkers.push(marker);
+
     const div = document.createElement("div");
     div.className = "location";
-    div.innerHTML = `
-    <h3>${clinic.name}</h3>
-    <p><strong>Street:</strong> ${clinic.street}</p>
-    <p><strong>Hours:</strong> ${clinic.hours}</p>
-    <p><strong>Phone:</strong> ${clinic.phone}</p>
-    <p><strong>Website:</strong> <a href="${clinic.website}" target="_blank">${clinic.website}</a></p>
-  `;
 
-    // Clicking a list item centers map on marker
+    let innerHTML = `<h3>${clinic.name}</h3>`;
+    if (clinic.street)
+      innerHTML += `<p><strong>Street:</strong> ${clinic.street}</p>`;
+    innerHTML += `<p><strong>Hours:</strong> ${clinic.hours}</p>`;
+    innerHTML += `<p><strong>Phone:</strong> ${clinic.phone}</p>`;
+    innerHTML += `<p><strong>Website:</strong> <a href="${clinic.website}" target="_blank">${clinic.website}</a></p>`;
+
+    div.innerHTML = innerHTML;
+
     div.addEventListener("click", () => {
       map.setView([clinic.lat, clinic.lng], 15);
       marker.openPopup();
@@ -149,4 +159,20 @@ searchButton.addEventListener("click", async () => {
 
     resultsContainer.appendChild(div);
   });
+
+  if (formattedResults[0]) {
+    map.setView([formattedResults[0].lat, formattedResults[0].lng], 12);
+  }
+}
+
+// Initial load for Charlotte
+window.addEventListener("DOMContentLoaded", async () => {
+  locationInput.value = ""; // completely empty
+  radiusInput.value = defaultLocation.radius; // keep default radius
+  await loadAndDisplayFacilities(defaultLocation.name, defaultLocation.radius);
+});
+
+// Search button
+searchButton.addEventListener("click", async () => {
+  await loadAndDisplayFacilities(locationInput.value, radiusInput.value);
 });

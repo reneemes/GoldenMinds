@@ -69,6 +69,11 @@ body {
   }
 }
 
+// Hidding radius on mobile devices
+#radiusInput {
+  display: none;
+}
+
 // Profile Section
 .profile-section {
   display: flex;
@@ -104,14 +109,19 @@ body {
 
 .search-bar {
   display: flex;
-  align-items: center;
+  align-items: center; // vertically align inputs and labels
   gap: 8px;
   padding: 8px 12px;
   background-color: $white;
   border-radius: 30px;
   border: 3px solid $black;
-  width: 320px;
+  width: 350px;
   margin: 20px;
+}
+
+.search-bar label {
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .search-bar input {
@@ -119,6 +129,7 @@ body {
   outline: none;
   flex: 1;
   font-size: 14px;
+  padding: 4px 8px;
 }
 
 .search-bar button {
@@ -128,6 +139,14 @@ body {
   font-size: 16px;
 }
 
+// Hidding radius label on mobile
+@media (max-width: 600px) {
+  // adjust breakpoint as needed
+  .search-bar label[for="radiusInput"] {
+    display: none;
+  }
+}
+
 // ============ RESULTS CONTAINERS ============
 .locations-layout {
   display: flex;
@@ -135,6 +154,7 @@ body {
   gap: 20px;
   padding: 0 15px;
   height: 1400px;
+  margin-bottom: 60px;
 }
 
 .location-map {
@@ -147,13 +167,11 @@ body {
 
 .location-results {
   width: 100%;
-  max-height: 600px;
+  max-height: 500px;
   padding: 0;
   display: flex; // ensure flex
   flex-direction: column; // stack cards vertically
   gap: 16px; // space between each card
-  overflow-y: auto; // ✅ this is the key
-  overscroll-behavior: contain; // optional: prevents page scroll bleed
 
   .location {
     background-color: rgba(255, 255, 255, 0.95);
@@ -204,13 +222,36 @@ body {
   .locations-layout {
     display: grid;
     grid-template-columns: 1.5fr 1fr; // map wider than list
-    height: 800px;
+    height: 720px;
     gap: 24px;
+    margin-bottom: 20px;
+
+    .location {
+      margin-right: 20px;
+    }
 
     .location-results {
-      max-height: 500px;
+      max-height: 100%;
+      overflow-y: auto;
       padding: 0;
+
+      /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Hide scrollbar for Firefox */
+      scrollbar-width: none;
+
+      /* Hide scrollbar for IE, Edge */
+      -ms-overflow-style: none;
     }
+  }
+
+  // Showing radius after breakpoint
+  #radiusInput {
+    display: inline;
+    width: 100px;
   }
 
   .search-container {
@@ -249,5 +290,9 @@ body {
 
   .search-bar {
     width: 600px;
+  }
+
+  .locations-layout {
+    height: 520px;
   }
 }
