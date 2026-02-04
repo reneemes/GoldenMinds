@@ -1,6 +1,9 @@
 const form = document.querySelector(".contact-form");
 const sentMessage = form.querySelector(".contact-form__feedback");
 const characterOutput = document.querySelector("#character-output");
+// Logout Button
+const signoutBtn = document.querySelector(".signout-btn");
+signoutBtn.addEventListener("click", logout);
 
 const nameInput = form.name;
 const emailInput = form.email;
@@ -64,4 +67,14 @@ function validateForm() {
   } else {
     return true;
   }
+}
+
+async function logout(e) {
+  e.preventDefault();
+
+  await fetch("/auth/signout", {
+    method: "POST",
+    credentials: "include",
+  });
+  window.location.href = "/";
 }
