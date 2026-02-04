@@ -53,13 +53,13 @@ body {
   position: fixed;
   inset: 0;
   z-index: 1000;
-  
+
   &__backdrop {
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
   }
-  
+
   &__content {
     display: flex;
     flex-direction: column;
@@ -69,14 +69,16 @@ body {
     box-shadow: 6px 6px 0px $black;
     position: relative;
     max-width: 600px;
+    height: 600px;
     margin: 10vh auto;
     padding: 1.5rem;
-    background: #FFDADA;
+    background: #ffdada;
 
     &--sub-title {
       padding: 0;
+      font-size: 18px;
     }
-    
+
     &--body {
       display: flex;
       flex-direction: column;
@@ -84,7 +86,7 @@ body {
     }
 
     img {
-      width: 80%;
+      width: 50%;
       height: auto;
       border-radius: 15px;
     }
@@ -98,7 +100,7 @@ body {
       font-size: 1.2rem;
     }
   }
-  
+
   &__close-btn {
     position: absolute;
     top: 0.5rem;
