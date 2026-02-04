@@ -25,17 +25,17 @@ body {
 
 .logo-header {
   background: #ffffff;
-  border: 3px solid #000000;
+  border: 4px solid #000000;
   border-radius: 12px;
-  padding: 0.5rem 1rem;
+  padding: 0.8rem 1.5rem;
   margin-bottom: 2rem;
-  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
 }
 
 .logo-text {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   text-transform: uppercase;
   letter-spacing: -1px;
 }
@@ -53,17 +53,17 @@ body {
 
 .tab-toggle {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.8rem;
   margin-bottom: 2rem;
 }
 
 .tab-btn {
-  padding: 0.8rem 2rem;
-  border: 3px solid #000000;
+  padding: 1rem 2.5rem;
+  border: 4px solid #000000;
   background: #ffffff;
   color: #000000;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.15rem;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s;
@@ -71,7 +71,7 @@ body {
 }
 .tab-btn.active {
   background: #e3f564;
-  box-shadow: 0 3px 0 #000000;
+  box-shadow: 0 4px 0 #000000;
 }
 .tab-btn:hover:not(.active) {
   background: #ebf7fc;
@@ -79,18 +79,18 @@ body {
 
 .auth-card {
   background: #ebf7fc;
-  border: 3px solid #000000;
+  border: 4px solid #000000;
   border-radius: 16px;
-  padding: 2rem 1.5rem;
+  padding: 2.5rem 2rem;
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   box-shadow: 6px 6px 0px #000000;
 }
 
 .auth-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.8rem;
 }
 .auth-form.hidden {
   display: none;
@@ -99,17 +99,18 @@ body {
 .input-group {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.7rem;
 }
 .input-group label {
-  font-weight: 600;
-  font-size: 0.9rem;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #000000;
 }
 .input-group input {
-  padding: 0.9rem;
-  border: 3px solid #000000;
+  padding: 1.1rem;
+  border: 4px solid #000000;
   border-radius: 10px;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-family: "Open Sans", sans-serif;
   background: #ffffff;
 }
@@ -123,18 +124,24 @@ fieldset {
   margin: 0;
   padding: 0;
 }
+fieldset legend {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #000000;
+  margin-bottom: 0.7rem;
+}
 
 .avatar-selector {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0.8rem;
-  margin-top: 0.5rem;
+  gap: 1rem;
+  margin-top: 0.7rem;
 }
 .avatar-selector .avatar-option {
   cursor: pointer;
-  border: 3px solid #000000;
+  border: 4px solid #000000;
   border-radius: 12px;
-  padding: 0.5rem;
+  padding: 0.6rem;
   background: #ffffff;
   transition: all 0.2s;
   display: flex;
@@ -143,7 +150,7 @@ fieldset {
 }
 .avatar-selector .avatar-option:hover {
   transform: translateY(-3px);
-  box-shadow: 3px 3px 0 #000000;
+  box-shadow: 4px 4px 0 #000000;
 }
 .avatar-selector .avatar-option img {
   width: 100%;
@@ -158,59 +165,102 @@ fieldset {
 
 .submit-btn {
   background: #e3f564;
-  border: 3px solid #000000;
+  border: 4px solid #000000;
   border-radius: 999px;
-  padding: 1rem 2rem;
+  padding: 1.2rem 2.5rem;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.15rem;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 0 #000000;
+  box-shadow: 0 5px 0 #000000;
   margin-top: 0.5rem;
   font-family: "Open Sans", sans-serif;
 }
 .submit-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 0 #000000;
+  box-shadow: 0 7px 0 #000000;
 }
 .submit-btn:active {
   transform: translateY(1px);
-  box-shadow: 0 2px 0 #000000;
+  box-shadow: 0 3px 0 #000000;
 }
 
 .loginForm-feedback,
 .signupForm-feedback {
   text-align: center;
   padding: 0 15px;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .back-link {
   margin-top: 2rem;
   color: #000000;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1.1rem;
   transition: color 0.2s;
 }
 .back-link:hover {
   color: #16a39e;
 }
 
+.footer {
+  text-align: center;
+  font-weight: 700;
+}
+
 @media (min-width: 768px) {
   .logo-text {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
   }
   .auth-card {
-    padding: 2.5rem 2rem;
+    padding: 3rem 2.5rem;
+    max-width: 500px;
   }
   .tab-btn {
-    padding: 1rem 2.5rem;
+    padding: 1.2rem 3rem;
+    font-size: 1.25rem;
+  }
+  .input-group label {
+    font-size: 1.1rem;
+  }
+  .input-group input {
+    padding: 1.2rem;
+    font-size: 1.15rem;
+  }
+  .submit-btn {
+    padding: 1.3rem 3rem;
+    font-size: 1.25rem;
+  }
+  .back-link {
+    font-size: 1.15rem;
   }
 }
 @media (min-width: 1200px) {
   .logo-text {
-    font-size: 3rem;
+    font-size: 3.3rem;
   }
   .auth-card {
-    max-width: 450px;
+    max-width: 550px;
+    padding: 3.5rem 3rem;
+  }
+  .tab-btn {
+    padding: 1.3rem 3.5rem;
+    font-size: 1.3rem;
+  }
+  .input-group label {
+    font-size: 1.15rem;
+  }
+  .input-group input {
+    padding: 1.3rem;
+    font-size: 1.2rem;
+  }
+  .submit-btn {
+    padding: 1.4rem 3.5rem;
+    font-size: 1.3rem;
+  }
+  .back-link {
+    font-size: 1.2rem;
   }
 }/*# sourceMappingURL=auth.css.map */

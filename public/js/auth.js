@@ -82,7 +82,7 @@ signupForm.addEventListener('submit', async (e) => {
   const password = document.getElementById('signupPassword').value;
   
   // Get selected avatar
-  const profileImage = document.querySelector('input[name="profileImage"]:checked')?.value;
+  const profileImage = document.querySelector('input[name="profileImg"]:checked')?.value;
   
   // Check if avatar is selected
   if (!profileImage) {
@@ -114,7 +114,7 @@ signupForm.addEventListener('submit', async (e) => {
       document.getElementById('signupPassword').value = '';
       
       // Uncheck all avatars
-      document.querySelectorAll('input[name="profileImage"]').forEach(radio => {
+      document.querySelectorAll('input[name="profileImg"]').forEach(radio => {
         radio.checked = false;
       });
       

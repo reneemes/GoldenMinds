@@ -19,15 +19,15 @@ body {
 .about__sec {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   text-transform: uppercase;
   letter-spacing: -1px;
   text-align: center;
   margin-bottom: 3rem;
   background: #FFFFFF;
-  border: 3px solid #000000;
+  border: 4px solid #000000;
   border-radius: 16px;
-  padding: 1rem 2rem;
+  padding: 1.2rem 2.2rem;
   width: -moz-max-content;
   width: max-content;
   margin: 0 auto 3rem;
@@ -71,23 +71,23 @@ body {
   background: linear-gradient(135deg, #E3F564 0%, #d4e157 100%);
   border: 4px solid #000000;
   border-radius: 30px;
-  padding: 2.5rem 2rem;
+  padding: 2.8rem 2.2rem;
   margin-bottom: 4rem;
   box-shadow: 8px 8px 0px #000000;
   position: relative;
 }
 .about-intro__title {
   font-family: "Montserrat", sans-serif;
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   font-weight: 800;
   color: #000000;
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.8rem;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 .about-intro__sub-title {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: 600;
   color: #16a39e;
   margin: 0 0 2rem;
@@ -95,11 +95,12 @@ body {
   font-style: italic;
 }
 .about-intro__body {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   line-height: 1.8;
   color: #000000;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.4rem;
   text-align: center;
+  font-weight: 500;
 }
 .about-intro__body strong {
   color: #16a39e;
@@ -112,7 +113,7 @@ body {
 .team {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 2.2rem;
   padding: 0 0 3rem;
   margin-bottom: 2rem;
 }
@@ -123,7 +124,7 @@ body {
   background: #FFFFFF;
   border: 4px solid #000000;
   border-radius: 25px;
-  padding: 2rem 1.5rem;
+  padding: 2.2rem 1.8rem;
   box-shadow: 6px 6px 0px #000000;
   transition: all 0.3s ease;
 }
@@ -132,8 +133,8 @@ body {
   box-shadow: 10px 10px 0px #000000;
 }
 .team .team-member__img {
-  height: 160px;
-  width: 160px;
+  height: 180px;
+  width: 180px;
   border-radius: 100%;
   border: 4px solid #000000;
   -o-object-fit: cover;
@@ -147,48 +148,49 @@ body {
 }
 .team .team-member__name {
   font-family: "Montserrat", sans-serif;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.7rem;
   color: #000000;
   text-align: center;
 }
 .team .team-member__role {
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   font-weight: 600;
   margin: 0;
   color: #000000;
   background: #18AFAA;
-  padding: 0.5rem 1.5rem;
+  padding: 0.6rem 1.7rem;
   border-radius: 20px;
   border: 2px solid #000000;
 }
 
 .contact {
   width: 100%;
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
   padding: 0 0 4rem;
 }
 .contact__title {
   font-family: "Montserrat", sans-serif;
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   font-weight: 800;
   color: #000000;
-  margin: 2rem 0 1rem;
+  margin: 2rem 0 1.2rem;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 .contact__message {
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   color: #000000;
   margin: 0 0 2rem;
   background: #FFFFFF;
-  padding: 1rem;
+  padding: 1.2rem;
   border-radius: 15px;
   border: 3px solid #000000;
+  line-height: 1.6;
 }
 .contact .contact-form {
   display: flex;
@@ -198,8 +200,8 @@ body {
   background: #EBF7FC;
   border: 4px solid #000000;
   border-radius: 25px;
-  padding: 2.5rem 2rem;
-  gap: 1.5rem;
+  padding: 2.8rem 2.2rem;
+  gap: 1.7rem;
   box-shadow: 8px 8px 0px #000000;
 }
 .contact .contact-form__feedback {
@@ -207,7 +209,7 @@ body {
 }
 .contact .contact-form label {
   color: #000000;
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -221,13 +223,13 @@ body {
 .contact .contact-form input,
 .contact .contact-form textarea,
 .contact .contact-form select {
-  border: 3px solid #000000;
+  border: 4px solid #000000;
   border-radius: 12px;
   background: #FFFFFF;
   font-family: "Open Sans", sans-serif;
-  font-size: 1rem;
+  font-size: 1.1rem;
   width: 100%;
-  padding: 1rem;
+  padding: 1.1rem;
   transition: all 0.2s;
   box-sizing: border-box;
 }
@@ -241,10 +243,10 @@ body {
 }
 .contact .contact-form textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 140px;
 }
 .contact .contact-form #character-output {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: rgba(0, 0, 0, 0.6);
   margin: -0.5rem 0 0;
   text-align: right;
@@ -253,9 +255,9 @@ body {
   background: #E3F564;
   border: 4px solid #000000;
   border-radius: 999px;
-  padding: 1.2rem 4rem;
+  padding: 1.3rem 4.5rem;
   font-weight: 800;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
@@ -299,66 +301,141 @@ body {
 .back-btn {
   display: inline-block;
   background: #E3F564;
-  border: 3px solid #000000;
+  border: 4px solid #000000;
   border-radius: 999px;
-  padding: 0.5rem 1rem;
+  padding: 0.7rem 1.4rem;
   font-weight: 700;
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: #000000;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.2s;
-  box-shadow: 2px 2px 0 #000000;
+  box-shadow: 3px 3px 0 #000000;
 }
 .back-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 3px 3px 0 #000000;
+  box-shadow: 4px 4px 0 #000000;
   background: #d4e157;
 }
 .back-btn:active {
   transform: translateY(1px);
-  box-shadow: 1px 1px 0 #000000;
+  box-shadow: 2px 2px 0 #000000;
+}
+
+.footer {
+  text-align: center;
+  font-weight: 700;
 }
 
 @media screen and (min-width: 768px) {
   .about__sec {
-    font-size: 3.5rem;
-    padding: 1.2rem 2.5rem;
+    font-size: 3.8rem;
+    padding: 1.4rem 2.8rem;
   }
   .about-intro {
-    padding: 3rem 3rem;
+    padding: 3.5rem 3.5rem;
   }
   .about-intro__title {
-    font-size: 3rem;
+    font-size: 3.3rem;
+  }
+  .about-intro__sub-title {
+    font-size: 1.9rem;
+  }
+  .about-intro__body {
+    font-size: 1.35rem;
   }
   .team {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
+    gap: 2.8rem;
+  }
+  .team .team-member {
+    padding: 2.5rem 2rem;
   }
   .team .team-member__img {
-    height: 180px;
-    width: 180px;
+    height: 200px;
+    width: 200px;
+  }
+  .team .team-member__name {
+    font-size: 2.2rem;
+  }
+  .team .team-member__role {
+    font-size: 1.45rem;
   }
   .contact {
-    max-width: 650px;
+    max-width: 700px;
+  }
+  .contact__title {
+    font-size: 3.2rem;
+  }
+  .contact__message {
+    font-size: 1.35rem;
+  }
+  .contact .contact-form {
+    padding: 3.2rem 2.8rem;
+  }
+  .contact .contact-form label {
+    font-size: 1.1rem;
+  }
+  .contact .contact-form input,
+  .contact .contact-form textarea,
+  .contact .contact-form select {
+    font-size: 1.15rem;
+    padding: 1.2rem;
+  }
+  .contact .contact-form textarea {
+    min-height: 150px;
+  }
+  .contact .contact-form__btn {
+    padding: 1.4rem 5rem;
+    font-size: 1.3rem;
   }
   .back-btn {
-    padding: 0.7rem 1.4rem;
-    font-size: 0.9rem;
-    box-shadow: 3px 3px 0 #000000;
+    padding: 0.8rem 1.6rem;
+    font-size: 1rem;
+    box-shadow: 4px 4px 0 #000000;
   }
 }
 @media (min-width: 1200px) {
   .about__sec {
-    font-size: 4rem;
+    font-size: 4.2rem;
+    padding: 1.6rem 3rem;
+  }
+  .about-intro__title {
+    font-size: 3.5rem;
+  }
+  .about-intro__sub-title {
+    font-size: 2rem;
+  }
+  .about-intro__body {
+    font-size: 1.4rem;
   }
   .team {
     grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
+    gap: 3.2rem;
   }
-  .about-intro__body {
-    font-size: 1.15rem;
+  .team .team-member__img {
+    height: 220px;
+    width: 220px;
+  }
+  .team .team-member__name {
+    font-size: 2.3rem;
+  }
+  .team .team-member__role {
+    font-size: 1.5rem;
+  }
+  .contact__title {
+    font-size: 3.5rem;
+  }
+  .contact__message {
+    font-size: 1.4rem;
+  }
+  .contact .contact-form__btn {
+    font-size: 1.35rem;
+  }
+  .back-btn {
+    padding: 0.9rem 1.8rem;
+    font-size: 1.05rem;
   }
 }/*# sourceMappingURL=about.css.map */
