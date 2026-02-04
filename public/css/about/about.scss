@@ -137,7 +137,7 @@ body {
   }
 }
 
-// ---------- Team Section (No Rotation!) ----------
+// ---------- Team Section ----------
 .team {
   display: grid;
   grid-template-columns: 1fr;
@@ -361,6 +361,11 @@ body {
     transform: translateY(1px);
     box-shadow: 2px 2px 0 $black;
   }
+}
+
+.footer{
+  text-align: center;
+  font-weight: 700;
 }
 
 // ---------- Tablet (768px+) ----------

@@ -238,6 +238,11 @@ body {
   text-decoration: underline;
 }
 
+.footer {
+  text-align: center;
+  font-weight: 700;
+}
+
 @media (min-width: 768px) {
   .title-section h2 {
     font-size: 32px;

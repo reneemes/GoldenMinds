@@ -324,6 +324,11 @@ body {
   box-shadow: 2px 2px 0 #000000;
 }
 
+.footer {
+  text-align: center;
+  font-weight: 700;
+}
+
 @media screen and (min-width: 768px) {
   .about__sec {
     font-size: 3.8rem;

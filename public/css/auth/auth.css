@@ -205,6 +205,11 @@ fieldset legend {
   color: #16a39e;
 }
 
+.footer {
+  text-align: center;
+  font-weight: 700;
+}
+
 @media (min-width: 768px) {
   .logo-text {
     font-size: 2.8rem;
