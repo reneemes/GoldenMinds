@@ -91,6 +91,12 @@ app.use("/journal", journalRoutes);
 app.use("/mood", moodRoutes);
 app.use("/contact", contactRoutes);
 app.use("/api/geocode", geocodeRoutes);
+
+// 404 handler
+app.use((req, res, next) => {
+  res.status(404).render("404"); // render a 404.hbs page
+});
+
 // Error handling
 app.use((err, req, res, next) => {
   console.error(err);

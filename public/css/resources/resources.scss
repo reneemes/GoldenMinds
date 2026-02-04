@@ -44,6 +44,72 @@ body {
   margin-bottom: 20px;
 }
 
+// ============ MODAL ============
+.modal.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+    border: 3px solid $black;
+    box-shadow: 6px 6px 0px $black;
+    position: relative;
+    max-width: 600px;
+    margin: 10vh auto;
+    padding: 1.5rem;
+    background: #FFDADA;
+
+    &--sub-title {
+      padding: 0;
+    }
+    
+    &--body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    img {
+      width: 80%;
+      height: auto;
+      border-radius: 15px;
+    }
+
+    .support-title {
+      margin-bottom: 0;
+      font-size: 1.6rem;
+    }
+
+    li {
+      font-size: 1.2rem;
+    }
+  }
+  
+  &__close-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+}
+
 // Title Section
 .title-section {
   h2 {
@@ -139,7 +205,7 @@ body {
   font-size: 16px;
 }
 
-// Hidding radius label on mobile
+// Hiding radius label on mobile
 @media (max-width: 600px) {
   // adjust breakpoint as needed
   .search-bar label[for="radiusInput"] {

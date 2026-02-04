@@ -1,3 +1,5 @@
+const signoutBtn = document.querySelector(".signout-btn");
+signoutBtn.addEventListener("click", logout);
 let currentRange = "week";
 
 // DOM READY
@@ -128,4 +130,14 @@ async function saveMood(mood) {
   } catch (error) {
     console.error('Mood save error:', error);
   }
+}
+
+async function logout(e) {
+  e.preventDefault();
+
+  await fetch("/auth/signout", {
+    method: "POST",
+    credentials: "include",
+  });
+  window.location.href = "/";
 }

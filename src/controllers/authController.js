@@ -66,6 +66,8 @@ exports.signin = async (req, res) => {
       .cookie("token", token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
+        sameSite: "lax",
+        path: "/",
         maxAge: 3600000, // 1 hour
       })
       .status(200)
@@ -88,6 +90,12 @@ exports.signin = async (req, res) => {
 
 // SIGN OUT
 exports.signout = async (req, res) => {
-  res.clearCookie("token");
-  res.redirect("/auth");
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+  });
+  // res.redirect("/auth");
+  res.status(200).json({ message: "Signed out" });
 };
