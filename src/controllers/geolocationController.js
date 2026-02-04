@@ -12,7 +12,7 @@ async function geocode(req, res) {
 
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
+
     res.json(data);
   } catch (error) {
     console.error(error);

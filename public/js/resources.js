@@ -2,6 +2,12 @@ const locationInput = document.getElementById("locationInput");
 const radiusInput = document.getElementById("radiusInput");
 const searchButton = document.getElementById("searchButton");
 const resultsContainer = document.getElementById("locationResults");
+// Logout Button
+const signoutBtn = document.querySelector(".signout-btn");
+signoutBtn.addEventListener("click", logout);
+// Modal
+const modal = document.getElementById("infoModal");
+
 
 // Adding Default location
 const defaultLocation = {
@@ -176,3 +182,41 @@ window.addEventListener("DOMContentLoaded", async () => {
 searchButton.addEventListener("click", async () => {
   await loadAndDisplayFacilities(locationInput.value, radiusInput.value);
 });
+
+/* ==== SHOW MESSAGE MODAL ==== */
+function openModal() {
+  modal.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+  modal.classList.add("hidden");
+  document.body.style.overflow = "";
+}
+
+// close on backdrop or button
+modal.addEventListener("click", (e) => {
+  if (
+    e.target.classList.contains("modal__backdrop") ||
+    e.target.classList.contains("modal__close-btn")
+  ) {
+    closeModal();
+  }
+});
+
+// close on ESC
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+    closeModal();
+  }
+});
+
+async function logout(e) {
+  e.preventDefault();
+
+  await fetch("/auth/signout", {
+    method: "POST",
+    credentials: "include",
+  });
+  window.location.href = "/";
+}

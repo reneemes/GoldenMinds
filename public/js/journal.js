@@ -81,17 +81,13 @@ async function openJournal(entryId) {
     if (!res.ok) throw new Error("Unauthorized");
 
     const data = await res.json();
-    // modal.classList.remove("hidden");
-    // renderJournalHistory(data.journalEntries);
     openModal(data.journalEntry[0]);
-    console.log(data.journalEntry[0])
   } catch (err) {
     console.error(err);
   }
 }
 
 function openModal(journalData) {
-  console.log("JournalData: ", journalData)
   modalTitle.textContent = journalData.title;
   modalDate.textContent = formatDate(journalData.created_at);
   modalBody.textContent = journalData.body;

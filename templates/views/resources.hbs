@@ -3,6 +3,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/partials/nav.css">
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png">
     <link rel="stylesheet" href="css/resources/resources.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /> <!-- MAP RENDER-->
     <link
@@ -54,13 +55,34 @@
           <!-- Clinic items will be injected here dynamically -->
         </div>
       </section>
+
+      <!-- ALERT MODAL SECTION -->
+        <div id="infoModal" class="modal">
+          <div class="modal__backdrop"></div>
+
+          <div class="modal__content" role="dialog" aria-modal="true">
+            <button class="modal__close-btn" aria-label="Close">&times;</button>
+
+            <h1 class="modal__content--title">Get Help Now</h1>
+            <h2 class="modal__content--sub-title">
+              Contact a trusted adult or guardian if you are experiencing 
+              mental health-related distress or are worried about a loved 
+              one who may need crisis support.
+            </h2>
+            <img src="/img/988-support.png" alt="988 support hotline"/>
+            <h3 class="support-title">988 Lifeline: free and confidential support</h3>
+            <ul>
+              <li><strong>Call or text</strong> 988.</li>
+              <li><strong>Chat</strong> at <a href="988lifeline.org">988lifeline.org</a>.</li>
+              <li>Connect with a trained crisis counselor. 988 is confidential, free, and available 24/7/365.</li>
+            </ul>
+          </div>
+        </div>
     </main>
 
     {{> nav }}
 
-    <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script> <!-- Allow to load leaflet JS to create maps-->
-    {{!-- <script src="js/app.js"></script>  --}}
     <script src="js/resources.js"></script>
   </body>
 </html>

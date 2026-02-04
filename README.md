@@ -84,15 +84,13 @@ Unfiltered is built with a mobile-first approach and includes breakpoints for:
 
 ### Login View
 
-![Login Screen](img/ReadMe1.png)
+![Login Screen](public/img/LoginView.png)
 
 ### Signup View
 
-![Signup Screen](img/ReadMe2.png)
+![Signup Screen](public/img/SignupView.png)
 
 <p text-align = "center">
-  <img src="img/ReadMe1.png" width="300" />
-  <img src="img/ReadMe2.png" width="300" />
 </p>
 
 ## 🚀 Getting Started
@@ -131,11 +129,10 @@ http://localhost:8080
 
 ## 👥 Contributors
 
-[![Renee](team-imgs/renee.png)](https://github.com/reneemes)
-[![Cynthia](team-imgs/cynthia.png)](https://github.com/cynthiarincon)
-[![Elhadji](team-imgs/elhadji.png)](https://github.com/MassowNdiaye)
-[![Imani](team-imgs/imani.png)](https://github.com/ImaniMoore)
-[![Amadeo](team-imgs/Aqr.png)](https://github.com/amadeoquinrami)
+[![Renee](public/img/renee.png)](https://github.com/reneemes)
+[![Cynthia](public/img/cynthia.png)](https://github.com/cynthiarincon)
+[![Elhadji](public/img/elhadji.png)](https://github.com/MassowNdiaye)
+[![Imani](public/img/imani.png)](https://github.com/ImaniMoore)
 
 ---
 

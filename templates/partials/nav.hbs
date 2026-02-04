@@ -21,11 +21,13 @@
       </a>
     </div>
 
-    <!-- Sign Out Icon -->
     <div class="sign-out-icon">
-      <a href="/login">
-        <img src="img/sign-out-icon.png" alt="Sign Out" class="nav-icon" />
-      </a>
+      <form action="/auth/signout" method="POST">
+        <button type="submit" class="signout-btn">
+          <img src="img/sign-out-icon.png" alt="Sign Out" class="nav-icon" />
+        </button>
+      </form>
     </div>
+
   </div>
 </nav>
