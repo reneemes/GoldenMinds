@@ -26,7 +26,7 @@ body {
 // ---------- Layout (Mobile First) ----------
 .landing-container {
   min-height: 100vh;
-  padding: 1.5rem 1rem;
+  padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,17 +37,17 @@ body {
 // ---------- Logo ----------
 .logo-header {
   background: $white;
-  border: 3px solid $black;
+  border: 4px solid $black;
   border-radius: 12px;
-  padding: 0.5rem 1rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 3px 3px 0px rgba($black, 0.1);
+  padding: 0.8rem 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 4px 4px 0px rgba($black, 0.2);
 }
 
 .logo-text {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 2.2rem;
   text-transform: uppercase;
   letter-spacing: -1px;
   display: inline-block;
@@ -64,84 +64,68 @@ body {
   background-clip: text;
 }
 
-// ---------- Kids Image (hide on small mobile) ----------
-.kids-image {
-  display: none;
-  position: absolute;
-  z-index: 1;
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(-50%);
-  }
-  50% {
-    transform: translateY(calc(-50% - 10px));
-  }
-}
-
-.kids-image img {
-  width: 70px;
-  height: auto;
-}
-
 // ---------- Text ----------
 .main-heading {
-  font-size: 1.5rem;
+  font-size: 2.3rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   line-height: 1.3;
   text-align: center;
+  color: $black;
 }
 
 .slogan {
-  font-size: 0.9rem;
+  font-size: 1.25rem;
   line-height: 1.6;
-  margin-bottom: 1.8rem;
+  margin-bottom: 2rem;
   text-align: center;
-  max-width: 340px;
+  max-width: 450px;
+  color: $black;
+  font-weight: 500;
 }
 
 // ---------- Buttons ----------
 .cta-buttons {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.3rem;
+  width: 100%;
+  max-width: 350px;
 }
 
 .btn-login {
   background: $yellow;
-  border: 3px solid $black;
+  border: 4px solid $black;
   border-radius: 999px;
-  padding: 1rem 2rem;
+  padding: 1.3rem 2.8rem;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-decoration: none;
   color: $black;
   transition:
     transform 0.2s,
     box-shadow 0.2s;
-  box-shadow: 0 4px 0 $black;
+  box-shadow: 0 5px 0 $black;
+  text-align: center;
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 0 $black;
+    box-shadow: 0 7px 0 $black;
   }
 
   &:active {
     transform: translateY(1px);
-    box-shadow: 0 2px 0 $black;
+    box-shadow: 0 3px 0 $black;
   }
 }
 
 .link-signup {
-  font-size: 0.9rem;
+  font-size: 1.25rem;
   text-decoration: underline;
   color: $black;
   text-align: center;
   transition: color 0.2s;
+  font-weight: 700;
 
   &:hover {
     color: $teal;
@@ -149,32 +133,10 @@ body {
   }
 }
 
-// ---------- About Button in Sneak Peek ----------
-.about-btn-secondary {
-  display: inline-block;
-  background: $white;
-  border: 3px solid $black;
-  border-radius: 999px;
-  padding: 0.8rem 2rem;
-  font-weight: 700;
-  font-size: 0.95rem;
-  text-decoration: none;
-  color: $black;
-  margin: 1rem auto 2.5rem;
-  transition: all 0.2s;
-  box-shadow: 4px 4px 0 $black;
-  
-  &:hover {
-    background: $yellow;
-    transform: translateY(-2px);
-    box-shadow: 6px 6px 0 $black;
-  }
-}
-
 // ---------- Sneak Peek Section ----------
 .sneak-peek {
   padding: 3rem 1.2rem;
-  background: linear-gradient(to bottom, rgba($yellow, 0.5), $light-blue);
+  background: linear-gradient(to bottom, rgba($yellow, .7), rgba($teal, .5), $light-blue);
   margin: 2rem 0;
 
   .peek-divider {
@@ -187,36 +149,36 @@ body {
       flex: 1;
       height: 2px;
       background: $black;
-      opacity: 0.1;
+      opacity: .8;
     }
 
     p {
-      font-size: 0.8rem;
+      font-size: 1rem;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba($black, 0.6);
+      color: rgba($black, 1);
       white-space: nowrap;
     }
   }
 
   .peek-content {
-    max-width: 1100px;
+    max-width: 90%;
     margin: 0 auto;
     text-align: center;
 
     h3 {
       font-family: "Montserrat", sans-serif;
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 700;
       margin-bottom: 0.8rem;
     }
 
     .peek-subtext {
-      font-size: 1rem;
+      font-size: 1.2rem;
       max-width: 500px;
-      margin: 0 auto 1rem;
-      color: rgba($black, 0.75);
+      margin: 1rem auto 1rem;
+      color: $black;
       line-height: 1.6;
     }
 
@@ -255,23 +217,35 @@ body {
         }
 
         p {
-          font-size: 0.9rem;
-          color: rgba($black, 0.7);
+          font-size: 1.2rem;
+          color: $black;
           line-height: 1.5;
         }
       }
     }
   }
+
+  .peek-footer {
+    margin-top: 2rem;
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+      color: $black;
+      font-weight: 700;
+    }
+  }
 }
 
 .peek-cta {
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   text-decoration: underline;
   color: $black;
   text-align: center;
   transition: color 0.2s;
   display: inline-block;
   margin-top: 1rem;
+  font-weight: 700;
 
   &:hover {
     color: $teal;
@@ -279,9 +253,31 @@ body {
   }
 }
 
+// ---------- About Button in Sneak Peek ----------
+.about-btn-secondary {
+  display: inline-block;
+  background: $white;
+  border: 4px solid $black;
+  border-radius: 999px;
+  padding: 1.1rem 2.8rem;
+  font-weight: 700;
+  font-size: 1.15rem;
+  text-decoration: none;
+  color: $black;
+  margin: 1.5rem auto 3rem;
+  transition: all 0.2s;
+  box-shadow: 5px 5px 0 $black;
+  
+  &:hover {
+    background: $yellow;
+    transform: translateY(-2px);
+    box-shadow: 7px 7px 0 $black;
+  }
+}
+
 // ---------- Footer ----------
 .site-footer {
-  padding: 2rem 1rem 2rem;
+  padding: 3rem 1.5rem 3rem;
   background: transparent;
 }
 
@@ -291,14 +287,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.6rem;
+  gap: 1.2rem;
   text-align: center;
 }
 
 .footer-nav a {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: rgba($black, 0.7);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: $black;
   text-decoration: none;
 
   &:hover {
@@ -308,14 +304,14 @@ body {
 
 .footer-social {
   display: flex;
-  gap: 0.9rem;
-  margin: 0.3rem 0;
+  gap: 1.3rem;
+  margin: 0.8rem 0;
 }
 
 .footer-social img {
-  width: 22px;
-  height: 22px;
-  opacity: 0.75;
+  width: 32px;
+  height: 32px;
+  opacity: 0.9;
   transition: opacity 0.2s ease, transform 0.2s ease;
 
   &:hover {
@@ -325,36 +321,46 @@ body {
 }
 
 .footer-copyright {
-  font-size: 0.7rem;
-  color: rgba($black, 0.55);
+  font-size: 1.05rem;
+  color: $black;
+  font-weight: 500;
 }
 
 // ---------- Small Tablet (600px+) ----------
 @media (min-width: 600px) {
   .logo-text {
-    font-size: 2rem;
+    font-size: 2.8rem;
     letter-spacing: -1.5px;
   }
 
   .main-heading {
-    font-size: 1.8rem;
+    font-size: 2.8rem;
   }
 
   .slogan {
-    max-width: 400px;
+    font-size: 1.4rem;
+    max-width: 500px;
+  }
+
+  .link-signup {
+    font-size: 1.5rem;
   }
 
   // Sneak Peek - 2 Columns
   .sneak-peek {
     padding: 4rem 1.5rem;
 
+    .peek-divider p {
+      font-size: 1.15rem;
+    }
+
     .peek-content {
       h3 {
-        font-size: 1.5rem;
+        font-size: 2rem;
       }
 
       .peek-subtext {
-        font-size: 1.05rem;
+        font-size: 1.3rem;
         max-width: 600px;
         margin-bottom: 1rem;
       }
@@ -364,72 +370,80 @@ body {
         gap: 2rem;
       }
     }
-  }
-}
 
-// ---------- Show kids at 700px+ ----------
-@media (min-width: 700px) {
-  .logo-text {
-    font-size: 2.3rem;
+    .peek-footer p {
+      font-size: 1.3rem;
+    }
   }
 
-  .logo-header {
-    padding: 0.6rem 1.2rem;
+  .peek-cta {
+    font-size: 1.2rem;
   }
 
-  .kids-image {
-    display: block;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 0;
+  .footer-nav a {
+    font-size: 1.3rem;
   }
 
-  .kids-image img {
-    width: 100px;
+  .footer-social img {
+    width: 34px;
+    height: 34px;
+  }
+
+  .footer-copyright {
+    font-size: 1.1rem;
   }
 }
 
 // ---------- Tablet (768px+) ----------
 @media (min-width: 768px) {
   .landing-container {
-    padding: 2rem 1.5rem;
+    padding: 3rem 2rem;
   }
 
   .logo-text {
-    font-size: 2.5rem;
+    font-size: 3.3rem;
     letter-spacing: -2px;
   }
 
   .logo-header {
-    padding: 0.7rem 1.4rem;
-    margin-bottom: 2rem;
-  }
-
-  .kids-image img {
-    width: 120px;
+    padding: 1rem 2rem;
+    margin-bottom: 2.5rem;
   }
 
   .main-heading {
-    font-size: 2.2rem;
+    font-size: 3.3rem;
   }
 
   .slogan {
-    font-size: 1.05rem;
-    margin-bottom: 2rem;
-    max-width: 480px;
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
   }
 
   .cta-buttons {
-    max-width: 300px;
+    max-width: 380px;
   }
 
   .btn-login {
-    padding: 1.2rem 2.5rem;
-    font-size: 1.1rem;
+    padding: 1.5rem 3.2rem;
+    font-size: 1.35rem;
   }
 
   .link-signup {
-    font-size: 0.95rem;
+    font-size: 1.5rem;
+  }
+
+  .footer-nav a {
+    font-size: 1.35rem;
+  }
+
+  .footer-social img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .footer-copyright {
+    font-size: 1.15rem;
   }
 }
 
@@ -441,11 +455,11 @@ body {
 
     .peek-content {
       h3 {
-        font-size: 1.2rem;
+        font-size: 2.3rem;
       }
 
       .peek-subtext {
-        font-size: 1.1rem;
+        font-size: 1.4rem;
         max-width: 700px;
       }
 
@@ -462,34 +476,47 @@ body {
           }
 
           p {
-            font-size: 0.85rem;
+            font-size: 1.5rem;
           }
         }
       }
     }
+
+    .peek-footer p {
+      font-size: 1.5rem;
+    }
+  }
+
+  .peek-cta {
+    font-size: 1.5rem;
   }
 }
 
 // ---------- Desktop (1200px+) ----------
 @media (min-width: 1200px) {
   .logo-text {
-    font-size: 3rem;
+    font-size: 3.8rem;
   }
 
   .logo-header {
-    padding: 0.8rem 1.6rem;
-  }
-
-  .kids-image img {
-    width: 150px;
+    padding: 1.2rem 2.5rem;
   }
 
   .main-heading {
-    font-size: 2.8rem;
+    font-size: 3.8rem;
   }
 
   .slogan {
-    font-size: 1.15rem;
-    max-width: 550px;
+    font-size: 1.6rem;
+    max-width: 700px;
+  }
+
+  .btn-login {
+    font-size: 1.45rem;
+    padding: 1.6rem 3.5rem;
+  }
+
+  .link-signup {
+    font-size: 1.75rem;
   }
 }

@@ -238,6 +238,11 @@ body {
   text-decoration: underline;
 }
 
+.footer {
+  text-align: center;
+  font-weight: 700;
+}
+
 @media (min-width: 768px) {
   .title-section h2 {
     font-size: 32px;
@@ -257,15 +262,13 @@ body {
     overflow-y: auto;
     padding: 0;
     /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
-  }
-  .locations-layout .location-results::-webkit-scrollbar {
-    display: none;
-  }
-  .locations-layout .location-results {
     /* Hide scrollbar for Firefox */
     scrollbar-width: none;
     /* Hide scrollbar for IE, Edge */
     -ms-overflow-style: none;
+  }
+  .locations-layout .location-results::-webkit-scrollbar {
+    display: none;
   }
   #radiusInput {
     display: inline;
@@ -303,6 +306,4 @@ body {
     height: 720px;
     margin: 0;
   }
-}
-
-/*# sourceMappingURL=resources.css.map */
+}/*# sourceMappingURL=resources.css.map */
