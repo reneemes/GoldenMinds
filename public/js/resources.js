@@ -2,19 +2,20 @@ const locationInput = document.getElementById("locationInput");
 const radiusInput = document.getElementById("radiusInput");
 const searchButton = document.getElementById("searchButton");
 const resultsContainer = document.getElementById("locationResults");
+
 // Logout Button
 const signoutBtn = document.querySelector(".signout-btn");
 signoutBtn.addEventListener("click", logout);
+
 // Modal
 const modal = document.getElementById("infoModal");
-
 
 // Adding Default location
 const defaultLocation = {
   name: "Charlotte, NC",
   lat: 35.2271,
   lng: -80.8431,
-  radius: 50,
+  radius: 50, // miles
 };
 
 // Initialize map
@@ -27,7 +28,7 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
 }).addTo(map);
 
-// Convert miles to meters
+// Convert miles to meters (Overpass requires meters)
 function milesToMeters(miles) {
   return miles * 1609.344;
 }
@@ -40,10 +41,8 @@ const fetchFacilityLocations = async (searchLocation, radius = 50) => {
       return [];
     }
 
-    // Create a unique cache key
     const cacheKey = `facilities_${searchLocation.toLowerCase()}_${radius}`;
 
-    // Check localStorage first
     const cachedData = localStorage.getItem(cacheKey);
     if (cachedData) {
       console.log("Using cached facility data");
@@ -62,18 +61,21 @@ const fetchFacilityLocations = async (searchLocation, radius = 50) => {
     const lon = geocodeData[0]?.lon;
     if (!lat || !lon) throw new Error("Latitude and longitude are required");
 
+    // Convert miles → meters
     radius = milesToMeters(radius || 50);
 
-    // Overpass Query
+    // 🔹 Mental wellness Overpass query (FIXED)
     const overpassQuery = `
-      [out:json][timeout:25];
-      (
-        node(around:${radius},${lat},${lon})["healthcare"="mental_health"];
-        node(around:${radius},${lat},${lon})["amenity"="clinic"];
-        node(around:${radius},${lat},${lon})["amenity"="hospital"];
-      );
-      out center;
-    `;
+[out:json][timeout:25];
+(
+  node(around:${radius},${lat},${lon})["amenity"="mental_health_clinic"];
+  node(around:${radius},${lat},${lon})["healthcare"="mental_health"];
+  node(around:${radius},${lat},${lon})["healthcare"="psychotherapist"];
+  node(around:${radius},${lat},${lon})["healthcare"="psychiatrist"];
+  node(around:${radius},${lat},${lon})["healthcare"="counselling"];
+);
+out body;
+`;
 
     const response = await fetch("https://overpass-api.de/api/interpreter", {
       method: "POST",
@@ -84,10 +86,7 @@ const fetchFacilityLocations = async (searchLocation, radius = 50) => {
     if (!response.ok) throw new Error(await response.text());
 
     const data = await response.json();
-
-    // Save to localStorage
     localStorage.setItem(cacheKey, JSON.stringify(data));
-
     return data;
   } catch (err) {
     console.error("Error occurred:", err.message);
@@ -119,8 +118,8 @@ function formatOverpassResults(overpassJson) {
           lng: element.lon,
         };
       })
-      // Filter out any location missing street or hours
-      .filter((clinic) => clinic.street && clinic.hours) || []
+      // 🔹 FIX: Do not filter out valid clinics with no hours
+      .filter((clinic) => clinic.street) || []
   );
 }
 
@@ -132,7 +131,6 @@ async function loadAndDisplayFacilities(searchLocation, radius) {
 
   const formattedResults = formatOverpassResults(results);
 
-  // Clear previous markers
   if (window.currentMarkers)
     window.currentMarkers.forEach((m) => map.removeLayer(m));
   window.currentMarkers = [];
@@ -152,9 +150,12 @@ async function loadAndDisplayFacilities(searchLocation, radius) {
     let innerHTML = `<h3>${clinic.name}</h3>`;
     if (clinic.street)
       innerHTML += `<p><strong>Street:</strong> ${clinic.street}</p>`;
-    innerHTML += `<p><strong>Hours:</strong> ${clinic.hours}</p>`;
-    innerHTML += `<p><strong>Phone:</strong> ${clinic.phone}</p>`;
-    innerHTML += `<p><strong>Website:</strong> <a href="${clinic.website}" target="_blank">${clinic.website}</a></p>`;
+    if (clinic.hours)
+      innerHTML += `<p><strong>Hours:</strong> ${clinic.hours}</p>`;
+    if (clinic.phone)
+      innerHTML += `<p><strong>Phone:</strong> ${clinic.phone}</p>`;
+    if (clinic.website)
+      innerHTML += `<p><strong>Website:</strong> <a href="${clinic.website}" target="_blank">${clinic.website}</a></p>`;
 
     div.innerHTML = innerHTML;
 
@@ -173,8 +174,8 @@ async function loadAndDisplayFacilities(searchLocation, radius) {
 
 // Initial load for Charlotte
 window.addEventListener("DOMContentLoaded", async () => {
-  locationInput.value = ""; // completely empty
-  radiusInput.value = defaultLocation.radius; // keep default radius
+  locationInput.value = "";
+  radiusInput.value = defaultLocation.radius;
   await loadAndDisplayFacilities(defaultLocation.name, defaultLocation.radius);
 });
 
@@ -194,7 +195,6 @@ function closeModal() {
   document.body.style.overflow = "";
 }
 
-// close on backdrop or button
 modal.addEventListener("click", (e) => {
   if (
     e.target.classList.contains("modal__backdrop") ||
@@ -204,7 +204,6 @@ modal.addEventListener("click", (e) => {
   }
 });
 
-// close on ESC
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape" && !modal.classList.contains("hidden")) {
     closeModal();
@@ -218,5 +217,6 @@ async function logout(e) {
     method: "POST",
     credentials: "include",
   });
+
   window.location.href = "/";
 }
