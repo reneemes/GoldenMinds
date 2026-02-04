@@ -53,12 +53,14 @@ body {
   box-shadow: 6px 6px 0px #000000;
   position: relative;
   max-width: 600px;
+  height: 600px;
   margin: 10vh auto;
   padding: 1.5rem;
-  background: #FFDADA;
+  background: #ffdada;
 }
 .modal__content--sub-title {
   padding: 0;
+  font-size: 18px;
 }
 .modal__content--body {
   display: flex;
@@ -66,7 +68,7 @@ body {
   align-items: center;
 }
 .modal__content img {
-  width: 80%;
+  width: 50%;
   height: auto;
   border-radius: 15px;
 }
@@ -183,7 +185,7 @@ body {
   gap: 20px;
   padding: 0 15px;
   height: 1400px;
-  margin-bottom: 60px;
+  margin-bottom: 600px;
 }
 
 .location-map {
@@ -217,19 +219,19 @@ body {
 .location-results .location h3 {
   margin: 0 0 5px 0;
   font-size: 18px;
-  color: #abc6cd;
+  color: blue;
   font-weight: 600;
 }
 .location-results .location p {
   margin: 3px 0;
   font-size: 14px;
-  color: #999;
+  color: #616161;
 }
 .location-results .location p strong {
   color: #000000;
 }
 .location-results .location p a {
-  color: #abc6cd;
+  color: blue;
   text-decoration: none;
 }
 .location-results .location p a:hover {
@@ -255,13 +257,15 @@ body {
     overflow-y: auto;
     padding: 0;
     /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+  }
+  .locations-layout .location-results::-webkit-scrollbar {
+    display: none;
+  }
+  .locations-layout .location-results {
     /* Hide scrollbar for Firefox */
     scrollbar-width: none;
     /* Hide scrollbar for IE, Edge */
     -ms-overflow-style: none;
-  }
-  .locations-layout .location-results::-webkit-scrollbar {
-    display: none;
   }
   #radiusInput {
     display: inline;
@@ -288,7 +292,6 @@ body {
   }
   h2 {
     padding-top: 60px;
-    padding-bottom: 20px;
   }
   h2 strong {
     font-weight: 700;
@@ -297,6 +300,9 @@ body {
     width: 600px;
   }
   .locations-layout {
-    height: 520px;
+    height: 720px;
+    margin: 0;
   }
-}/*# sourceMappingURL=resources.css.map */
+}
+
+/*# sourceMappingURL=resources.css.map */
