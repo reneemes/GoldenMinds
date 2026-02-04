@@ -2,7 +2,7 @@
 
 ## 🧠 About Unfiltered
 
-Unfiltered is a youth focused mental health awareness platform designed to help the next generation better understand their emotional world.
+Unfiltered is focused for young adults mental health awareness. It is a platform designed to help the next generation better understand their emotional world.
 
 The name **Unfiltered** represents honesty, openness, and removing the stigma around mental health. Our goal is to create a safe, supportive space where users can learn, reflect, and grow emotionally without judgment.
 
@@ -21,7 +21,7 @@ This project was inspired by the core values of **H.O.P.E.**:
 
 ## 🎯 Our Mission
 
-Mental health education is often overlooked, especially for young people navigating societal pressure, identity, and emotional development.  
+Mental health education is often overlooked, especially for young adults navigating societal pressure, identity, and emotional development.  
 **Unfiltered** bridges that gap by offering resources, reflection, and support in a welcoming digital environment.
 
 ---
