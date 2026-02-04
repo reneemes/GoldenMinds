@@ -60,6 +60,10 @@ function drawChart(moods, range = "week") {
   const options = {
     title: `Mood Trends Over the Past ${range}`,
     legend: "none",
+    vAxis: {
+      format: "0",
+      minValue: 0
+    }
   };
   const chart = new google.visualization.ColumnChart(
     document.getElementById("myChart"),

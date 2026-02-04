@@ -544,13 +544,13 @@ body {
   position: fixed;
   inset: 0;
   z-index: 1000;
-  
+
   &__backdrop {
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
   }
-  
+
   &__content {
     border-radius: 30px;
     border: 3px solid $black;
@@ -560,8 +560,27 @@ body {
     margin: 10vh auto;
     padding: 1.5rem;
     background: white;
+
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
   }
-  
+
+  &__title {
+    font-size: 2rem;
+    margin-bottom: 0;
+  }
+
+  &__date {
+    margin: 0;
+  }
+
+  &__body {
+    overflow-y: auto;
+    margin-top: 1rem;
+    flex: 1;
+  }
+
   &__close-btn {
     position: absolute;
     top: 0.5rem;
@@ -572,7 +591,6 @@ body {
     cursor: pointer;
   }
 }
-
 
 // ============ DESKTOP STYLES ============
 @media (min-width: 1024px) {

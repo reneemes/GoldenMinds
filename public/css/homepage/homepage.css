@@ -480,6 +480,23 @@ body {
   margin: 10vh auto;
   padding: 1.5rem;
   background: white;
+  /* key part */
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+.modal__title {
+  font-size: 2rem;
+  margin-bottom: 0;
+}
+.modal__date {
+  margin: 0;
+}
+.modal__body {
+  overflow-y: auto;
+  margin-top: 1rem;
+  /* lets it take remaining space */
+  flex: 1;
 }
 .modal__close-btn {
   position: absolute;
