@@ -17,7 +17,7 @@
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js -e js,hbs",
-    "build": "node build.js"
+    "build": "node build.js && node copy-assets.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
