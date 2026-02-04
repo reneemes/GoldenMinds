@@ -126,7 +126,7 @@ body {
   gap: 20px;
   padding: 0 15px;
   height: 1400px;
-  margin-bottom: 60px;
+  margin-bottom: 600px;
 }
 
 .location-map {
@@ -160,19 +160,19 @@ body {
 .location-results .location h3 {
   margin: 0 0 5px 0;
   font-size: 18px;
-  color: #abc6cd;
+  color: blue;
   font-weight: 600;
 }
 .location-results .location p {
   margin: 3px 0;
   font-size: 14px;
-  color: #999;
+  color: #616161;
 }
 .location-results .location p strong {
   color: #000000;
 }
 .location-results .location p a {
-  color: #abc6cd;
+  color: blue;
   text-decoration: none;
 }
 .location-results .location p a:hover {
@@ -233,7 +233,6 @@ body {
   }
   h2 {
     padding-top: 60px;
-    padding-bottom: 20px;
   }
   h2 strong {
     font-weight: 700;
@@ -242,7 +241,8 @@ body {
     width: 600px;
   }
   .locations-layout {
-    height: 520px;
+    height: 720px;
+    margin: 0;
   }
 }
 

@@ -154,7 +154,7 @@ body {
   gap: 20px;
   padding: 0 15px;
   height: 1400px;
-  margin-bottom: 60px;
+  margin-bottom: 600px;
 }
 
 .location-map {
@@ -169,9 +169,9 @@ body {
   width: 100%;
   max-height: 500px;
   padding: 0;
-  display: flex; // ensure flex
-  flex-direction: column; // stack cards vertically
-  gap: 16px; // space between each card
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 
   .location {
     background-color: rgba(255, 255, 255, 0.95);
@@ -189,21 +189,21 @@ body {
     h3 {
       margin: 0 0 5px 0;
       font-size: 18px;
-      color: $teal;
+      color: blue;
       font-weight: 600;
     }
 
     p {
       margin: 3px 0;
       font-size: 14px;
-      color: $text-area;
+      color: #616161;
 
       strong {
         color: $black;
       }
 
       a {
-        color: $teal;
+        color: blue;
         text-decoration: none;
         &:hover {
           text-decoration: underline;
@@ -281,7 +281,6 @@ body {
 
   h2 {
     padding-top: 60px;
-    padding-bottom: 20px;
 
     strong {
       font-weight: 700;
@@ -293,6 +292,7 @@ body {
   }
 
   .locations-layout {
-    height: 520px;
+    height: 720px;
+    margin: 0;
   }
 }
